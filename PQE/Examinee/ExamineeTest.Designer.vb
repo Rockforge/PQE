@@ -55,15 +55,16 @@ Partial Class ExamineeTest
         Me.lblPositionDescription = New System.Windows.Forms.Label()
         Me.lblScoreHide = New System.Windows.Forms.Label()
         Me.lblSetDescription = New System.Windows.Forms.Label()
-        Me.btnQuestionSkip = New MaterialSkin.Controls.MaterialRaisedButton()
-        Me.dgvQuestionAnswer = New System.Windows.Forms.DataGridView()
+        Me.dgvQuestionNumber = New System.Windows.Forms.DataGridView()
+        Me.btnAnswer = New MaterialSkin.Controls.MaterialRaisedButton()
+        Me.btnFinishTest = New MaterialSkin.Controls.MaterialRaisedButton()
         CType(Me.dgvQuestion, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvQuestionAnswer, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvQuestionNumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'rtfQuestion
         '
-        Me.rtfQuestion.Location = New System.Drawing.Point(12, 130)
+        Me.rtfQuestion.Location = New System.Drawing.Point(170, 134)
         Me.rtfQuestion.Name = "rtfQuestion"
         Me.rtfQuestion.ReadOnly = True
         Me.rtfQuestion.Size = New System.Drawing.Size(715, 276)
@@ -75,7 +76,7 @@ Partial Class ExamineeTest
         Me.dgvQuestion.AllowUserToAddRows = False
         Me.dgvQuestion.AllowUserToDeleteRows = False
         Me.dgvQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvQuestion.Location = New System.Drawing.Point(487, 256)
+        Me.dgvQuestion.Location = New System.Drawing.Point(645, 260)
         Me.dgvQuestion.Name = "dgvQuestion"
         Me.dgvQuestion.ReadOnly = True
         Me.dgvQuestion.Size = New System.Drawing.Size(240, 150)
@@ -144,6 +145,7 @@ Partial Class ExamineeTest
         Me.lblAnswer.Size = New System.Drawing.Size(42, 13)
         Me.lblAnswer.TabIndex = 3
         Me.lblAnswer.Text = "Answer"
+        Me.lblAnswer.Visible = False
         '
         'lblKindID
         '
@@ -153,6 +155,7 @@ Partial Class ExamineeTest
         Me.lblKindID.Size = New System.Drawing.Size(42, 13)
         Me.lblKindID.TabIndex = 3
         Me.lblKindID.Text = "Kind ID"
+        Me.lblKindID.Visible = False
         '
         'lblExamineeID
         '
@@ -162,6 +165,7 @@ Partial Class ExamineeTest
         Me.lblExamineeID.Size = New System.Drawing.Size(67, 13)
         Me.lblExamineeID.TabIndex = 3
         Me.lblExamineeID.Text = "Examinee ID"
+        Me.lblExamineeID.Visible = False
         '
         'lblQuestionID
         '
@@ -171,6 +175,7 @@ Partial Class ExamineeTest
         Me.lblQuestionID.Size = New System.Drawing.Size(63, 13)
         Me.lblQuestionID.TabIndex = 3
         Me.lblQuestionID.Text = "Question ID"
+        Me.lblQuestionID.Visible = False
         '
         'lblNumOfQuestion
         '
@@ -180,6 +185,7 @@ Partial Class ExamineeTest
         Me.lblNumOfQuestion.Size = New System.Drawing.Size(101, 13)
         Me.lblNumOfQuestion.TabIndex = 3
         Me.lblNumOfQuestion.Text = "Number of Question"
+        Me.lblNumOfQuestion.Visible = False
         '
         'lblQuestionCounter
         '
@@ -189,6 +195,7 @@ Partial Class ExamineeTest
         Me.lblQuestionCounter.Size = New System.Drawing.Size(89, 13)
         Me.lblQuestionCounter.TabIndex = 3
         Me.lblQuestionCounter.Text = "Question Counter"
+        Me.lblQuestionCounter.Visible = False
         '
         'Label4
         '
@@ -218,7 +225,7 @@ Partial Class ExamineeTest
         Me.rbChoice1.AutoSize = True
         Me.rbChoice1.Depth = 0
         Me.rbChoice1.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice1.Location = New System.Drawing.Point(12, 409)
+        Me.rbChoice1.Location = New System.Drawing.Point(170, 413)
         Me.rbChoice1.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice1.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice1.MouseState = MaterialSkin.MouseState.HOVER
@@ -235,7 +242,7 @@ Partial Class ExamineeTest
         Me.rbChoice2.AutoSize = True
         Me.rbChoice2.Depth = 0
         Me.rbChoice2.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice2.Location = New System.Drawing.Point(12, 439)
+        Me.rbChoice2.Location = New System.Drawing.Point(170, 443)
         Me.rbChoice2.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice2.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice2.MouseState = MaterialSkin.MouseState.HOVER
@@ -252,7 +259,7 @@ Partial Class ExamineeTest
         Me.rbChoice3.AutoSize = True
         Me.rbChoice3.Depth = 0
         Me.rbChoice3.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice3.Location = New System.Drawing.Point(12, 469)
+        Me.rbChoice3.Location = New System.Drawing.Point(170, 473)
         Me.rbChoice3.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice3.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice3.MouseState = MaterialSkin.MouseState.HOVER
@@ -269,7 +276,7 @@ Partial Class ExamineeTest
         Me.rbChoice4.AutoSize = True
         Me.rbChoice4.Depth = 0
         Me.rbChoice4.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice4.Location = New System.Drawing.Point(12, 499)
+        Me.rbChoice4.Location = New System.Drawing.Point(170, 503)
         Me.rbChoice4.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice4.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice4.MouseState = MaterialSkin.MouseState.HOVER
@@ -284,7 +291,7 @@ Partial Class ExamineeTest
         'btnQuestionPrevious
         '
         Me.btnQuestionPrevious.Depth = 0
-        Me.btnQuestionPrevious.Location = New System.Drawing.Point(387, 536)
+        Me.btnQuestionPrevious.Location = New System.Drawing.Point(565, 536)
         Me.btnQuestionPrevious.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionPrevious.Name = "btnQuestionPrevious"
         Me.btnQuestionPrevious.Primary = True
@@ -296,7 +303,7 @@ Partial Class ExamineeTest
         'btnQuestionNext
         '
         Me.btnQuestionNext.Depth = 0
-        Me.btnQuestionNext.Location = New System.Drawing.Point(641, 536)
+        Me.btnQuestionNext.Location = New System.Drawing.Point(799, 536)
         Me.btnQuestionNext.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionNext.Name = "btnQuestionNext"
         Me.btnQuestionNext.Primary = True
@@ -313,6 +320,7 @@ Partial Class ExamineeTest
         Me.lblScore.Size = New System.Drawing.Size(60, 13)
         Me.lblScore.TabIndex = 3
         Me.lblScore.Text = "Hide Score"
+        Me.lblScore.Visible = False
         '
         'lblLevelID
         '
@@ -322,6 +330,7 @@ Partial Class ExamineeTest
         Me.lblLevelID.Size = New System.Drawing.Size(72, 13)
         Me.lblLevelID.TabIndex = 3
         Me.lblLevelID.Text = "Hide Level ID"
+        Me.lblLevelID.Visible = False
         '
         'lblLevelDescription
         '
@@ -331,6 +340,7 @@ Partial Class ExamineeTest
         Me.lblLevelDescription.Size = New System.Drawing.Size(86, 13)
         Me.lblLevelDescription.TabIndex = 3
         Me.lblLevelDescription.Text = "Hide Level Desc"
+        Me.lblLevelDescription.Visible = False
         '
         'lblPositionDescription
         '
@@ -340,11 +350,12 @@ Partial Class ExamineeTest
         Me.lblPositionDescription.Size = New System.Drawing.Size(97, 13)
         Me.lblPositionDescription.TabIndex = 3
         Me.lblPositionDescription.Text = "Hide Position Desc"
+        Me.lblPositionDescription.Visible = False
         '
         'lblScoreHide
         '
         Me.lblScoreHide.AutoSize = True
-        Me.lblScoreHide.Location = New System.Drawing.Point(441, 71)
+        Me.lblScoreHide.Location = New System.Drawing.Point(557, 71)
         Me.lblScoreHide.Name = "lblScoreHide"
         Me.lblScoreHide.Size = New System.Drawing.Size(60, 13)
         Me.lblScoreHide.TabIndex = 3
@@ -358,27 +369,16 @@ Partial Class ExamineeTest
         Me.lblSetDescription.Size = New System.Drawing.Size(23, 13)
         Me.lblSetDescription.TabIndex = 8
         Me.lblSetDescription.Text = "Set"
+        Me.lblSetDescription.Visible = False
         '
-        'btnQuestionSkip
+        'dgvQuestionNumber
         '
-        Me.btnQuestionSkip.Depth = 0
-        Me.btnQuestionSkip.Location = New System.Drawing.Point(516, 536)
-        Me.btnQuestionSkip.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btnQuestionSkip.Name = "btnQuestionSkip"
-        Me.btnQuestionSkip.Primary = True
-        Me.btnQuestionSkip.Size = New System.Drawing.Size(86, 30)
-        Me.btnQuestionSkip.TabIndex = 9
-        Me.btnQuestionSkip.Text = "Skip"
-        Me.btnQuestionSkip.UseVisualStyleBackColor = True
-        '
-        'dgvQuestionAnswer
-        '
-        Me.dgvQuestionAnswer.AllowUserToAddRows = False
-        Me.dgvQuestionAnswer.AllowUserToDeleteRows = False
-        Me.dgvQuestionAnswer.AllowUserToResizeColumns = False
-        Me.dgvQuestionAnswer.AllowUserToResizeRows = False
-        Me.dgvQuestionAnswer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvQuestionAnswer.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.dgvQuestionNumber.AllowUserToAddRows = False
+        Me.dgvQuestionNumber.AllowUserToDeleteRows = False
+        Me.dgvQuestionNumber.AllowUserToResizeColumns = False
+        Me.dgvQuestionNumber.AllowUserToResizeRows = False
+        Me.dgvQuestionNumber.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvQuestionNumber.BackgroundColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -386,8 +386,8 @@ Partial Class ExamineeTest
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvQuestionAnswer.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvQuestionAnswer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvQuestionNumber.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvQuestionNumber.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -395,12 +395,12 @@ Partial Class ExamineeTest
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvQuestionAnswer.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvQuestionAnswer.EnableHeadersVisualStyles = False
-        Me.dgvQuestionAnswer.GridColor = System.Drawing.SystemColors.MenuBar
-        Me.dgvQuestionAnswer.Location = New System.Drawing.Point(733, 130)
-        Me.dgvQuestionAnswer.Name = "dgvQuestionAnswer"
-        Me.dgvQuestionAnswer.ReadOnly = True
+        Me.dgvQuestionNumber.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvQuestionNumber.EnableHeadersVisualStyles = False
+        Me.dgvQuestionNumber.GridColor = System.Drawing.SystemColors.MenuBar
+        Me.dgvQuestionNumber.Location = New System.Drawing.Point(12, 134)
+        Me.dgvQuestionNumber.Name = "dgvQuestionNumber"
+        Me.dgvQuestionNumber.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuHighlight
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -408,19 +408,44 @@ Partial Class ExamineeTest
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvQuestionAnswer.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgvQuestionAnswer.RowHeadersVisible = False
-        Me.dgvQuestionAnswer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvQuestionAnswer.Size = New System.Drawing.Size(149, 436)
-        Me.dgvQuestionAnswer.TabIndex = 10
+        Me.dgvQuestionNumber.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvQuestionNumber.RowHeadersVisible = False
+        Me.dgvQuestionNumber.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvQuestionNumber.Size = New System.Drawing.Size(149, 428)
+        Me.dgvQuestionNumber.TabIndex = 10
+        '
+        'btnAnswer
+        '
+        Me.btnAnswer.Depth = 0
+        Me.btnAnswer.Location = New System.Drawing.Point(684, 536)
+        Me.btnAnswer.MouseState = MaterialSkin.MouseState.HOVER
+        Me.btnAnswer.Name = "btnAnswer"
+        Me.btnAnswer.Primary = True
+        Me.btnAnswer.Size = New System.Drawing.Size(86, 30)
+        Me.btnAnswer.TabIndex = 11
+        Me.btnAnswer.Text = "Answer"
+        Me.btnAnswer.UseVisualStyleBackColor = True
+        '
+        'btnFinishTest
+        '
+        Me.btnFinishTest.Depth = 0
+        Me.btnFinishTest.Location = New System.Drawing.Point(733, 71)
+        Me.btnFinishTest.MouseState = MaterialSkin.MouseState.HOVER
+        Me.btnFinishTest.Name = "btnFinishTest"
+        Me.btnFinishTest.Primary = True
+        Me.btnFinishTest.Size = New System.Drawing.Size(149, 35)
+        Me.btnFinishTest.TabIndex = 12
+        Me.btnFinishTest.Text = "Finish Test"
+        Me.btnFinishTest.UseVisualStyleBackColor = True
         '
         'ExamineeTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(894, 574)
-        Me.Controls.Add(Me.dgvQuestionAnswer)
-        Me.Controls.Add(Me.btnQuestionSkip)
+        Me.ClientSize = New System.Drawing.Size(897, 574)
+        Me.Controls.Add(Me.btnFinishTest)
+        Me.Controls.Add(Me.btnAnswer)
+        Me.Controls.Add(Me.dgvQuestionNumber)
         Me.Controls.Add(Me.lblSetDescription)
         Me.Controls.Add(Me.btnQuestionNext)
         Me.Controls.Add(Me.btnQuestionPrevious)
@@ -453,7 +478,7 @@ Partial Class ExamineeTest
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Examinee Test"
         CType(Me.dgvQuestion, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvQuestionAnswer, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvQuestionNumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -488,6 +513,7 @@ Partial Class ExamineeTest
     Friend WithEvents lblPositionDescription As Label
     Friend WithEvents lblScoreHide As Label
     Friend WithEvents lblSetDescription As Label
-    Friend WithEvents btnQuestionSkip As MaterialSkin.Controls.MaterialRaisedButton
-    Friend WithEvents dgvQuestionAnswer As DataGridView
+    Friend WithEvents dgvQuestionNumber As DataGridView
+    Friend WithEvents btnAnswer As MaterialSkin.Controls.MaterialRaisedButton
+    Friend WithEvents btnFinishTest As MaterialSkin.Controls.MaterialRaisedButton
 End Class

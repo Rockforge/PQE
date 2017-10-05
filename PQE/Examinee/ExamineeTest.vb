@@ -64,7 +64,6 @@ Public Class ExamineeTest
         sql.ExecuteQuery("SELECT * FROM tbl_question 
                            WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
 
-        MessageBox.Show(lblQuestionID.Text)
         ' Load first question
         If sql.recordCount > 0 Then
             lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
