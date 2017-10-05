@@ -3586,7 +3586,4 @@ Public Class AdminDashboard
         MessageBox.Show("Email settings saved.")
     End Sub
 
-    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
-
-    End Sub
 End Class
