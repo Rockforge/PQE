@@ -204,16 +204,20 @@ Public Class Examinee
         Me.Hide()
     End Sub
 
-    ' Insert Passed or Failed in tbl_examinee_result
+    ' Insert Passed or Failed in tbl_examinee_set 
     Public Sub InsertPassOrFail()
+
         Dim _examineeScore As Integer = 0
         Dim _result As String
 
         MessageBox.Show("Examinee ID: " & lblExamineeID.Text)
+        MessageBox.Show("Set Description: " & lblSetDescription.Text)
+        MessageBox.Show("Position Description" & lblPositionDescription.Text)
 
         ' GET ALL SCORES OF EXAMINEE
         sql.AddParam("@examineeID", lblExamineeID.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee_score WHERE examineeID = @examineeID")
+        sql.AddParam("@setDescription", lblSetDescription.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee_score WHERE examineeID = @examineeID AND setDescription = @setDescription")
 
         _examineeScore = _examineeScore + sql.sqlDataSet.Tables(0).Rows(0).Item("examineeScore")
         _examineeScore = _examineeScore + sql.sqlDataSet.Tables(0).Rows(1).Item("examineeScore")
@@ -232,24 +236,34 @@ Public Class Examinee
         Else
             _result = "Failed"
         End If
-
-        ' Since all of them require a result
-        sql.AddParam("@result", _result)
-
         ' Since a record for Set A was already inserted upon register
         If lblSetDescription.Text = "A" Then
             sql.AddParam("@examineeID", lblExamineeID.Text)
             sql.AddParam("@setDescription", lblSetDescription.Text)
+            sql.AddParam("@result", _result)
             sql.ExecuteQuery("UPDATE tbl_examinee_set SET result = @result WHERE examineeID = @examineeID AND setDescription = @setDescription")
         Else
+            ' Since there is no positionID
+            Dim _positionID As String = GetPositionID()
+
+            sql.AddParam("@levelID", lblLevelID.Text)
+            sql.AddParam("@positionID", _positionID)
             sql.AddParam("@examineeID", lblExamineeID.Text)
             sql.AddParam("@setDescription", lblSetDescription.Text)
-            sql.ExecuteQuery("INSERT INTO tbl_examinee_set (examineeID, setDescription, result)
-                               VALUES (@examineeID, @setDescription, @result)")
+            sql.AddParam("@result", _result)
+            sql.ExecuteQuery("INSERT INTO tbl_examinee_set (examineeID, setDescription, result, levelID, positionID)
+                               VALUES (@examineeID, @setDescription, @result, @levelID, @positionID)")
         End If
 
 
     End Sub
+
+    Private Function GetPositionID() As String
+        sql.AddParam("@positionDescription", lblPositionDescription.Text)
+        sql.ExecuteQuery("SELECT positionID FROM tbl_position WHERE positionDescription = @positionDescription")
+
+        Return sql.sqlDataSet.Tables(0).Rows(0).Item("positionID").ToString
+    End Function
 
 
 End Class

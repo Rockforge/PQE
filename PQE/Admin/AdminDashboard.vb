@@ -66,15 +66,18 @@ Public Class AdminDashboard
 
         LoadExamineeDgv()
         LoadExamineePosition()
-
+        btnExamineeEdit.Visible = False
+        lblExamineeError.Visible = False
+        picExamineeError.Visible = False
 
         ' Filter Dates
         dtpFromFilter.Enabled = False
         dtpToFilter.Enabled = False
 
-
         ' Exams tab
         LoadExamSet()
+        picExamError.Visible = False
+        lblExamError.Visible = False
 
         ' Configuration Tab
         LoadDgvTempo()
@@ -90,15 +93,6 @@ Public Class AdminDashboard
 
         lblLastBackup.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastBackup").ToString()
         lblLastRestore.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastRestore").ToString()
-
-        picExamError.Visible = False
-        picExamineeError.Visible = False
-        lblExamError.Visible = False
-        lblExamineeError.Visible = False
-
-        btnExamineeEdit.Visible = False
-
-
 
 
 
@@ -215,7 +209,6 @@ Public Class AdminDashboard
 
 
     ' -- EXAMINEE TAB --
-
     Public Sub LoadExamineeDgv()
 
 
@@ -251,6 +244,8 @@ Public Class AdminDashboard
         dgvExaminee.DataSource = sql.sqlDataSet.Tables(0)
 
         lblExamineeCount.Text = sql.recordCount
+
+        dgvExaminee.ClearSelection()
     End Sub
 
     Private Sub LoadExamineePosition()
@@ -1916,6 +1911,597 @@ Public Class AdminDashboard
         End If
     End Sub
 
+    Private Sub btnPrintSupervisoryResult_Click(sender As Object, e As EventArgs) Handles btnPrintSupervisoryA.Click, btnPrintSupervisoryB.Click, btnPrintSupervisoryC.Click
+        Dim _setDescriptionQuery As String
+        Dim _setResultQuery As String
+
+        ' Get SetDescription
+        If sender.Equals(btnPrintSupervisoryA) Then
+            _setDescriptionQuery = "A"
+            _setResultQuery = txtSupervisoryResultA.Text
+        ElseIf sender.Equals(btnPrintSupervisoryB) Then
+            _setDescriptionQuery = "B"
+            _setResultQuery = txtSupervisoryResultB.Text
+        ElseIf sender.Equals(btnPrintSupervisoryC) Then
+            _setDescriptionQuery = "C"
+            _setResultQuery = txtSupervisoryResultC.Text
+        End If
+
+        sql.AddParam("@examineeID", GetExamineeID())
+        sql.AddParam("@setDescription", _setDescriptionQuery)
+        sql.AddParam("@result", _setResultQuery)
+        sql.AddParam("@levelDescription", "Supervisory")
+        sql.AddParam("@positionDescription", cboSupervisoryPosition.Text)
+
+
+
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee
+                          INNER JOIN tbl_examinee_score
+                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
+                          INNER JOIN tbl_examinee_set
+                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
+                          INNER JOIN tbl_kind
+                          ON tbl_kind.kindID = tbl_examinee_score.kindID
+                          INNER JOIN tbl_level
+                          ON tbl_kind.levelID = tbl_level.levelID
+                          INNER JOIN tbl_position
+                          ON tbl_position.positionID = tbl_examinee_set.positionID
+                          WHERE tbl_examinee.examineeID = @examineeID
+                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_examinee_score.setDescription = @setDescription
+                          AND tbl_position.positionDescription = @positionDescription
+                          AND tbl_examinee_set.result = @result")
+
+        ' Examinee Detials
+        If sql.recordCount > 0 Then
+            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
+            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
+            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
+            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
+            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
+            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
+            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
+            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
+
+            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
+            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+
+
+            Dim _doc As Document = New Document()
+            Dim _sect As Section = _doc.AddSection()
+            _sect.PageSetup.PageFormat = PageFormat.A4
+            _sect.PageSetup.Orientation = Orientation.Portrait
+
+            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
+            ' Also view Invoice Example for Migradoc. Really useful
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            _logo.LockAspectRatio = True
+            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+            _logo.WrapFormat.Style = Shapes.WrapStyle.None
+
+
+            Dim _fontstyle As Style = _doc.Styles("Normal")
+
+            _fontstyle = _doc.AddStyle("Heading1", "Normal")
+            _fontstyle.Font.Size = 15
+            _fontstyle.Font.Bold = True
+            _fontstyle.Font.Underline = 1
+
+
+            _fontstyle = _doc.AddStyle("Heading2", "Normal")
+            _fontstyle.Font.Size = 9
+            _fontstyle.Font.Bold = False
+            _fontstyle.Font.Underline = 0
+
+            Dim _headerText As Paragraph = New Paragraph()
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
+
+            ' Add this at the end so that it doesn't interfere with our image
+            _sect.Headers.Primary.Add(_headerText)
+
+            'Footer 
+            Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Right
+            _footer.AddText("Page ")
+            _footer.AddPageField()
+            _footer.AddText(" of ")
+            _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            ' Spaces needed
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+
+
+            If hasPicture = True Then
+                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
+                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+                _examineePic.Top = Shapes.ShapePosition.Top
+                _examineePic.Left = Shapes.ShapePosition.Right
+                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+            End If
+
+
+            ' Adds date
+            _sect.AddParagraph(printDate)
+            ' Add new line
+            _sect.AddParagraph(vbNewLine)
+
+            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
+            _fontstyle.Font.Size = 12
+
+            Dim _examineeDetails As Paragraph = New Paragraph()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
+
+            _sect.Add(_examineeDetails)
+
+            ' Adds a new line
+            _sect.AddParagraph(vbNewLine & vbNewLine)
+
+
+            ' Table Holder and If statements for table Creation
+            Dim _tableHolder As Table = New Table()
+            _tableHolder = CreateTableSupervisory("Supervisory", _examineeID, _setDescription)
+
+            ' Paragraph for Results
+            Dim _paraResult As Paragraph = New Paragraph()
+
+            ' Paragraph and table for examinee results
+            If _result = "Passed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+
+            ElseIf _result = "Failed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+            End If
+
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+            Dim _paraSignature As Paragraph = New Paragraph()
+            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+
+            _sect.Add(_paraSignature)
+
+
+            ' Renders the doocument
+            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
+            _renderer.Document = _doc
+            _renderer.RenderDocument()
+
+            ' Save document
+            Dim filename As String = "ExamineeSummary.pdf"
+            _renderer.PdfDocument.Save(filename)
+            ' Start view
+            Process.Start(filename)
+
+        Else
+            MessageBox.Show("Examinee has no results yet on the specified Set")
+        End If
+
+
+    End Sub
+
+    Private Sub btnPrintNonSupervisoryResult_Click(sender As Object, e As EventArgs) Handles btnPrintNonSupervisoryA.Click, btnPrintNonSupervisoryB.Click, btnPrintNonSupervisoryC.Click
+
+
+        Dim _setDescriptionQuery As String
+        Dim _setResultQuery As String
+
+
+        ' Get SetDescription
+        If sender.Equals(btnPrintNonSupervisoryA) Then
+            _setDescriptionQuery = "A"
+            _setResultQuery = txtNonSupervisoryResultA.Text
+        ElseIf sender.Equals(btnPrintNonSupervisoryB) Then
+            _setDescriptionQuery = "B"
+            _setResultQuery = txtNonSupervisoryResultB.Text
+        ElseIf sender.Equals(btnPrintNonSupervisoryC) Then
+            _setDescriptionQuery = "C"
+            _setResultQuery = txtNonSupervisoryResultC.Text
+        End If
+
+        sql.AddParam("@examineeID", GetExamineeID())
+        sql.AddParam("@setDescription", _setDescriptionQuery)
+        sql.AddParam("@result", _setResultQuery)
+        sql.AddParam("@levelDescription", "Non-Supervisory")
+        sql.AddParam("@positionDescription", cboNonSupervisoryPosition.Text)
+
+
+
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee
+                          INNER JOIN tbl_examinee_score
+                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
+                          INNER JOIN tbl_examinee_set
+                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
+                          INNER JOIN tbl_kind
+                          ON tbl_kind.kindID = tbl_examinee_score.kindID
+                          INNER JOIN tbl_level
+                          ON tbl_kind.levelID = tbl_level.levelID
+                          INNER JOIN tbl_position
+                          ON tbl_position.positionID = tbl_examinee_set.positionID
+                          WHERE tbl_examinee.examineeID = @examineeID
+                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_examinee_score.setDescription = @setDescription
+                          AND tbl_position.positionDescription = @positionDescription
+                          AND tbl_examinee_set.result = @result")
+
+        ' Examinee Detials
+        If sql.recordCount > 0 Then
+            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
+            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
+            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
+            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
+            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
+            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
+            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
+            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
+
+            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
+            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+
+
+            Dim _doc As Document = New Document()
+            Dim _sect As Section = _doc.AddSection()
+            _sect.PageSetup.PageFormat = PageFormat.A4
+            _sect.PageSetup.Orientation = Orientation.Portrait
+
+            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
+            ' Also view Invoice Example for Migradoc. Really useful
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            _logo.LockAspectRatio = True
+            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+            _logo.WrapFormat.Style = Shapes.WrapStyle.None
+
+
+            Dim _fontstyle As Style = _doc.Styles("Normal")
+
+            _fontstyle = _doc.AddStyle("Heading1", "Normal")
+            _fontstyle.Font.Size = 15
+            _fontstyle.Font.Bold = True
+            _fontstyle.Font.Underline = 1
+
+
+            _fontstyle = _doc.AddStyle("Heading2", "Normal")
+            _fontstyle.Font.Size = 9
+            _fontstyle.Font.Bold = False
+            _fontstyle.Font.Underline = 0
+
+            Dim _headerText As Paragraph = New Paragraph()
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
+
+            ' Add this at the end so that it doesn't interfere with our image
+            _sect.Headers.Primary.Add(_headerText)
+
+            'Footer 
+            Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Right
+            _footer.AddText("Page ")
+            _footer.AddPageField()
+            _footer.AddText(" of ")
+            _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            ' Spaces needed
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+
+
+            If hasPicture = True Then
+                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
+                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+                _examineePic.Top = Shapes.ShapePosition.Top
+                _examineePic.Left = Shapes.ShapePosition.Right
+                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+            End If
+
+
+            ' Adds date
+            _sect.AddParagraph(printDate)
+            ' Add new line
+            _sect.AddParagraph(vbNewLine)
+
+            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
+            _fontstyle.Font.Size = 12
+
+            Dim _examineeDetails As Paragraph = New Paragraph()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
+
+            _sect.Add(_examineeDetails)
+
+            ' Adds a new line
+            _sect.AddParagraph(vbNewLine & vbNewLine)
+
+
+            ' Table Holder and If statements for table Creation
+            Dim _tableHolder As Table = New Table()
+            _tableHolder = CreateTableNonSupervisory("Non-Supervisory", _examineeID, _setDescription)
+
+            ' Paragraph for Results
+            Dim _paraResult As Paragraph = New Paragraph()
+
+            ' Paragraph and table for examinee results
+            If _result = "Passed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+
+            ElseIf _result = "Failed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+            End If
+
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+            Dim _paraSignature As Paragraph = New Paragraph()
+            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+
+            _sect.Add(_paraSignature)
+
+
+            ' Renders the doocument
+            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
+            _renderer.Document = _doc
+            _renderer.RenderDocument()
+
+            ' Save document
+            Dim filename As String = "ExamineeSummary.pdf"
+            _renderer.PdfDocument.Save(filename)
+            ' Start view
+            Process.Start(filename)
+
+        Else
+            MessageBox.Show("Examinee has no results yet on the specified Set")
+        End If
+
+
+
+    End Sub
+
+    Private Sub btnPrintClericalResult_Click(sender As Object, e As EventArgs) Handles btnPrintClericalA.Click, btnPrintClericalB.Click, btnPrintClericalC.Click
+
+
+        Dim _setDescriptionQuery As String
+        Dim _setResultQuery As String
+
+        ' Get SetDescription
+        If sender.Equals(btnPrintClericalA) Then
+            _setDescriptionQuery = "A"
+            _setResultQuery = txtClericalResultA.Text
+        ElseIf sender.Equals(btnPrintClericalB) Then
+            _setDescriptionQuery = "B"
+            _setResultQuery = txtClericalResultB.Text
+        ElseIf sender.Equals(btnPrintClericalC) Then
+            _setDescriptionQuery = "C"
+            _setResultQuery = txtClericalResultC.Text
+        End If
+
+        sql.AddParam("@examineeID", GetExamineeID())
+        sql.AddParam("@setDescription", _setDescriptionQuery)
+        sql.AddParam("@result", _setResultQuery)
+        sql.AddParam("@levelDescription", "Clerical")
+        sql.AddParam("@positionDescription", cboClericalPosition.Text)
+
+
+
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee
+                          INNER JOIN tbl_examinee_score
+                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
+                          INNER JOIN tbl_examinee_set
+                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
+                          INNER JOIN tbl_kind
+                          ON tbl_kind.kindID = tbl_examinee_score.kindID
+                          INNER JOIN tbl_level
+                          ON tbl_kind.levelID = tbl_level.levelID
+                          INNER JOIN tbl_position
+                          ON tbl_position.positionID = tbl_examinee_set.positionID
+                          WHERE tbl_examinee.examineeID = @examineeID
+                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_examinee_score.setDescription = @setDescription
+                          AND tbl_position.positionDescription = @positionDescription
+                          AND tbl_examinee_set.result = @result")
+
+        ' Examinee Detials
+        If sql.recordCount > 0 Then
+            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
+            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
+            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
+            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
+            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
+            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
+            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
+            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
+
+            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
+            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+
+
+            Dim _doc As Document = New Document()
+            Dim _sect As Section = _doc.AddSection()
+            _sect.PageSetup.PageFormat = PageFormat.A4
+            _sect.PageSetup.Orientation = Orientation.Portrait
+
+            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
+            ' Also view Invoice Example for Migradoc. Really useful
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            _logo.LockAspectRatio = True
+            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+            _logo.WrapFormat.Style = Shapes.WrapStyle.None
+
+
+            Dim _fontstyle As Style = _doc.Styles("Normal")
+
+            _fontstyle = _doc.AddStyle("Heading1", "Normal")
+            _fontstyle.Font.Size = 15
+            _fontstyle.Font.Bold = True
+            _fontstyle.Font.Underline = 1
+
+
+            _fontstyle = _doc.AddStyle("Heading2", "Normal")
+            _fontstyle.Font.Size = 9
+            _fontstyle.Font.Bold = False
+            _fontstyle.Font.Underline = 0
+
+            Dim _headerText As Paragraph = New Paragraph()
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
+            _headerText.AddSpace(30)
+            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
+
+            ' Add this at the end so that it doesn't interfere with our image
+            _sect.Headers.Primary.Add(_headerText)
+
+            'Footer 
+            Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Right
+            _footer.AddText("Page ")
+            _footer.AddPageField()
+            _footer.AddText(" of ")
+            _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            ' Spaces needed
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+
+
+            If hasPicture = True Then
+                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
+                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
+                _examineePic.Top = Shapes.ShapePosition.Top
+                _examineePic.Left = Shapes.ShapePosition.Right
+                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+            End If
+
+
+            ' Adds date
+            _sect.AddParagraph(printDate)
+            ' Add new line
+            _sect.AddParagraph(vbNewLine)
+
+            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
+            _fontstyle.Font.Size = 12
+
+            Dim _examineeDetails As Paragraph = New Paragraph()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
+            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
+
+            _sect.Add(_examineeDetails)
+
+            ' Adds a new line
+            _sect.AddParagraph(vbNewLine & vbNewLine)
+
+
+            ' Table Holder and If statements for table Creation
+            Dim _tableHolder As Table = New Table()
+            _tableHolder = CreateTableClerical("Clerical", _examineeID, _setDescription)
+
+            ' Paragraph for Results
+            Dim _paraResult As Paragraph = New Paragraph()
+
+            ' Paragraph and table for examinee results
+            If _result = "Passed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+
+            ElseIf _result = "Failed" Then
+
+                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
+                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
+
+                _sect.Add(_paraResult)
+
+                _sect.Add(_tableHolder) ' Add table
+            End If
+
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
+
+            Dim _paraSignature As Paragraph = New Paragraph()
+            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+
+            _sect.Add(_paraSignature)
+
+
+            ' Renders the doocument
+            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
+            _renderer.Document = _doc
+            _renderer.RenderDocument()
+
+            ' Save document
+            Dim filename As String = "ExamineeSummary.pdf"
+            _renderer.PdfDocument.Save(filename)
+            ' Start view
+            Process.Start(filename)
+
+        Else
+            MessageBox.Show("Examinee has no results yet on the specified Set")
+        End If
+
+    End Sub
+
+
     ' -- EXAM TAB --
 
     Private Sub LoadExamSet()
@@ -2975,577 +3561,6 @@ Public Class AdminDashboard
         txtTempoPass.Text = dgvTempo.SelectedRows(0).Cells("Password").Value.ToString
     End Sub
 
-    Private Sub btnPrintSupervisoryResult_Click(sender As Object, e As EventArgs) Handles btnPrintSupervisoryA.Click, btnPrintSupervisoryB.Click, btnPrintSupervisoryC.Click
-
-
-        Dim _setDescriptionQuery As String
-        ' Get SetDescription
-        If sender.Equals(btnPrintSupervisoryA) Then
-            _setDescriptionQuery = "A"
-        ElseIf sender.Equals(btnPrintSupervisoryB) Then
-            _setDescriptionQuery = "B"
-        ElseIf sender.Equals(btnPrintSupervisoryC) Then
-            _setDescriptionQuery = "C"
-        End If
-
-        sql.AddParam("@examineeID", GetExamineeID())
-        sql.AddParam("@setDescription", _setDescriptionQuery)
-        sql.AddParam("@levelDescription", "Supervisory")
-        sql.AddParam("@positionDescription", cboSupervisoryPosition.Text)
-
-
-
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee
-                          INNER JOIN tbl_examinee_score
-                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
-                          INNER JOIN tbl_examinee_set
-                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
-                          INNER JOIN tbl_kind
-                          ON tbl_kind.kindID = tbl_examinee_score.kindID
-                          INNER JOIN tbl_level
-                          ON tbl_kind.levelID = tbl_level.levelID
-                          INNER JOIN tbl_position
-                          ON tbl_position.positionID = tbl_examinee_set.positionID
-                          WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
-                          AND tbl_examinee_score.setDescription = @setDescription
-                          AND tbl_position.positionDescription = @positionDescription")
-
-        ' Examinee Detials
-        If sql.recordCount > 0 Then
-            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
-            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
-            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
-            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
-            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
-            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
-            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
-            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
-            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
-
-            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
-
-
-            Dim _doc As Document = New Document()
-            Dim _sect As Section = _doc.AddSection()
-            _sect.PageSetup.PageFormat = PageFormat.A4
-            _sect.PageSetup.Orientation = Orientation.Portrait
-
-            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
-            ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
-            _logo.LockAspectRatio = True
-            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-            _logo.WrapFormat.Style = Shapes.WrapStyle.None
-
-
-            Dim _fontstyle As Style = _doc.Styles("Normal")
-
-            _fontstyle = _doc.AddStyle("Heading1", "Normal")
-            _fontstyle.Font.Size = 15
-            _fontstyle.Font.Bold = True
-            _fontstyle.Font.Underline = 1
-
-
-            _fontstyle = _doc.AddStyle("Heading2", "Normal")
-            _fontstyle.Font.Size = 9
-            _fontstyle.Font.Bold = False
-            _fontstyle.Font.Underline = 0
-
-            Dim _headerText As Paragraph = New Paragraph()
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
-
-            ' Add this at the end so that it doesn't interfere with our image
-            _sect.Headers.Primary.Add(_headerText)
-
-            'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Right
-            _footer.AddText("Page ")
-            _footer.AddPageField()
-            _footer.AddText(" of ")
-            _footer.AddNumPagesField()
-
-            _sect.Footers.Primary.Add(_footer)
-
-            ' Spaces needed
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-
-
-            If hasPicture = True Then
-                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
-                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-                _examineePic.Top = Shapes.ShapePosition.Top
-                _examineePic.Left = Shapes.ShapePosition.Right
-                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
-            End If
-
-
-            ' Adds date
-            _sect.AddParagraph(printDate)
-            ' Add new line
-            _sect.AddParagraph(vbNewLine)
-
-            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
-            _fontstyle.Font.Size = 12
-
-            Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
-
-            _sect.Add(_examineeDetails)
-
-            ' Adds a new line
-            _sect.AddParagraph(vbNewLine & vbNewLine)
-
-
-            ' Table Holder and If statements for table Creation
-            Dim _tableHolder As Table = New Table()
-            _tableHolder = CreateTableSupervisory("Supervisory", _examineeID, _setDescription)
-
-            ' Paragraph for Results
-            Dim _paraResult As Paragraph = New Paragraph()
-
-            ' Paragraph and table for examinee results
-            If _result = "Passed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-
-            ElseIf _result = "Failed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-            End If
-
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
-
-            _sect.Add(_paraSignature)
-
-
-            ' Renders the doocument
-            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
-            _renderer.Document = _doc
-            _renderer.RenderDocument()
-
-            ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
-
-        Else
-            MessageBox.Show("Examinee has no results yet on the specified Set")
-        End If
-
-
-    End Sub
-
-    Private Sub btnPrintNonSupervisoryResult_Click(sender As Object, e As EventArgs) Handles btnPrintNonSupervisoryA.Click, btnPrintNonSupervisoryB.Click, btnPrintNonSupervisoryC.Click
-
-
-        Dim _setDescriptionQuery As String
-
-        ' Get SetDescription
-        If sender.Equals(btnPrintNonSupervisoryA) Then
-            _setDescriptionQuery = "A"
-        ElseIf sender.Equals(btnPrintNonSupervisoryB) Then
-            _setDescriptionQuery = "B"
-        ElseIf sender.Equals(btnPrintNonSupervisoryC) Then
-            _setDescriptionQuery = "C"
-        End If
-
-        sql.AddParam("@examineeID", GetExamineeID())
-        sql.AddParam("@setDescription", _setDescriptionQuery)
-        sql.AddParam("@levelDescription", "Supervisory")
-        sql.AddParam("@positionDescription", cboNonSupervisoryPosition.Text)
-
-
-
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee
-                          INNER JOIN tbl_examinee_score
-                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
-                          INNER JOIN tbl_examinee_set
-                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
-                          INNER JOIN tbl_kind
-                          ON tbl_kind.kindID = tbl_examinee_score.kindID
-                          INNER JOIN tbl_level
-                          ON tbl_kind.levelID = tbl_level.levelID
-                          INNER JOIN tbl_position
-                          ON tbl_position.positionID = tbl_examinee_set.positionID
-                          WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
-                          AND tbl_examinee_score.setDescription = @setDescription
-                          AND tbl_position.positionDescription = @positionDescription")
-
-        ' Examinee Detials
-        If sql.recordCount > 0 Then
-            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
-            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
-            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
-            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
-            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
-            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
-            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
-            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
-            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
-
-            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
-
-
-            Dim _doc As Document = New Document()
-            Dim _sect As Section = _doc.AddSection()
-            _sect.PageSetup.PageFormat = PageFormat.A4
-            _sect.PageSetup.Orientation = Orientation.Portrait
-
-            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
-            ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
-            _logo.LockAspectRatio = True
-            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-            _logo.WrapFormat.Style = Shapes.WrapStyle.None
-
-
-            Dim _fontstyle As Style = _doc.Styles("Normal")
-
-            _fontstyle = _doc.AddStyle("Heading1", "Normal")
-            _fontstyle.Font.Size = 15
-            _fontstyle.Font.Bold = True
-            _fontstyle.Font.Underline = 1
-
-
-            _fontstyle = _doc.AddStyle("Heading2", "Normal")
-            _fontstyle.Font.Size = 9
-            _fontstyle.Font.Bold = False
-            _fontstyle.Font.Underline = 0
-
-            Dim _headerText As Paragraph = New Paragraph()
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
-
-            ' Add this at the end so that it doesn't interfere with our image
-            _sect.Headers.Primary.Add(_headerText)
-
-            'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Right
-            _footer.AddText("Page ")
-            _footer.AddPageField()
-            _footer.AddText(" of ")
-            _footer.AddNumPagesField()
-
-            _sect.Footers.Primary.Add(_footer)
-
-            ' Spaces needed
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-
-
-            If hasPicture = True Then
-                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
-                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-                _examineePic.Top = Shapes.ShapePosition.Top
-                _examineePic.Left = Shapes.ShapePosition.Right
-                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
-            End If
-
-
-            ' Adds date
-            _sect.AddParagraph(printDate)
-            ' Add new line
-            _sect.AddParagraph(vbNewLine)
-
-            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
-            _fontstyle.Font.Size = 12
-
-            Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
-
-            _sect.Add(_examineeDetails)
-
-            ' Adds a new line
-            _sect.AddParagraph(vbNewLine & vbNewLine)
-
-
-            ' Table Holder and If statements for table Creation
-            Dim _tableHolder As Table = New Table()
-            _tableHolder = CreateTableSupervisory("Supervisory", _examineeID, _setDescription)
-
-            ' Paragraph for Results
-            Dim _paraResult As Paragraph = New Paragraph()
-
-            ' Paragraph and table for examinee results
-            If _result = "Passed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-
-            ElseIf _result = "Failed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-            End If
-
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
-
-            _sect.Add(_paraSignature)
-
-
-            ' Renders the doocument
-            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
-            _renderer.Document = _doc
-            _renderer.RenderDocument()
-
-            ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
-
-        Else
-            MessageBox.Show("Examinee has no results yet on the specified Set")
-        End If
-
-
-
-    End Sub
-
-    Private Sub btnPrintClericalResult_Click(sender As Object, e As EventArgs) Handles btnPrintClericalA.Click, btnPrintClericalB.Click, btnPrintClericalC.Click
-
-
-        Dim _setDescriptionQuery As String
-
-        ' Get SetDescription
-        If sender.Equals(btnPrintClericalA) Then
-            _setDescriptionQuery = "A"
-        ElseIf sender.Equals(btnPrintClericalB) Then
-            _setDescriptionQuery = "B"
-        ElseIf sender.Equals(btnPrintClericalC) Then
-            _setDescriptionQuery = "C"
-        End If
-
-        sql.AddParam("@examineeID", GetExamineeID())
-        sql.AddParam("@setDescription", _setDescriptionQuery)
-        sql.AddParam("@levelDescription", "Supervisory")
-        sql.AddParam("@positionDescription", cboClericalPosition.Text)
-
-
-
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee
-                          INNER JOIN tbl_examinee_score
-                          ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
-                          INNER JOIN tbl_examinee_set
-                          ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
-                          INNER JOIN tbl_kind
-                          ON tbl_kind.kindID = tbl_examinee_score.kindID
-                          INNER JOIN tbl_level
-                          ON tbl_kind.levelID = tbl_level.levelID
-                          INNER JOIN tbl_position
-                          ON tbl_position.positionID = tbl_examinee_set.positionID
-                          WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
-                          AND tbl_examinee_score.setDescription = @setDescription
-                          AND tbl_position.positionDescription = @positionDescription")
-
-        ' Examinee Detials
-        If sql.recordCount > 0 Then
-            Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
-            Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
-            Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
-            Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
-            Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
-            Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
-            Dim _result As String = sql.sqlDataSet.Tables(0).Rows(0).Item("result").ToString
-            Dim _dateTaken As String = sql.sqlDataSet.Tables(0).Rows(0).Item("dateTaken").ToString
-            Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
-
-            Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
-
-
-            Dim _doc As Document = New Document()
-            Dim _sect As Section = _doc.AddSection()
-            _sect.PageSetup.PageFormat = PageFormat.A4
-            _sect.PageSetup.Orientation = Orientation.Portrait
-
-            ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
-            ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
-            _logo.LockAspectRatio = True
-            _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-            _logo.WrapFormat.Style = Shapes.WrapStyle.None
-
-
-            Dim _fontstyle As Style = _doc.Styles("Normal")
-
-            _fontstyle = _doc.AddStyle("Heading1", "Normal")
-            _fontstyle.Font.Size = 15
-            _fontstyle.Font.Bold = True
-            _fontstyle.Font.Underline = 1
-
-
-            _fontstyle = _doc.AddStyle("Heading2", "Normal")
-            _fontstyle.Font.Size = 9
-            _fontstyle.Font.Bold = False
-            _fontstyle.Font.Underline = 0
-
-            Dim _headerText As Paragraph = New Paragraph()
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Republic of the Philippines" & vbNewLine, TextFormat.Bold)
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("Department of Science and Technology" & vbNewLine, "Heading1")
-            _headerText.AddSpace(30)
-            _headerText.AddFormattedText("DOST Regional Operations Building, A. Bonifacio Avenue, Bicutan, Taguig, Metro Manila", "Heading2")
-
-            ' Add this at the end so that it doesn't interfere with our image
-            _sect.Headers.Primary.Add(_headerText)
-
-            'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Right
-            _footer.AddText("Page ")
-            _footer.AddPageField()
-            _footer.AddText(" of ")
-            _footer.AddNumPagesField()
-
-            _sect.Footers.Primary.Add(_footer)
-
-            ' Spaces needed
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-
-
-            If hasPicture = True Then
-                Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
-                _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
-                _examineePic.Top = Shapes.ShapePosition.Top
-                _examineePic.Left = Shapes.ShapePosition.Right
-                _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
-            End If
-
-
-            ' Adds date
-            _sect.AddParagraph(printDate)
-            ' Add new line
-            _sect.AddParagraph(vbNewLine)
-
-            _fontstyle = _doc.AddStyle("Paragraph", "Normal")
-            _fontstyle.Font.Size = 12
-
-            Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
-            _examineeDetails.AddFormattedText("Date of Exam: " & _dateTaken, "Paragraph")
-
-            _sect.Add(_examineeDetails)
-
-            ' Adds a new line
-            _sect.AddParagraph(vbNewLine & vbNewLine)
-
-
-            ' Table Holder and If statements for table Creation
-            Dim _tableHolder As Table = New Table()
-            _tableHolder = CreateTableSupervisory("Supervisory", _examineeID, _setDescription)
-
-            ' Paragraph for Results
-            Dim _paraResult As Paragraph = New Paragraph()
-
-            ' Paragraph and table for examinee results
-            If _result = "Passed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "Congratulations!" & vbNewLine & vbNewLine & "You passed the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-
-            ElseIf _result = "Failed" Then
-
-                _paraResult.AddFormattedText("Dear Applicant, " & vbNewLine & vbNewLine & "We regret to inform you that you did not pass the pre-qualification examination as part of the recruitment process." _
-                                   & vbNewLine & vbNewLine & "Below is the result of your examination" & vbNewLine & vbNewLine & vbNewLine, "Paragraph")
-
-                _sect.Add(_paraResult)
-
-                _sect.Add(_tableHolder) ' Add table
-            End If
-
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-            _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
-
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
-
-            _sect.Add(_paraSignature)
-
-
-            ' Renders the doocument
-            Dim _renderer As PdfDocumentRenderer = New PdfDocumentRenderer(True, PdfSharp.Pdf.PdfFontEmbedding.Always)
-            _renderer.Document = _doc
-            _renderer.RenderDocument()
-
-            ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
-
-        Else
-            MessageBox.Show("Examinee has no results yet on the specified Set")
-        End If
-
-    End Sub
 
     Private Sub LoadEmailSettings()
         email.InitializeEmailSettings()
