@@ -64,7 +64,8 @@ Public Class ExamineeTest
         sql.ExecuteQuery("SELECT * FROM tbl_question 
                            WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
 
-        MessageBox.Show(lblQuestionID.Text)
+        MessageBox.Show("Sql record count" & sql.recordCount)
+
         ' Load first question
         If sql.recordCount > 0 Then
             lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
@@ -74,6 +75,7 @@ Public Class ExamineeTest
             rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
             rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
             lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
         Else
 
             MessageBox.Show("No questions yet.
@@ -93,24 +95,6 @@ Public Class ExamineeTest
     Private Sub ExamineeTest_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         rs.ResizeAllControls(Me)
     End Sub
-
-    ' Radio Button choices
-    Private Sub rbChoice1_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice1.CheckedChanged
-        examineeAnswer = rbChoice1.Text
-    End Sub
-
-    Private Sub rbChoice2_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice2.CheckedChanged
-        examineeAnswer = rbChoice2.Text
-    End Sub
-
-    Private Sub rbChoice3_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice3.CheckedChanged
-        examineeAnswer = rbChoice3.Text
-    End Sub
-
-    Private Sub rbChoice4_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice4.CheckedChanged
-        examineeAnswer = rbChoice4.Text
-    End Sub
-
 
     ' Insertion/Update of Answer
     Private Sub InsertResponse(examineeAnswer As String)
@@ -229,9 +213,6 @@ Public Class ExamineeTest
             tmrTest.Stop()
             MessageBox.Show("Time is finished")
 
-            ' Insert score if timer is done
-            InsertScore()
-
             ' Knows that the exam is finished
             TestTypeFinished()
 
@@ -242,46 +223,32 @@ Public Class ExamineeTest
 
     End Sub
 
-    Private Sub NullInsertResponse()
-        ' This function inserts(updates response if existing) NULL answer of examinee .. this is for skiping a question
-
-
-        ' CHECK IF EXISTING EXAMINEE ANSWER .. IF YES UPDATE .. ELSE INSERT
-        sql.AddParam("@examineeID", lblExamineeID.Text)
-        sql.AddParam("@questionID", lblQuestionID.Text)
-        sql.AddParam("@examineeAnswer", examineeAnswer)
-        sql.ExecuteQuery("SELECT * FROM tbl_response
-                                  WHERE examineeID = @examineeID
-                                    AND questionID = @questionID")
-
-        ' PARAMS for REQUERYING
-        sql.AddParam("@examineeID", lblExamineeID.Text)
-        sql.AddParam("@questionID", lblQuestionID.Text)
-        If sql.recordCount > 0 Then
-
-            ' UPDATE CURRENT RESPONSE
-
-            sql.ExecuteQuery("UPDATE tbl_response
-                             SET examineeAnswer = NULL
-                           WHERE examineeID = @examineeID
-                             AND questionID = @questionID")
-        Else
-            ' INSERT INTO response
-            sql.ExecuteQuery("INSERT INTO tbl_response (examineeID, questionID, examineeAnswer) 
-                                            VALUES (@examineeID, @questionID, NULL)")
-
-        End If
-
-    End Sub
-
     ' Buttons
     Private Sub btnQuestionNext_Click(sender As Object, e As EventArgs) Handles btnQuestionNext.Click
 
         dgvQuestionNumber.ClearSelection()
 
-        If dgvQuestionNumber.CurrentRow.Index <= dgvQuestionNumber.Rows.Count - 1 Then
+        If dgvQuestionNumber.CurrentRow.Index < dgvQuestionNumber.Rows.Count - 1 And dgvQuestionNumber.CurrentRow.Index <> dgvQuestionNumber.Rows.Count Then
 
             dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index + 1).Selected = True
+
+            lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
+            sql.AddParam("@questionID", lblQuestionID.Text)
+            sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+
+            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+            ' Reloads answer
+            ReloadRecordedAnswer()
+
+        ElseIf dgvQuestionNumber.CurrentRow.Index = dgvQuestionNumber.Rows.Count - 1 Then
+            dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index).Selected = True
 
             lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
             sql.AddParam("@questionID", lblQuestionID.Text)
@@ -331,7 +298,6 @@ Public Class ExamineeTest
             lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
             sql.AddParam("@questionID", lblQuestionID.Text)
             sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
-
 
             rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
             rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
@@ -406,6 +372,7 @@ Public Class ExamineeTest
         ' Compute scores
         ComputeScore()
 
+        ' Insert scores
         InsertScore()
 
         ' Passing TestID to Examinee Form
@@ -442,7 +409,6 @@ Public Class ExamineeTest
         ' update FLAGS if all tests = DONE
         Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
 
-
         ' nilipat ni mem yung TestDoneChecker() sa Test.vb
         If (Examinee.lblLevelID.Text = "3" And Examinee.lblTestsDone.Text = "5") Or (Examinee.lblLevelID.Text <> 3 And Examinee.lblTestsDone.Text = "3") Then
             ' Insertion of pass or Fail
@@ -466,9 +432,20 @@ Public Class ExamineeTest
     End Sub
 
     Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
-        ' IF NO ANSWER SELECTED
+
+        If rbChoice1.Checked = True Then
+            examineeAnswer = rbChoice1.Text
+        ElseIf rbChoice2.Checked = True Then
+            examineeAnswer = rbChoice2.Text
+        ElseIf rbChoice3.Checked = rbChoice3.Text Then
+            examineeAnswer = rbChoice3.Text
+        ElseIf rbChoice4.Checked = rbChoice4.Text Then
+            examineeAnswer = rbChoice4.Text
+        End If
+
+
         If examineeAnswer = "" Then
-            MessageBox.Show("No answer selected")
+            MessageBox.Show("No Examinee Answer")
             Exit Sub
         End If
 
@@ -480,8 +457,6 @@ Public Class ExamineeTest
         UncheckRadioButton()
         examineeAnswer = ""
 
-        ' If there is an answer 
-        ReloadRecordedAnswer()
 
     End Sub
 

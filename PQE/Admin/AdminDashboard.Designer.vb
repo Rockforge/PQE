@@ -53,7 +53,6 @@ Partial Class AdminDashboard
         Me.MaterialDivider8 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider9 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider7 = New MaterialSkin.Controls.MaterialDivider()
-        Me.txtEmailAddress = New PQE.TextBoxEx()
         Me.rbClericalActive = New MaterialSkin.Controls.MaterialRadioButton()
         Me.rbNonSupervisoryActive = New MaterialSkin.Controls.MaterialRadioButton()
         Me.rbSupervisoryActive = New MaterialSkin.Controls.MaterialRadioButton()
@@ -110,8 +109,6 @@ Partial Class AdminDashboard
         Me.cboSupervisoryPosition = New System.Windows.Forms.ComboBox()
         Me.cboNonSupervisoryPosition = New System.Windows.Forms.ComboBox()
         Me.cboClericalPosition = New System.Windows.Forms.ComboBox()
-        Me.txtLastName = New PQE.TextBoxEx()
-        Me.txtFirstName = New PQE.TextBoxEx()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label55 = New System.Windows.Forms.Label()
         Me.txtClericalResultB = New System.Windows.Forms.Label()
@@ -171,11 +168,6 @@ Partial Class AdminDashboard
         Me.txtSettingMessagePasser = New System.Windows.Forms.RichTextBox()
         Me.MaterialDivider18 = New MaterialSkin.Controls.MaterialDivider()
         Me.btnEmailSettingsSave = New MaterialSkin.Controls.MaterialRaisedButton()
-        Me.txtSettingMailSubject = New PQE.TextBoxEx()
-        Me.txtSettingGmailAppPassword = New PQE.TextBoxEx()
-        Me.txtSettingSmtpPort = New PQE.TextBoxEx()
-        Me.txtSettingSmtp = New PQE.TextBoxEx()
-        Me.txtSettingEmailAddress = New PQE.TextBoxEx()
         Me.Label69 = New System.Windows.Forms.Label()
         Me.Label68 = New System.Windows.Forms.Label()
         Me.Label67 = New System.Windows.Forms.Label()
@@ -254,6 +246,14 @@ Partial Class AdminDashboard
         Me.MaterialDivider4 = New MaterialSkin.Controls.MaterialDivider()
         Me.sfdExcel = New System.Windows.Forms.SaveFileDialog()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.txtEmailAddress = New PQE.TextBoxEx()
+        Me.txtLastName = New PQE.TextBoxEx()
+        Me.txtFirstName = New PQE.TextBoxEx()
+        Me.txtSettingMailSubject = New PQE.TextBoxEx()
+        Me.txtSettingGmailAppPassword = New PQE.TextBoxEx()
+        Me.txtSettingSmtpPort = New PQE.TextBoxEx()
+        Me.txtSettingSmtp = New PQE.TextBoxEx()
+        Me.txtSettingEmailAddress = New PQE.TextBoxEx()
         Me.mtcAdminDashboard.SuspendLayout()
         Me.tabExaminee.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -593,18 +593,11 @@ Partial Class AdminDashboard
         Me.MaterialDivider7.TabIndex = 36
         Me.MaterialDivider7.Text = "MaterialDivider10"
         '
-        'txtEmailAddress
-        '
-        Me.txtEmailAddress.Location = New System.Drawing.Point(744, 128)
-        Me.txtEmailAddress.Name = "txtEmailAddress"
-        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
-        Me.txtEmailAddress.TabIndex = 33
-        '
         'rbClericalActive
         '
         Me.rbClericalActive.AutoSize = True
         Me.rbClericalActive.Depth = 0
-        Me.rbClericalActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbClericalActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbClericalActive.Location = New System.Drawing.Point(564, 437)
         Me.rbClericalActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbClericalActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -621,7 +614,7 @@ Partial Class AdminDashboard
         '
         Me.rbNonSupervisoryActive.AutoSize = True
         Me.rbNonSupervisoryActive.Depth = 0
-        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbNonSupervisoryActive.Location = New System.Drawing.Point(563, 320)
         Me.rbNonSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbNonSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -638,7 +631,7 @@ Partial Class AdminDashboard
         '
         Me.rbSupervisoryActive.AutoSize = True
         Me.rbSupervisoryActive.Depth = 0
-        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbSupervisoryActive.Location = New System.Drawing.Point(563, 208)
         Me.rbSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1193,7 +1186,7 @@ Partial Class AdminDashboard
         'btnExamineeEdit
         '
         Me.btnExamineeEdit.Depth = 0
-        Me.btnExamineeEdit.Location = New System.Drawing.Point(1077, 71)
+        Me.btnExamineeEdit.Location = New System.Drawing.Point(1054, 141)
         Me.btnExamineeEdit.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnExamineeEdit.Name = "btnExamineeEdit"
         Me.btnExamineeEdit.Primary = True
@@ -1252,25 +1245,6 @@ Partial Class AdminDashboard
         Me.cboClericalPosition.Name = "cboClericalPosition"
         Me.cboClericalPosition.Size = New System.Drawing.Size(294, 24)
         Me.cboClericalPosition.TabIndex = 3
-        '
-        'txtLastName
-        '
-        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLastName.Location = New System.Drawing.Point(744, 86)
-        Me.txtLastName.MaxLength = 50
-        Me.txtLastName.Name = "txtLastName"
-        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
-        Me.txtLastName.TabIndex = 1
-        '
-        'txtFirstName
-        '
-        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
-        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFirstName.Location = New System.Drawing.Point(744, 44)
-        Me.txtFirstName.MaxLength = 50
-        Me.txtFirstName.Name = "txtFirstName"
-        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
-        Me.txtFirstName.TabIndex = 0
         '
         'Label38
         '
@@ -1615,7 +1589,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice4.AutoSize = True
         Me.rbChoice4.Depth = 0
-        Me.rbChoice4.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice4.Location = New System.Drawing.Point(27, 491)
         Me.rbChoice4.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice4.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1632,7 +1606,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice3.AutoSize = True
         Me.rbChoice3.Depth = 0
-        Me.rbChoice3.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice3.Location = New System.Drawing.Point(27, 463)
         Me.rbChoice3.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice3.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1649,7 +1623,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice2.AutoSize = True
         Me.rbChoice2.Depth = 0
-        Me.rbChoice2.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice2.Location = New System.Drawing.Point(27, 435)
         Me.rbChoice2.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice2.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1666,7 +1640,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice1.AutoSize = True
         Me.rbChoice1.Depth = 0
-        Me.rbChoice1.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice1.Location = New System.Drawing.Point(27, 407)
         Me.rbChoice1.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice1.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1890,11 +1864,6 @@ Partial Class AdminDashboard
         Me.tabConfiguration.Controls.Add(Me.txtSettingMessagePasser)
         Me.tabConfiguration.Controls.Add(Me.MaterialDivider18)
         Me.tabConfiguration.Controls.Add(Me.btnEmailSettingsSave)
-        Me.tabConfiguration.Controls.Add(Me.txtSettingMailSubject)
-        Me.tabConfiguration.Controls.Add(Me.txtSettingGmailAppPassword)
-        Me.tabConfiguration.Controls.Add(Me.txtSettingSmtpPort)
-        Me.tabConfiguration.Controls.Add(Me.txtSettingSmtp)
-        Me.tabConfiguration.Controls.Add(Me.txtSettingEmailAddress)
         Me.tabConfiguration.Controls.Add(Me.Label69)
         Me.tabConfiguration.Controls.Add(Me.Label68)
         Me.tabConfiguration.Controls.Add(Me.Label67)
@@ -1960,6 +1929,11 @@ Partial Class AdminDashboard
         Me.tabConfiguration.Controls.Add(Me.Label63)
         Me.tabConfiguration.Controls.Add(Me.Label42)
         Me.tabConfiguration.Controls.Add(Me.Label9)
+        Me.tabConfiguration.Controls.Add(Me.txtSettingMailSubject)
+        Me.tabConfiguration.Controls.Add(Me.txtSettingGmailAppPassword)
+        Me.tabConfiguration.Controls.Add(Me.txtSettingSmtpPort)
+        Me.tabConfiguration.Controls.Add(Me.txtSettingSmtp)
+        Me.tabConfiguration.Controls.Add(Me.txtSettingEmailAddress)
         Me.tabConfiguration.Location = New System.Drawing.Point(4, 22)
         Me.tabConfiguration.Name = "tabConfiguration"
         Me.tabConfiguration.Padding = New System.Windows.Forms.Padding(3)
@@ -2016,41 +1990,6 @@ Partial Class AdminDashboard
         Me.btnEmailSettingsSave.TabIndex = 81
         Me.btnEmailSettingsSave.Text = "Save Settings"
         Me.btnEmailSettingsSave.UseVisualStyleBackColor = True
-        '
-        'txtSettingMailSubject
-        '
-        Me.txtSettingMailSubject.Location = New System.Drawing.Point(541, 169)
-        Me.txtSettingMailSubject.Name = "txtSettingMailSubject"
-        Me.txtSettingMailSubject.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingMailSubject.TabIndex = 80
-        '
-        'txtSettingGmailAppPassword
-        '
-        Me.txtSettingGmailAppPassword.Location = New System.Drawing.Point(541, 143)
-        Me.txtSettingGmailAppPassword.Name = "txtSettingGmailAppPassword"
-        Me.txtSettingGmailAppPassword.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingGmailAppPassword.TabIndex = 80
-        '
-        'txtSettingSmtpPort
-        '
-        Me.txtSettingSmtpPort.Location = New System.Drawing.Point(541, 116)
-        Me.txtSettingSmtpPort.Name = "txtSettingSmtpPort"
-        Me.txtSettingSmtpPort.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtpPort.TabIndex = 80
-        '
-        'txtSettingSmtp
-        '
-        Me.txtSettingSmtp.Location = New System.Drawing.Point(541, 89)
-        Me.txtSettingSmtp.Name = "txtSettingSmtp"
-        Me.txtSettingSmtp.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtp.TabIndex = 80
-        '
-        'txtSettingEmailAddress
-        '
-        Me.txtSettingEmailAddress.Location = New System.Drawing.Point(541, 63)
-        Me.txtSettingEmailAddress.Name = "txtSettingEmailAddress"
-        Me.txtSettingEmailAddress.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingEmailAddress.TabIndex = 80
         '
         'Label69
         '
@@ -2267,7 +2206,7 @@ Partial Class AdminDashboard
         '
         Me.chkShowPassword.AutoSize = True
         Me.chkShowPassword.Depth = 0
-        Me.chkShowPassword.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.chkShowPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.chkShowPassword.Location = New System.Drawing.Point(929, 291)
         Me.chkShowPassword.Margin = New System.Windows.Forms.Padding(0)
         Me.chkShowPassword.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -2825,6 +2764,67 @@ Partial Class AdminDashboard
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
+        '
+        'txtEmailAddress
+        '
+        Me.txtEmailAddress.Location = New System.Drawing.Point(744, 128)
+        Me.txtEmailAddress.Name = "txtEmailAddress"
+        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
+        Me.txtEmailAddress.TabIndex = 33
+        '
+        'txtLastName
+        '
+        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLastName.Location = New System.Drawing.Point(744, 86)
+        Me.txtLastName.MaxLength = 50
+        Me.txtLastName.Name = "txtLastName"
+        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
+        Me.txtLastName.TabIndex = 1
+        '
+        'txtFirstName
+        '
+        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
+        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFirstName.Location = New System.Drawing.Point(744, 44)
+        Me.txtFirstName.MaxLength = 50
+        Me.txtFirstName.Name = "txtFirstName"
+        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
+        Me.txtFirstName.TabIndex = 0
+        '
+        'txtSettingMailSubject
+        '
+        Me.txtSettingMailSubject.Location = New System.Drawing.Point(541, 169)
+        Me.txtSettingMailSubject.Name = "txtSettingMailSubject"
+        Me.txtSettingMailSubject.Size = New System.Drawing.Size(210, 20)
+        Me.txtSettingMailSubject.TabIndex = 80
+        '
+        'txtSettingGmailAppPassword
+        '
+        Me.txtSettingGmailAppPassword.Location = New System.Drawing.Point(541, 143)
+        Me.txtSettingGmailAppPassword.Name = "txtSettingGmailAppPassword"
+        Me.txtSettingGmailAppPassword.Size = New System.Drawing.Size(210, 20)
+        Me.txtSettingGmailAppPassword.TabIndex = 80
+        '
+        'txtSettingSmtpPort
+        '
+        Me.txtSettingSmtpPort.Location = New System.Drawing.Point(541, 116)
+        Me.txtSettingSmtpPort.Name = "txtSettingSmtpPort"
+        Me.txtSettingSmtpPort.Size = New System.Drawing.Size(210, 20)
+        Me.txtSettingSmtpPort.TabIndex = 80
+        '
+        'txtSettingSmtp
+        '
+        Me.txtSettingSmtp.Location = New System.Drawing.Point(541, 89)
+        Me.txtSettingSmtp.Name = "txtSettingSmtp"
+        Me.txtSettingSmtp.Size = New System.Drawing.Size(210, 20)
+        Me.txtSettingSmtp.TabIndex = 80
+        '
+        'txtSettingEmailAddress
+        '
+        Me.txtSettingEmailAddress.Location = New System.Drawing.Point(541, 63)
+        Me.txtSettingEmailAddress.Name = "txtSettingEmailAddress"
+        Me.txtSettingEmailAddress.Size = New System.Drawing.Size(210, 20)
+        Me.txtSettingEmailAddress.TabIndex = 80
         '
         'AdminDashboard
         '

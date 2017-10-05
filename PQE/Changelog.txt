@@ -1,5 +1,10 @@
 ﻿
 
+- User manual needs to be finished
+
+### Changed
+- AdminDashboard.vb; Edit button is not visible upon startup
+
 ===================================
 ' Bali ang mga kulang pa ay:
 
@@ -10,3 +15,5 @@
 ' AdminDashboard Send Pending emails button
 
 ' When taking exam, nagsabay yung failed kahit d naman siya nagtake doon
+
+
