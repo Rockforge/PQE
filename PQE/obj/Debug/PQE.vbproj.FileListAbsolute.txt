@@ -1,0 +1,297 @@
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PQE.exe.config
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PQE.exe
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PQE.pdb
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PQE.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MaterialSkin.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.Form1.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.Login.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.Resources.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.exe
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.pdb
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MySql.Data.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\MySql.Data.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.Examinee.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+c:\users\bacon\documents\visual studio 2015\Projects\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Bacon\Desktop\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Chunchunmaru\Desktop\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Bacon\Desktop\Tried\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Bacon\Desktop\WorkingPQE\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Bacon\Desktop\WorkingPQE2\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Bacon\Desktop\PQE Ver.3\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Desktop\PQE Ver.3\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Desktop\PQE Ver.3\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Desktop\PQE Ver.3\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Bacon\Desktop\PQE Ver.3\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MySql.Data.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp-wpf.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.DocumentObjectModel-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.Examinee.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.ExamineePicture.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.ExamineeTest.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.Form1.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.Login.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.Resources.resources
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml

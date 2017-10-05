@@ -1,0 +1,12 @@
+﻿
+
+===================================
+' Bali ang mga kulang pa ay:
+
+' MessageBoxes tanggalin
+
+' May mali pa kay nonsupervisoryGenerateDocument
+' AdminDashboard Sync to AdminTempDashboard
+' AdminDashboard Send Pending emails button
+
+' When taking exam, nagsabay yung failed kahit d naman siya nagtake doon

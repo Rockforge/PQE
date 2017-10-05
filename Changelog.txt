@@ -1,0 +1,289 @@
+# DOST - PQE Changelog
+=======================================================================================
+
+### Comments 
+DONE - AdminTempDashboard Lacks ChangePicture Button
+DONE - Add picture to Print
+DONE - Table Print working
+DONE - Click refresh button after Change Picture button
+DONE - Search filter for Examinee
+DONE - Punuin yung Position Title ComboBoxes
+DONE - Fixed Grand Total
+DONE - Hide all necessary labels
+DONE - USER MANUAL CHANGES
+DONE - Advanced search sync to Admin Temp dashboard - without passed or failed
+
+TODO - Exam Set and examDgv and examDgv search queries
+TODO - ExamineeTest UI PLEASE FIX
+TODO - Previous insertion on ExamineeTest
+TODO - Fix TIMER if possible
+TODO - max_allowed_packets
+TODO - Installer
+
+TODO - Login Examine MessageBoxes
+
+TODO - AdminDashboard.vb - btnRegister -- To register specified fields if not null
+
+=======================================================================================
+
+## 1:41 AM 9/25/2017 - mem overnight
+
+### - Change
+
+# - Database
+# - added two columns on tbl_examinee_set: since mas okay na to kesa maglagay isa pang table
+
+<?
+AdminDashboard 
+LoadExamineeDgv()
+gonna remove viewing blob contents in dgv -- same performed with LoadExamineeDgv(overload)
+
+
+
+
+?>
+
+#!#!
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================
+## - 2017-09-21 Thu 04:53 PM
+
+### Added 
+- AdminDashboard.vb; dgvExaminee_MouseDown; Added if statement to know if
+there is result for an examinee
+- AdminDashboard.vb; Me.Load(); Added all levels to Combo box Filter
+
+- AdminDashboard.vb; Added btnSearch_Click() and btnClearFilter()
+	
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================
+
+## - 2017-09-19 Tue 07:01 PM
+
+### Changed
+- AdminDashboard.vb; btnPrintExamineeDgv_Click; Query to get data for table is
+now dependent on setDescription
+
+- AdminDashboard.vb; Properties; Changed MaxLength of txtFirstName and txtLastName to 50
+Length
+
+- AdminDashboard.vb; LoadExamineeSet() and LoadExamineeDgv; Changed Access
+Modifiers from Public to Private
+
+= Examinee.vb; Changed Test 4 to Test 5 labels visible from True to False
+
+### Added
+- AdminDashboard.vb; LoadExamineeDgv(setDescription as String); Added that
+Sub. Overloads LoadExamineeDgv
+
+- AdminDashboard.vb; btnTempoAdd_Click; Added a Query that will not allow
+TempAdmin to have the same Username as Admin
+
+- AdminDashboard.vb; dgvExaminee_MouseDown(); right click select to textboxes
+
+- AdminDashboard.vb; LoadExamSet(); Added SelectedIndex = 0 for all comboboxes
+in Exam Tab
+
+- AdminDashboard.vb; LoadExamDgv(searchString as string); Fixed query.
+
+========================================================================================
+
+
+
+========================================================================================
+### Comments
+- Add picture to Print(DOST logo)... DONE
+- SHIFT TAB for Login.vb
+- No special characters on textbox... READ: I didn't do this because yung
+ADMIN lang naman ang gagalaw ng textboxes na to
+DONE - REGISTERED EXAMINEES ARE ONLY GOTTEN ON SET A
+DONE - Admin temporary registration do not allow admin as user id
+DONE - table print not working
+- fix refresh of search question and save and delete... COULD NOT RECREATE...
+FURTHER TESTING NEEDED
+DONE - hide 2 buttons if not clerical
+
+## - 2017-09-15 Fri 04:35 PM
+### Changed
+- Login.vb; btnLogin_Click; If statement if Test A is changed
+
+- Loginc.vb; btnLogin_Click; If statement changed If sql.recordCount = 2 to
+ElseIf
+
+- ExamineeTest.vb; ExamineeTest_Load(); Changed way of exiting program when
+there are no questions
+
+### Added
+- ExamineeTest.vb; ExamineeTest_Load; Closed Examinee.vb as well if there are
+no questions found
+
+- ExamineeTest.vb; TestTypeFinished(); Added Examinee.Close();
+
+========================================================================================
+
+
+## - 7:24 PM 9/7/2017
+### Added
+- AdminDashboard.vb; Added Combobox for each set
+
+- AdminDashboard.vb; LoadExamineeDgv(); Gets result on query
+
+### Changed
+- Examinee.vb; InsertPassOrFail(); Remark now inserts to tbl_examinee_set
+
+- AdminDashboard.vb; LoadExamineeDgv() reliant upon comboexaminee set
+
+- Login.vb; btnLogin_Click(); Query for Examinee Set, if Examinee has taken Set is now fixed
+
+- Examinee.vb; InsertPassOrFail(); Changed if statement for insertion of result into tbl_examinee_set
+
+- AdminDashboard.vb; btnExamineeRegister_Click(); Register now inserts a row in tbl_examinee_set
+
+- AdminDashboard.vb; dgvExaminee_MouseDown(). picExaminee's default image is set. 
+
+- AdminDasbhoard.vb; dgvExaminee_MouseDown(). picExaminee shows default image without picture
+
+- AdminDashboard.vb; PrintExaminee(); Changed query 
+
+- AdminDashboard.vb; dgvExaminee_MouseDown(). btnChangepicture.visible true
+
+- AdminDashboard.vb; btnExamineeClear_Click(); btnChangepicture.visible = False
+
+- Login.vb; btnLoginclick(), Line 85; Fixed set handling, pakicheck :D, d pa ayos yung ppuntahang form
+
+### Deleted
+- AdminDashboard.vb; LoadExamineeDgv(); deleted in query, result field
+
+- Login.vb; btnLogin_Click(); Removed ExamineePicture.Show 
+
+
+### Comments
+- AdminDashboard synced to AdminTempDashboard
+
+
+=====
+
+## - 2017-09-06 Wed 11:19 AM
+### Added
+- Login.vb; Added DoExamination() sub
+
+- Login.vb; btnLogin_Click; Used _examineeDateID to query 
+for examinee_set_result. Checks whether examinee has taken exam
+
+- Login.vb; btnLogin_Click; Passes what Set into Examinee.lblSetDescription
+
+- Examinee.vb; btnTestStart All; Passing lblSetDescription to
+ExamineeTest.lblsetDescription
+
+- Examinee.vb; InsertPassOrFail; Changed the way of passing final score.
+Score now inserts to tbl_examinee_set
+
+- ExamineeTest.vb; ExamineeTest_Load; Queries for for question using
+setDescription and kindID
+
+## - 2017-09-03 Sun 03:55 PM
+### Changed
+- AdminDashboard.vb; Changed examSetID to examSetDescription
+- AdminDashboard.vb; cboExamSet_SelectedIndexChanged; Changed number to
+letters
+- AdminDashboard.vb; LoadExamDgv(); setDescription used for query 
+
+## - 2017-09-03 Sun 02:29 PM
+### Changed
+- AdminDashboard.vb; Not using examSetID in query anymore
+- AdminDashboard.vb; Renamed examSetID to examSet. Gets LETTER instead of
+number
+- AdminDashboard.vb; Removed or not using tbl_set anymore
+- AdminDashboard.vb; cboExamLevel_SelectedIndexChanged; Not using examSetID
+anymore for query
+- AdminDashboard.vb; LoadExamSet(); Commented section of it
+
+
+## - 2017-09-02 Sat 06:28 PM
+
+### Added
+- AdminDashboard.vb; btnQuestionSave_Click; Error catching for cboExamSet
+- AdminDashboard.vb; Added LoadExamSet()
+- AdminDashboard.vb; Added cboExamSet_SelectedIndexChanged
+- AdminDashboard.vb: Added examSetID and used in Query to get KindID
+
+### Deleted
+- AdminDashboard.vb; AdminDashboard_Load; Removed LoadExamLevel()
+========
+## - 7:37 PM 8/29/2017, JURIL
+
+### Added
+- AdminDashboard; Export to Excel; Added interop 
+
+========
+
+## - 5:41 PM 8/27/2017, Mem
+
+### Added
+- AdminDashboard; tsbChangeFont; rtfQuestion.SelectAll,.SelectAll() for auto changefont
+
+### Changed
+- Login.vb	; 	   UI; Font: Sitka Text, Control Positions
+- AdminDashboard; UI Examinee; Font: Sitka Text, Control Positions
+- AdminDashboard;     UI Exam; Font: Sitka Text, Control Positions
+
+### Synced
+- AdminDashboard; btnExportExcel; Synced from DOSTPQE
+
+
+#### Comments
+- Pakisync na ng ExportToExcel, Temporary Admin Registration(Configuration Tab)
+
+
+========
+## - 2:48 AM 8/27/2017
+
+### Added
+- Login.vb, btnLogin.Click. added login for temp admin
+- AdminTempDashboard.vb
+
+
+### Changed
+- Okay lang ba kung maging sequence sa dgvExaminee ay: Examinee ID, Last Name, Firstname? nakakainis kasi tingnan eh
+
+
+### Comments
+- Shit UI parin :v
+- May mga unsynced pa sa Configuration Tab
+
+=======
+
+
+## - DATE
+### Added
+- Filename. Function or Sub. What was added?
+
+### Changed 
+- Filename. Function or Sub. What was changed?
+
+### Deleted
+- Filename. Function or Sub. What was deleted?
+
+
+
