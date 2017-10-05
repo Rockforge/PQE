@@ -4,6 +4,7 @@ Imports System.Text
 Public Class ExamineeTest
 
     Public sql As New SQLControl
+    Public mail As New Emailing
     Dim rs As New Resizer
 
     Dim questionCounter As Integer = 0
@@ -279,6 +280,8 @@ Public Class ExamineeTest
 
         dgvQuestionNumber.ClearSelection()
 
+
+        ' ang error dito ay .. pag sinelect mo yung dulo, YUNG 3rd row .. ang index mo ay 2 and row count mo 2 .. so valid .. tapos nag +1 ka sa QuestionNumber
         If dgvQuestionNumber.CurrentRow.Index <= dgvQuestionNumber.Rows.Count - 1 Then
 
             dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index + 1).Selected = True
@@ -298,6 +301,29 @@ Public Class ExamineeTest
             ' Reloads answer
             ReloadRecordedAnswer()
         End If
+        MessageBox.Show(dgvQuestionNumber.CurrentRow.Index & " " & dgvQuestionNumber.Rows.Count)
+
+        'dgvQuestionNumber.ClearSelection()
+
+        'If dgvQuestionNumber.CurrentRow.Index <= dgvQuestionNumber.Rows.Count - 1 Then
+
+        '    dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index + 1).Selected = True
+
+        '    lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
+        '    sql.AddParam("@questionID", lblQuestionID.Text)
+        '    sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+
+        '    rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        '    rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        '    rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        '    rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        '    rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+        '    lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+        '    ' Reloads answer
+        '    ReloadRecordedAnswer()
+        'End If
 
 
     End Sub
@@ -450,8 +476,27 @@ Public Class ExamineeTest
 
 
             ' Dito ilalagay na IF NULL EMAIL FIELD, PROMPT USER IF THEY WANT EMAIL
-            ' Messagebox nlng if magpprompt sa email ........... 
 
+            sql.AddParam("@examineeID", lblExamineeID.Text)
+            sql.ExecuteQuery("SELECT emailAddress FROM tbl_examinee WHERE examineeID = @examineeID")
+
+            ' If examinee exists 
+            If sql.recordCount > 0 Then
+                Dim _examineeEmail As String
+
+                If IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress")) Or sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString() = "" Then
+                    ' emailAddress NULL or empty
+
+                    ' Prompt for email
+                    _examineeEmail = InputBox("Enter your Email Address: ", "", "")
+                Else
+                    _examineeEmail = sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString()
+                End If
+
+                ' sendMAIL NAO ~!
+                mail.SendExamineeEmail(lblExamineeID.Text, lblSetDescription.Text, lblLevelID.Text, lblPositionDescription.Text, _examineeEmail)
+
+            End If
 
             Login.txtExamineeDateID.Text = ""
             Login.txtLastName.Text = ""
@@ -486,8 +531,8 @@ Public Class ExamineeTest
     End Sub
 
     Private Sub btnFinishTest_Click(sender As Object, e As EventArgs) Handles btnFinishTest.Click
-        TestTypeFinished()
+        If MessageBox.Show("You will not be able to go back to this test after you finish it. Are you sure you want to finish the test?", "Caption", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            TestTypeFinished()
+        End If
     End Sub
-
-
 End Class

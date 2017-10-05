@@ -80,6 +80,7 @@ Public Class AdminDashboard
         LoadDgvTempo()
         LoadTimers()
         LoadEmailSettings()
+        LoadPendingEmailCount()
 
         ' Load lastBackup and lastRestore
         sql.ExecuteQuery("SELECT * from tbl_admin
@@ -87,8 +88,8 @@ Public Class AdminDashboard
                              AND adminUsername = 'admin'
                              AND adminLevel = 0")
 
-        lblLastBackup.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastBackup")
-        lblLastRestore.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastRestore")
+        lblLastBackup.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastBackup").ToString()
+        lblLastRestore.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastRestore").ToString()
 
         picExamError.Visible = False
         picExamineeError.Visible = False
@@ -620,16 +621,16 @@ Public Class AdminDashboard
 
             ' If found an email the same
             sql.AddParam("@emailAddress", emailAddress)
-            sql.ExecuteQuery("SELECT emailAddress FROM tbl_examinee WHERE emailAddress = @emailAddress")
+            sql.ExecuteQuery("SELECT examineeDateID FROM tbl_examinee WHERE emailAddress = @emailAddress")
 
             If sql.recordCount > 0 Then
 
-                Dim _pastEmail As String = sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString()
-                ' If founded that his email address is same with wat is entered .. return false
-                sql.AddParam("@examineeID", GetExamineeID())
-                sql.ExecuteQuery("SELECT emailAddress FROM tbl_examinee WHERE examineeID = @examineeID")
+                ' payagan mo na ko dito jurilla
+                ' If founded that the Boi is the same as the one who have that email
+                Dim _pastBoi As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString()
 
-                If _pastEmail = sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString() Then
+
+                If _pastBoi = lblExamineeDateID.Text Then
                     Return False
                 End If
 
@@ -641,7 +642,7 @@ Public Class AdminDashboard
     Private Sub btnExamineeRegister_Click(sender As Object, e As EventArgs) Handles btnExamineeRegister.Click
 
         ' Error catching
-        ' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Kung okay lang lagyan na natin ng validation tong mga textbox
+
 
         If txtFirstName.Text = "" Or txtLastName.Text = "" Then
             picExamineeError.Visible = True
@@ -3586,4 +3587,46 @@ Public Class AdminDashboard
         MessageBox.Show("Email settings saved.")
     End Sub
 
+
+    Private Sub LoadPendingEmailCount()
+        sql.ExecuteQuery("SELECT COUNT(*) FROM tbl_pending_emails")
+        lblPendingEmailsCount.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("COUNT(*)").ToString()
+    End Sub
+
+    Private Sub btnSendPendingEmails_Click(sender As Object, e As EventArgs) Handles btnSendPendingEmails.Click
+        ' Dapat may process bar or enabled as background process to eh
+        Try
+            ' Get ALL EMAILS and EMAIL ADDRESSES
+            sql.ExecuteQuery("SELECT 
+                                tbl_pending_emails.emailID, 
+                                tbl_pending_emails.examineeID, 
+                                tbl_pending_emails.result, 
+                                tbl_pending_emails.pdfDocument,
+                                tbl_examinee.emailAddress
+                         
+                         FROM tbl_pending_emails
+                         INNER JOIN tbl_examinee ON tbl_pending_emails.examineeID = tbl_examinee.examineeID")
+
+            Dim emailID As New List(Of String)
+
+            ' For Each process is .. for every row >> convert the pdf >> send the email
+            For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
+                Emailing.ConvertToPDF(r("pdfDocument"))
+                Emailing.SendEmailFromAdmin(r("emailAddress").ToString(), r("result").ToString())
+                emailID.Add(r("emailID").ToString())
+            Next
+
+            ' For Each process is >> delete that sent email from database
+            For Each rEmailID As String In emailID
+                sql.AddParam("@emailID", rEmailID)
+                sql.ExecuteQuery("DELETE * FROM tbl_pending_emails WHERE emailID = @emailID")
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("Send Pending Emails error. Now exiting process." & vbNewLine & ex.Message)
+            Exit Sub
+        End Try
+
+
+    End Sub
 End Class

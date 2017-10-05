@@ -188,8 +188,9 @@ Public Class Emailing
                 ' Start uploading pdf to database(tbl_pending_emails)
 
                 sql.AddParam("@examineeID", _examineeIDParam)
+                sql.AddParam("@result", _result)
                 sql.AddParam("@pdfBlob", ConvertToBytes("ExamineeSummary.pdf"))
-                sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, pdfDocument) VALUES (@examineeID, @pdfBlob)")
+                sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
                 MessageBox.Show("Examinee result temporarily uploaded to database.")
 
@@ -200,8 +201,9 @@ Public Class Emailing
 
             ' Insert the email to database
             sql.AddParam("@examineeID", _examineeIDParam)
+            sql.AddParam("@result", _result)
             sql.AddParam("@pdfBlob", ConvertToBytes("ExamineeSummary.pdf"))
-            sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, pdfDocument) VALUES (@examineeID, @pdfBlob)")
+            sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
             MessageBox.Show("Examinee result temporarily uploaded to database.")
         End Try
@@ -876,4 +878,33 @@ Public Class Emailing
             MessageBox.Show("Examinee has no results yet on the specified Set")
         End If
     End Sub
+
+    Public Shared Sub SendEmailFromAdmin(_examineeEmailAddress As String, _result As String)
+        Try
+            Dim mail As New MailMessage()
+            mail.From = New MailAddress(emailAddress)
+            mail.To.Add(_examineeEmailAddress)
+            mail.Subject = mailSubject
+
+            If _result = "Passed" Then
+                mail.Body = mailMessagePasser
+            ElseIf _result = "Failed" Then
+                mail.Body = mailMessageNonPasser
+            End If
+
+            Dim attachment As System.Net.Mail.Attachment
+            attachment = New System.Net.Mail.Attachment("ExamineeSummary.pdf")
+            mail.Attachments.Add(attachment)
+
+            ' sending mail
+            smtp.Send(mail)
+            MessageBox.Show("Mail Sent")
+
+
+        Catch ex As Exception
+            MessageBox.Show("Email sending error. Now cancelling request." & vbNewLine & ex.Message)
+            Exit Sub
+        End Try
+    End Sub
+
 End Class

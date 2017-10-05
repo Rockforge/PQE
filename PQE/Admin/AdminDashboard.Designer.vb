@@ -166,6 +166,8 @@ Partial Class AdminDashboard
         Me.cboExamLevel = New System.Windows.Forms.ComboBox()
         Me.picExamError = New System.Windows.Forms.PictureBox()
         Me.tabConfiguration = New System.Windows.Forms.TabPage()
+        Me.btnSendPendingEmails = New MaterialSkin.Controls.MaterialRaisedButton()
+        Me.MaterialDivider20 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider19 = New MaterialSkin.Controls.MaterialDivider()
         Me.txtSettingMessageNonPasser = New System.Windows.Forms.RichTextBox()
         Me.txtSettingMessagePasser = New System.Windows.Forms.RichTextBox()
@@ -229,12 +231,15 @@ Partial Class AdminDashboard
         Me.Label28 = New System.Windows.Forms.Label()
         Me.lblLastBackup = New System.Windows.Forms.Label()
         Me.Label65 = New System.Windows.Forms.Label()
+        Me.lblPendingEmailsCount = New System.Windows.Forms.Label()
+        Me.Label71 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label70 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -324,7 +329,7 @@ Partial Class AdminDashboard
         Me.mtcAdminDashboard.Name = "mtcAdminDashboard"
         Me.mtcAdminDashboard.SelectedIndex = 0
         Me.mtcAdminDashboard.Size = New System.Drawing.Size(1256, 549)
-        Me.mtcAdminDashboard.TabIndex = 0
+        Me.mtcAdminDashboard.TabIndex = 1
         '
         'tabExaminee
         '
@@ -598,7 +603,7 @@ Partial Class AdminDashboard
         Me.txtEmailAddress.Location = New System.Drawing.Point(744, 128)
         Me.txtEmailAddress.Name = "txtEmailAddress"
         Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
-        Me.txtEmailAddress.TabIndex = 33
+        Me.txtEmailAddress.TabIndex = 3
         '
         'rbClericalActive
         '
@@ -796,7 +801,7 @@ Partial Class AdminDashboard
         Me.txtExamineeIDFilter.Location = New System.Drawing.Point(120, 18)
         Me.txtExamineeIDFilter.Name = "txtExamineeIDFilter"
         Me.txtExamineeIDFilter.Size = New System.Drawing.Size(260, 20)
-        Me.txtExamineeIDFilter.TabIndex = 20
+        Me.txtExamineeIDFilter.TabIndex = 1
         '
         'MaterialDivider6
         '
@@ -826,7 +831,7 @@ Partial Class AdminDashboard
         Me.rbFailedFilter.Location = New System.Drawing.Point(214, 95)
         Me.rbFailedFilter.Name = "rbFailedFilter"
         Me.rbFailedFilter.Size = New System.Drawing.Size(59, 17)
-        Me.rbFailedFilter.TabIndex = 6
+        Me.rbFailedFilter.TabIndex = 5
         Me.rbFailedFilter.TabStop = True
         Me.rbFailedFilter.Text = "Failed"
         Me.rbFailedFilter.UseVisualStyleBackColor = True
@@ -837,7 +842,7 @@ Partial Class AdminDashboard
         Me.rbPassedFilter.Location = New System.Drawing.Point(123, 95)
         Me.rbPassedFilter.Name = "rbPassedFilter"
         Me.rbPassedFilter.Size = New System.Drawing.Size(66, 17)
-        Me.rbPassedFilter.TabIndex = 6
+        Me.rbPassedFilter.TabIndex = 4
         Me.rbPassedFilter.TabStop = True
         Me.rbPassedFilter.Text = "Passed"
         Me.rbPassedFilter.UseVisualStyleBackColor = True
@@ -858,14 +863,14 @@ Partial Class AdminDashboard
         Me.dtpToFilter.Location = New System.Drawing.Point(170, 173)
         Me.dtpToFilter.Name = "dtpToFilter"
         Me.dtpToFilter.Size = New System.Drawing.Size(210, 20)
-        Me.dtpToFilter.TabIndex = 4
+        Me.dtpToFilter.TabIndex = 9
         '
         'dtpFromFilter
         '
         Me.dtpFromFilter.Location = New System.Drawing.Point(170, 145)
         Me.dtpFromFilter.Name = "dtpFromFilter"
         Me.dtpFromFilter.Size = New System.Drawing.Size(210, 20)
-        Me.dtpFromFilter.TabIndex = 4
+        Me.dtpFromFilter.TabIndex = 8
         '
         'btnSearch
         '
@@ -875,7 +880,7 @@ Partial Class AdminDashboard
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Primary = True
         Me.btnSearch.Size = New System.Drawing.Size(82, 28)
-        Me.btnSearch.TabIndex = 3
+        Me.btnSearch.TabIndex = 10
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -890,7 +895,7 @@ Partial Class AdminDashboard
         Me.btnClearFilter.Name = "btnClearFilter"
         Me.btnClearFilter.Primary = False
         Me.btnClearFilter.Size = New System.Drawing.Size(109, 36)
-        Me.btnClearFilter.TabIndex = 2
+        Me.btnClearFilter.TabIndex = 11
         Me.btnClearFilter.Text = "Clear Filters"
         Me.btnClearFilter.UseVisualStyleBackColor = True
         '
@@ -901,7 +906,7 @@ Partial Class AdminDashboard
         Me.cboPositionFilter.Location = New System.Drawing.Point(120, 118)
         Me.cboPositionFilter.Name = "cboPositionFilter"
         Me.cboPositionFilter.Size = New System.Drawing.Size(260, 21)
-        Me.cboPositionFilter.TabIndex = 1
+        Me.cboPositionFilter.TabIndex = 7
         '
         'Label44
         '
@@ -970,7 +975,7 @@ Partial Class AdminDashboard
         Me.txtFirstNameFilter.MaxLength = 50
         Me.txtFirstNameFilter.Name = "txtFirstNameFilter"
         Me.txtFirstNameFilter.Size = New System.Drawing.Size(260, 22)
-        Me.txtFirstNameFilter.TabIndex = 0
+        Me.txtFirstNameFilter.TabIndex = 2
         '
         'txtLastNameFilter
         '
@@ -979,7 +984,7 @@ Partial Class AdminDashboard
         Me.txtLastNameFilter.MaxLength = 50
         Me.txtLastNameFilter.Name = "txtLastNameFilter"
         Me.txtLastNameFilter.Size = New System.Drawing.Size(260, 22)
-        Me.txtLastNameFilter.TabIndex = 1
+        Me.txtLastNameFilter.TabIndex = 3
         '
         'Label48
         '
@@ -1221,7 +1226,7 @@ Partial Class AdminDashboard
         Me.lblExamineeDateID.Location = New System.Drawing.Point(744, 18)
         Me.lblExamineeDateID.Name = "lblExamineeDateID"
         Me.lblExamineeDateID.Size = New System.Drawing.Size(0, 16)
-        Me.lblExamineeDateID.TabIndex = 3
+        Me.lblExamineeDateID.TabIndex = 1
         '
         'cboSupervisoryPosition
         '
@@ -1260,17 +1265,17 @@ Partial Class AdminDashboard
         Me.txtLastName.MaxLength = 50
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.Size = New System.Drawing.Size(294, 22)
-        Me.txtLastName.TabIndex = 1
+        Me.txtLastName.TabIndex = 2
         '
         'txtFirstName
         '
-        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
+        Me.txtFirstName.BackColor = System.Drawing.SystemColors.Window
         Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFirstName.Location = New System.Drawing.Point(744, 44)
         Me.txtFirstName.MaxLength = 50
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
-        Me.txtFirstName.TabIndex = 0
+        Me.txtFirstName.TabIndex = 1
         '
         'Label38
         '
@@ -1575,7 +1580,7 @@ Partial Class AdminDashboard
         Me.btnQuestionSave.Name = "btnQuestionSave"
         Me.btnQuestionSave.Primary = True
         Me.btnQuestionSave.Size = New System.Drawing.Size(208, 32)
-        Me.btnQuestionSave.TabIndex = 10
+        Me.btnQuestionSave.TabIndex = 8
         Me.btnQuestionSave.Text = "Save Question"
         Me.btnQuestionSave.UseVisualStyleBackColor = True
         '
@@ -1585,7 +1590,7 @@ Partial Class AdminDashboard
         Me.txtChoice4.Location = New System.Drawing.Point(75, 494)
         Me.txtChoice4.Name = "txtChoice4"
         Me.txtChoice4.Size = New System.Drawing.Size(735, 22)
-        Me.txtChoice4.TabIndex = 6
+        Me.txtChoice4.TabIndex = 3
         '
         'txtChoice3
         '
@@ -1593,7 +1598,7 @@ Partial Class AdminDashboard
         Me.txtChoice3.Location = New System.Drawing.Point(75, 466)
         Me.txtChoice3.Name = "txtChoice3"
         Me.txtChoice3.Size = New System.Drawing.Size(735, 22)
-        Me.txtChoice3.TabIndex = 5
+        Me.txtChoice3.TabIndex = 2
         '
         'txtChoice2
         '
@@ -1601,7 +1606,7 @@ Partial Class AdminDashboard
         Me.txtChoice2.Location = New System.Drawing.Point(75, 438)
         Me.txtChoice2.Name = "txtChoice2"
         Me.txtChoice2.Size = New System.Drawing.Size(735, 22)
-        Me.txtChoice2.TabIndex = 4
+        Me.txtChoice2.TabIndex = 1
         '
         'txtChoice1
         '
@@ -1609,7 +1614,7 @@ Partial Class AdminDashboard
         Me.txtChoice1.Location = New System.Drawing.Point(75, 410)
         Me.txtChoice1.Name = "txtChoice1"
         Me.txtChoice1.Size = New System.Drawing.Size(735, 22)
-        Me.txtChoice1.TabIndex = 3
+        Me.txtChoice1.TabIndex = 0
         '
         'rbChoice4
         '
@@ -1623,7 +1628,7 @@ Partial Class AdminDashboard
         Me.rbChoice4.Name = "rbChoice4"
         Me.rbChoice4.Ripple = True
         Me.rbChoice4.Size = New System.Drawing.Size(38, 30)
-        Me.rbChoice4.TabIndex = 8
+        Me.rbChoice4.TabIndex = 7
         Me.rbChoice4.TabStop = True
         Me.rbChoice4.Text = "D"
         Me.rbChoice4.UseVisualStyleBackColor = True
@@ -1640,7 +1645,7 @@ Partial Class AdminDashboard
         Me.rbChoice3.Name = "rbChoice3"
         Me.rbChoice3.Ripple = True
         Me.rbChoice3.Size = New System.Drawing.Size(38, 30)
-        Me.rbChoice3.TabIndex = 8
+        Me.rbChoice3.TabIndex = 6
         Me.rbChoice3.TabStop = True
         Me.rbChoice3.Text = "C"
         Me.rbChoice3.UseVisualStyleBackColor = True
@@ -1657,7 +1662,7 @@ Partial Class AdminDashboard
         Me.rbChoice2.Name = "rbChoice2"
         Me.rbChoice2.Ripple = True
         Me.rbChoice2.Size = New System.Drawing.Size(38, 30)
-        Me.rbChoice2.TabIndex = 8
+        Me.rbChoice2.TabIndex = 5
         Me.rbChoice2.TabStop = True
         Me.rbChoice2.Text = "B"
         Me.rbChoice2.UseVisualStyleBackColor = True
@@ -1674,7 +1679,7 @@ Partial Class AdminDashboard
         Me.rbChoice1.Name = "rbChoice1"
         Me.rbChoice1.Ripple = True
         Me.rbChoice1.Size = New System.Drawing.Size(38, 30)
-        Me.rbChoice1.TabIndex = 8
+        Me.rbChoice1.TabIndex = 4
         Me.rbChoice1.TabStop = True
         Me.rbChoice1.Text = "A"
         Me.rbChoice1.UseVisualStyleBackColor = True
@@ -1885,6 +1890,8 @@ Partial Class AdminDashboard
         'tabConfiguration
         '
         Me.tabConfiguration.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.tabConfiguration.Controls.Add(Me.btnSendPendingEmails)
+        Me.tabConfiguration.Controls.Add(Me.MaterialDivider20)
         Me.tabConfiguration.Controls.Add(Me.MaterialDivider19)
         Me.tabConfiguration.Controls.Add(Me.txtSettingMessageNonPasser)
         Me.tabConfiguration.Controls.Add(Me.txtSettingMessagePasser)
@@ -1946,12 +1953,15 @@ Partial Class AdminDashboard
         Me.tabConfiguration.Controls.Add(Me.Label28)
         Me.tabConfiguration.Controls.Add(Me.lblLastBackup)
         Me.tabConfiguration.Controls.Add(Me.Label65)
+        Me.tabConfiguration.Controls.Add(Me.lblPendingEmailsCount)
+        Me.tabConfiguration.Controls.Add(Me.Label71)
         Me.tabConfiguration.Controls.Add(Me.Label25)
         Me.tabConfiguration.Controls.Add(Me.Label16)
         Me.tabConfiguration.Controls.Add(Me.Label14)
         Me.tabConfiguration.Controls.Add(Me.Label13)
         Me.tabConfiguration.Controls.Add(Me.Label12)
         Me.tabConfiguration.Controls.Add(Me.Label27)
+        Me.tabConfiguration.Controls.Add(Me.Label70)
         Me.tabConfiguration.Controls.Add(Me.Label24)
         Me.tabConfiguration.Controls.Add(Me.Label11)
         Me.tabConfiguration.Controls.Add(Me.Label10)
@@ -1966,6 +1976,29 @@ Partial Class AdminDashboard
         Me.tabConfiguration.Size = New System.Drawing.Size(1248, 523)
         Me.tabConfiguration.TabIndex = 2
         Me.tabConfiguration.Text = "Configuration"
+        '
+        'btnSendPendingEmails
+        '
+        Me.btnSendPendingEmails.Depth = 0
+        Me.btnSendPendingEmails.Location = New System.Drawing.Point(1130, 89)
+        Me.btnSendPendingEmails.MouseState = MaterialSkin.MouseState.HOVER
+        Me.btnSendPendingEmails.Name = "btnSendPendingEmails"
+        Me.btnSendPendingEmails.Primary = True
+        Me.btnSendPendingEmails.Size = New System.Drawing.Size(93, 26)
+        Me.btnSendPendingEmails.TabIndex = 86
+        Me.btnSendPendingEmails.Text = "Send All"
+        Me.btnSendPendingEmails.UseVisualStyleBackColor = True
+        '
+        'MaterialDivider20
+        '
+        Me.MaterialDivider20.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.MaterialDivider20.Depth = 0
+        Me.MaterialDivider20.Location = New System.Drawing.Point(795, 130)
+        Me.MaterialDivider20.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialDivider20.Name = "MaterialDivider20"
+        Me.MaterialDivider20.Size = New System.Drawing.Size(430, 1)
+        Me.MaterialDivider20.TabIndex = 85
+        Me.MaterialDivider20.Text = "MaterialDivider2"
         '
         'MaterialDivider19
         '
@@ -1983,7 +2016,7 @@ Partial Class AdminDashboard
         Me.txtSettingMessageNonPasser.Location = New System.Drawing.Point(354, 367)
         Me.txtSettingMessageNonPasser.Name = "txtSettingMessageNonPasser"
         Me.txtSettingMessageNonPasser.Size = New System.Drawing.Size(397, 96)
-        Me.txtSettingMessageNonPasser.TabIndex = 83
+        Me.txtSettingMessageNonPasser.TabIndex = 6
         Me.txtSettingMessageNonPasser.Text = ""
         '
         'txtSettingMessagePasser
@@ -1991,7 +2024,7 @@ Partial Class AdminDashboard
         Me.txtSettingMessagePasser.Location = New System.Drawing.Point(354, 233)
         Me.txtSettingMessagePasser.Name = "txtSettingMessagePasser"
         Me.txtSettingMessagePasser.Size = New System.Drawing.Size(397, 96)
-        Me.txtSettingMessagePasser.TabIndex = 83
+        Me.txtSettingMessagePasser.TabIndex = 5
         Me.txtSettingMessagePasser.Text = ""
         '
         'MaterialDivider18
@@ -2013,7 +2046,7 @@ Partial Class AdminDashboard
         Me.btnEmailSettingsSave.Name = "btnEmailSettingsSave"
         Me.btnEmailSettingsSave.Primary = True
         Me.btnEmailSettingsSave.Size = New System.Drawing.Size(255, 37)
-        Me.btnEmailSettingsSave.TabIndex = 81
+        Me.btnEmailSettingsSave.TabIndex = 7
         Me.btnEmailSettingsSave.Text = "Save Settings"
         Me.btnEmailSettingsSave.UseVisualStyleBackColor = True
         '
@@ -2022,35 +2055,35 @@ Partial Class AdminDashboard
         Me.txtSettingMailSubject.Location = New System.Drawing.Point(541, 169)
         Me.txtSettingMailSubject.Name = "txtSettingMailSubject"
         Me.txtSettingMailSubject.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingMailSubject.TabIndex = 80
+        Me.txtSettingMailSubject.TabIndex = 4
         '
         'txtSettingGmailAppPassword
         '
         Me.txtSettingGmailAppPassword.Location = New System.Drawing.Point(541, 143)
         Me.txtSettingGmailAppPassword.Name = "txtSettingGmailAppPassword"
         Me.txtSettingGmailAppPassword.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingGmailAppPassword.TabIndex = 80
+        Me.txtSettingGmailAppPassword.TabIndex = 3
         '
         'txtSettingSmtpPort
         '
         Me.txtSettingSmtpPort.Location = New System.Drawing.Point(541, 116)
         Me.txtSettingSmtpPort.Name = "txtSettingSmtpPort"
         Me.txtSettingSmtpPort.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtpPort.TabIndex = 80
+        Me.txtSettingSmtpPort.TabIndex = 2
         '
         'txtSettingSmtp
         '
         Me.txtSettingSmtp.Location = New System.Drawing.Point(541, 89)
         Me.txtSettingSmtp.Name = "txtSettingSmtp"
         Me.txtSettingSmtp.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtp.TabIndex = 80
+        Me.txtSettingSmtp.TabIndex = 1
         '
         'txtSettingEmailAddress
         '
         Me.txtSettingEmailAddress.Location = New System.Drawing.Point(541, 63)
         Me.txtSettingEmailAddress.Name = "txtSettingEmailAddress"
         Me.txtSettingEmailAddress.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingEmailAddress.TabIndex = 80
+        Me.txtSettingEmailAddress.TabIndex = 0
         '
         'Label69
         '
@@ -2096,7 +2129,7 @@ Partial Class AdminDashboard
         '
         Me.MaterialDivider17.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider17.Depth = 0
-        Me.MaterialDivider17.Location = New System.Drawing.Point(795, 331)
+        Me.MaterialDivider17.Location = New System.Drawing.Point(795, 353)
         Me.MaterialDivider17.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider17.Name = "MaterialDivider17"
         Me.MaterialDivider17.Size = New System.Drawing.Size(430, 1)
@@ -2107,7 +2140,7 @@ Partial Class AdminDashboard
         '
         Me.MaterialDivider16.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider16.Depth = 0
-        Me.MaterialDivider16.Location = New System.Drawing.Point(795, 193)
+        Me.MaterialDivider16.Location = New System.Drawing.Point(795, 236)
         Me.MaterialDivider16.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider16.Name = "MaterialDivider16"
         Me.MaterialDivider16.Size = New System.Drawing.Size(430, 1)
@@ -2224,30 +2257,30 @@ Partial Class AdminDashboard
         Me.txtTempoPass.Location = New System.Drawing.Point(929, 409)
         Me.txtTempoPass.Name = "txtTempoPass"
         Me.txtTempoPass.Size = New System.Drawing.Size(180, 20)
-        Me.txtTempoPass.TabIndex = 71
+        Me.txtTempoPass.TabIndex = 3
         '
         'txtTempoUser
         '
         Me.txtTempoUser.Location = New System.Drawing.Point(929, 386)
         Me.txtTempoUser.Name = "txtTempoUser"
         Me.txtTempoUser.Size = New System.Drawing.Size(180, 20)
-        Me.txtTempoUser.TabIndex = 70
+        Me.txtTempoUser.TabIndex = 2
         '
         'Label39
         '
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(843, 410)
+        Me.Label39.Location = New System.Drawing.Point(852, 410)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(71, 16)
-        Me.Label39.TabIndex = 68
+        Me.Label39.TabIndex = 33
         Me.Label39.Text = "Password:"
         '
         'Label40
         '
         Me.Label40.AutoSize = True
         Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label40.Location = New System.Drawing.Point(858, 386)
+        Me.Label40.Location = New System.Drawing.Point(867, 386)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(56, 16)
         Me.Label40.TabIndex = 69
@@ -2257,10 +2290,10 @@ Partial Class AdminDashboard
         '
         Me.Label41.AutoSize = True
         Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label41.Location = New System.Drawing.Point(937, 348)
+        Me.Label41.Location = New System.Drawing.Point(937, 359)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(143, 17)
-        Me.Label41.TabIndex = 67
+        Me.Label41.TabIndex = 31
         Me.Label41.Text = "Temporary Admins"
         '
         'chkShowPassword
@@ -2268,7 +2301,7 @@ Partial Class AdminDashboard
         Me.chkShowPassword.AutoSize = True
         Me.chkShowPassword.Depth = 0
         Me.chkShowPassword.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.chkShowPassword.Location = New System.Drawing.Point(929, 291)
+        Me.chkShowPassword.Location = New System.Drawing.Point(929, 319)
         Me.chkShowPassword.Margin = New System.Windows.Forms.Padding(0)
         Me.chkShowPassword.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.chkShowPassword.MouseState = MaterialSkin.MouseState.HOVER
@@ -2282,7 +2315,7 @@ Partial Class AdminDashboard
         'btnChangePassword
         '
         Me.btnChangePassword.Depth = 0
-        Me.btnChangePassword.Location = New System.Drawing.Point(1130, 239)
+        Me.btnChangePassword.Location = New System.Drawing.Point(1130, 269)
         Me.btnChangePassword.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Primary = True
@@ -2294,25 +2327,25 @@ Partial Class AdminDashboard
         'txtNewPassword
         '
         Me.txtNewPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNewPassword.Location = New System.Drawing.Point(929, 264)
+        Me.txtNewPassword.Location = New System.Drawing.Point(929, 294)
         Me.txtNewPassword.Name = "txtNewPassword"
         Me.txtNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtNewPassword.Size = New System.Drawing.Size(180, 22)
-        Me.txtNewPassword.TabIndex = 12
+        Me.txtNewPassword.TabIndex = 1
         '
         'txtCurrentPassword
         '
         Me.txtCurrentPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCurrentPassword.Location = New System.Drawing.Point(929, 239)
+        Me.txtCurrentPassword.Location = New System.Drawing.Point(929, 269)
         Me.txtCurrentPassword.Name = "txtCurrentPassword"
         Me.txtCurrentPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtCurrentPassword.Size = New System.Drawing.Size(180, 22)
-        Me.txtCurrentPassword.TabIndex = 11
+        Me.txtCurrentPassword.TabIndex = 0
         '
         'btnRestore
         '
         Me.btnRestore.Depth = 0
-        Me.btnRestore.Location = New System.Drawing.Point(1130, 144)
+        Me.btnRestore.Location = New System.Drawing.Point(1130, 201)
         Me.btnRestore.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnRestore.Name = "btnRestore"
         Me.btnRestore.Primary = True
@@ -2324,7 +2357,7 @@ Partial Class AdminDashboard
         'btnBrowse
         '
         Me.btnBrowse.Depth = 0
-        Me.btnBrowse.Location = New System.Drawing.Point(1130, 116)
+        Me.btnBrowse.Location = New System.Drawing.Point(1130, 173)
         Me.btnBrowse.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnBrowse.Name = "btnBrowse"
         Me.btnBrowse.Primary = True
@@ -2339,7 +2372,7 @@ Partial Class AdminDashboard
         Me.txtClericalVerbalTime.Location = New System.Drawing.Point(266, 440)
         Me.txtClericalVerbalTime.Name = "txtClericalVerbalTime"
         Me.txtClericalVerbalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtClericalVerbalTime.TabIndex = 10
+        Me.txtClericalVerbalTime.TabIndex = 11
         '
         'txtAbstractReasoningTime
         '
@@ -2347,7 +2380,7 @@ Partial Class AdminDashboard
         Me.txtAbstractReasoningTime.Location = New System.Drawing.Point(266, 390)
         Me.txtAbstractReasoningTime.Name = "txtAbstractReasoningTime"
         Me.txtAbstractReasoningTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtAbstractReasoningTime.TabIndex = 8
+        Me.txtAbstractReasoningTime.TabIndex = 9
         '
         'txtNonSupervisoryVerbalTime
         '
@@ -2355,7 +2388,7 @@ Partial Class AdminDashboard
         Me.txtNonSupervisoryVerbalTime.Location = New System.Drawing.Point(266, 265)
         Me.txtNonSupervisoryVerbalTime.Name = "txtNonSupervisoryVerbalTime"
         Me.txtNonSupervisoryVerbalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtNonSupervisoryVerbalTime.TabIndex = 5
+        Me.txtNonSupervisoryVerbalTime.TabIndex = 6
         '
         'txtClericalNumericalTime
         '
@@ -2363,7 +2396,7 @@ Partial Class AdminDashboard
         Me.txtClericalNumericalTime.Location = New System.Drawing.Point(266, 415)
         Me.txtClericalNumericalTime.Name = "txtClericalNumericalTime"
         Me.txtClericalNumericalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtClericalNumericalTime.TabIndex = 9
+        Me.txtClericalNumericalTime.TabIndex = 10
         '
         'txtSupervisoryVerbalTime
         '
@@ -2371,7 +2404,7 @@ Partial Class AdminDashboard
         Me.txtSupervisoryVerbalTime.Location = New System.Drawing.Point(266, 144)
         Me.txtSupervisoryVerbalTime.Name = "txtSupervisoryVerbalTime"
         Me.txtSupervisoryVerbalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtSupervisoryVerbalTime.TabIndex = 2
+        Me.txtSupervisoryVerbalTime.TabIndex = 3
         '
         'txtClericalReasoningTime
         '
@@ -2379,7 +2412,7 @@ Partial Class AdminDashboard
         Me.txtClericalReasoningTime.Location = New System.Drawing.Point(266, 365)
         Me.txtClericalReasoningTime.Name = "txtClericalReasoningTime"
         Me.txtClericalReasoningTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtClericalReasoningTime.TabIndex = 7
+        Me.txtClericalReasoningTime.TabIndex = 8
         '
         'txtGeneralInfoTime
         '
@@ -2387,7 +2420,7 @@ Partial Class AdminDashboard
         Me.txtGeneralInfoTime.Location = New System.Drawing.Point(266, 340)
         Me.txtGeneralInfoTime.Name = "txtGeneralInfoTime"
         Me.txtGeneralInfoTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtGeneralInfoTime.TabIndex = 6
+        Me.txtGeneralInfoTime.TabIndex = 7
         '
         'txtNonSupervisoryNumericalTime
         '
@@ -2395,7 +2428,7 @@ Partial Class AdminDashboard
         Me.txtNonSupervisoryNumericalTime.Location = New System.Drawing.Point(266, 240)
         Me.txtNonSupervisoryNumericalTime.Name = "txtNonSupervisoryNumericalTime"
         Me.txtNonSupervisoryNumericalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtNonSupervisoryNumericalTime.TabIndex = 4
+        Me.txtNonSupervisoryNumericalTime.TabIndex = 5
         '
         'txtReadingComprehensionTime
         '
@@ -2403,7 +2436,7 @@ Partial Class AdminDashboard
         Me.txtReadingComprehensionTime.Location = New System.Drawing.Point(266, 216)
         Me.txtReadingComprehensionTime.Name = "txtReadingComprehensionTime"
         Me.txtReadingComprehensionTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtReadingComprehensionTime.TabIndex = 3
+        Me.txtReadingComprehensionTime.TabIndex = 4
         '
         'txtSupervisoryNumericalTime
         '
@@ -2411,7 +2444,7 @@ Partial Class AdminDashboard
         Me.txtSupervisoryNumericalTime.Location = New System.Drawing.Point(266, 119)
         Me.txtSupervisoryNumericalTime.Name = "txtSupervisoryNumericalTime"
         Me.txtSupervisoryNumericalTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtSupervisoryNumericalTime.TabIndex = 1
+        Me.txtSupervisoryNumericalTime.TabIndex = 2
         '
         'txtManagementTime
         '
@@ -2419,7 +2452,7 @@ Partial Class AdminDashboard
         Me.txtManagementTime.Location = New System.Drawing.Point(266, 93)
         Me.txtManagementTime.Name = "txtManagementTime"
         Me.txtManagementTime.Size = New System.Drawing.Size(45, 22)
-        Me.txtManagementTime.TabIndex = 0
+        Me.txtManagementTime.TabIndex = 1
         '
         'MaterialDivider13
         '
@@ -2462,7 +2495,7 @@ Partial Class AdminDashboard
         Me.btnTimerSave.Name = "btnTimerSave"
         Me.btnTimerSave.Primary = True
         Me.btnTimerSave.Size = New System.Drawing.Size(255, 37)
-        Me.btnTimerSave.TabIndex = 3
+        Me.btnTimerSave.TabIndex = 12
         Me.btnTimerSave.Text = "Save All Timers"
         Me.btnTimerSave.UseVisualStyleBackColor = True
         '
@@ -2550,7 +2583,7 @@ Partial Class AdminDashboard
         '
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(813, 267)
+        Me.Label29.Location = New System.Drawing.Point(822, 297)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(101, 16)
         Me.Label29.TabIndex = 2
@@ -2560,7 +2593,7 @@ Partial Class AdminDashboard
         '
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(827, 147)
+        Me.Label26.Location = New System.Drawing.Point(836, 204)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(87, 16)
         Me.Label26.TabIndex = 2
@@ -2570,7 +2603,7 @@ Partial Class AdminDashboard
         '
         Me.lblLastRestore.AutoSize = True
         Me.lblLastRestore.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLastRestore.Location = New System.Drawing.Point(926, 147)
+        Me.lblLastRestore.Location = New System.Drawing.Point(926, 204)
         Me.lblLastRestore.Name = "lblLastRestore"
         Me.lblLastRestore.Size = New System.Drawing.Size(155, 16)
         Me.lblLastRestore.TabIndex = 2
@@ -2580,7 +2613,7 @@ Partial Class AdminDashboard
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(798, 242)
+        Me.Label28.Location = New System.Drawing.Point(807, 272)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(116, 16)
         Me.Label28.TabIndex = 2
@@ -2590,7 +2623,7 @@ Partial Class AdminDashboard
         '
         Me.lblLastBackup.AutoSize = True
         Me.lblLastBackup.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLastBackup.Location = New System.Drawing.Point(926, 119)
+        Me.lblLastBackup.Location = New System.Drawing.Point(926, 176)
         Me.lblLastBackup.Name = "lblLastBackup"
         Me.lblLastBackup.Size = New System.Drawing.Size(155, 16)
         Me.lblLastBackup.TabIndex = 2
@@ -2606,11 +2639,31 @@ Partial Class AdminDashboard
         Me.Label65.TabIndex = 2
         Me.Label65.Text = "Email Address:"
         '
+        'lblPendingEmailsCount
+        '
+        Me.lblPendingEmailsCount.AutoSize = True
+        Me.lblPendingEmailsCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPendingEmailsCount.Location = New System.Drawing.Point(1041, 96)
+        Me.lblPendingEmailsCount.Name = "lblPendingEmailsCount"
+        Me.lblPendingEmailsCount.Size = New System.Drawing.Size(29, 16)
+        Me.lblPendingEmailsCount.TabIndex = 2
+        Me.lblPendingEmailsCount.Text = "000"
+        '
+        'Label71
+        '
+        Me.Label71.AutoSize = True
+        Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label71.Location = New System.Drawing.Point(877, 96)
+        Me.Label71.Name = "Label71"
+        Me.Label71.Size = New System.Drawing.Size(142, 16)
+        Me.Label71.TabIndex = 2
+        Me.Label71.Text = "Pending Emails Count:"
+        '
         'Label25
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(829, 119)
+        Me.Label25.Location = New System.Drawing.Point(838, 176)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(85, 16)
         Me.Label25.TabIndex = 2
@@ -2660,17 +2713,27 @@ Partial Class AdminDashboard
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(947, 209)
+        Me.Label27.Location = New System.Drawing.Point(947, 245)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(123, 16)
         Me.Label27.TabIndex = 1
         Me.Label27.Text = "Admin Password"
         '
+        'Label70
+        '
+        Me.Label70.AutoSize = True
+        Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label70.Location = New System.Drawing.Point(947, 63)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(116, 16)
+        Me.Label70.TabIndex = 1
+        Me.Label70.Text = "Pending Emails"
+        '
         'Label24
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(917, 84)
+        Me.Label24.Location = New System.Drawing.Point(917, 141)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(192, 16)
         Me.Label24.TabIndex = 1
@@ -3094,4 +3157,9 @@ Partial Class AdminDashboard
     Friend WithEvents txtSettingMessagePasser As RichTextBox
     Friend WithEvents MaterialDivider19 As MaterialSkin.Controls.MaterialDivider
     Friend WithEvents txtSettingMessageNonPasser As RichTextBox
+    Friend WithEvents MaterialDivider20 As MaterialSkin.Controls.MaterialDivider
+    Friend WithEvents Label71 As Label
+    Friend WithEvents Label70 As Label
+    Friend WithEvents btnSendPendingEmails As MaterialSkin.Controls.MaterialRaisedButton
+    Friend WithEvents lblPendingEmailsCount As Label
 End Class

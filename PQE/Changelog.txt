@@ -10,3 +10,13 @@
 ' AdminDashboard Send Pending emails button
 
 ' When taking exam, nagsabay yung failed kahit d naman siya nagtake doon
+
+' Process bar kay Send all emails
+
+' Yung ReloadRecorded Answer kay NEXT at Previous, gumagana pero hindi siya nag nnull if wala pang recorded answer
+' Hindi ako makaNext sa may last question, 
+
+' COLOR UI ng Examinee Fields .. pag nagclick green dapat lahat, pag nag clear fields dapat window-color lahat
+
+
+' ============= CHCHECK MO PA KUNG Working yung SEND Pending Emails mem 
