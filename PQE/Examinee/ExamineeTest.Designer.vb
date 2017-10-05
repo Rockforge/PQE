@@ -23,11 +23,10 @@ Partial Class ExamineeTest
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.rtfQuestion = New System.Windows.Forms.RichTextBox()
-        Me.dgvQuestion = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -58,30 +57,17 @@ Partial Class ExamineeTest
         Me.dgvQuestionNumber = New System.Windows.Forms.DataGridView()
         Me.btnAnswer = New MaterialSkin.Controls.MaterialRaisedButton()
         Me.btnFinishTest = New MaterialSkin.Controls.MaterialRaisedButton()
-        CType(Me.dgvQuestion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvQuestionNumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'rtfQuestion
         '
-        Me.rtfQuestion.Location = New System.Drawing.Point(12, 130)
+        Me.rtfQuestion.Location = New System.Drawing.Point(167, 131)
         Me.rtfQuestion.Name = "rtfQuestion"
         Me.rtfQuestion.ReadOnly = True
         Me.rtfQuestion.Size = New System.Drawing.Size(715, 276)
         Me.rtfQuestion.TabIndex = 0
         Me.rtfQuestion.Text = ""
-        '
-        'dgvQuestion
-        '
-        Me.dgvQuestion.AllowUserToAddRows = False
-        Me.dgvQuestion.AllowUserToDeleteRows = False
-        Me.dgvQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvQuestion.Location = New System.Drawing.Point(487, 256)
-        Me.dgvQuestion.Name = "dgvQuestion"
-        Me.dgvQuestion.ReadOnly = True
-        Me.dgvQuestion.Size = New System.Drawing.Size(240, 150)
-        Me.dgvQuestion.TabIndex = 1
-        Me.dgvQuestion.Visible = False
         '
         'Label1
         '
@@ -225,7 +211,7 @@ Partial Class ExamineeTest
         Me.rbChoice1.AutoSize = True
         Me.rbChoice1.Depth = 0
         Me.rbChoice1.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice1.Location = New System.Drawing.Point(12, 409)
+        Me.rbChoice1.Location = New System.Drawing.Point(167, 410)
         Me.rbChoice1.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice1.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice1.MouseState = MaterialSkin.MouseState.HOVER
@@ -242,7 +228,7 @@ Partial Class ExamineeTest
         Me.rbChoice2.AutoSize = True
         Me.rbChoice2.Depth = 0
         Me.rbChoice2.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice2.Location = New System.Drawing.Point(12, 439)
+        Me.rbChoice2.Location = New System.Drawing.Point(167, 440)
         Me.rbChoice2.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice2.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice2.MouseState = MaterialSkin.MouseState.HOVER
@@ -259,7 +245,7 @@ Partial Class ExamineeTest
         Me.rbChoice3.AutoSize = True
         Me.rbChoice3.Depth = 0
         Me.rbChoice3.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice3.Location = New System.Drawing.Point(12, 469)
+        Me.rbChoice3.Location = New System.Drawing.Point(167, 470)
         Me.rbChoice3.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice3.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice3.MouseState = MaterialSkin.MouseState.HOVER
@@ -276,7 +262,7 @@ Partial Class ExamineeTest
         Me.rbChoice4.AutoSize = True
         Me.rbChoice4.Depth = 0
         Me.rbChoice4.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice4.Location = New System.Drawing.Point(12, 499)
+        Me.rbChoice4.Location = New System.Drawing.Point(167, 500)
         Me.rbChoice4.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice4.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice4.MouseState = MaterialSkin.MouseState.HOVER
@@ -291,7 +277,7 @@ Partial Class ExamineeTest
         'btnQuestionPrevious
         '
         Me.btnQuestionPrevious.Depth = 0
-        Me.btnQuestionPrevious.Location = New System.Drawing.Point(385, 456)
+        Me.btnQuestionPrevious.Location = New System.Drawing.Point(583, 532)
         Me.btnQuestionPrevious.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionPrevious.Name = "btnQuestionPrevious"
         Me.btnQuestionPrevious.Primary = True
@@ -303,7 +289,7 @@ Partial Class ExamineeTest
         'btnQuestionNext
         '
         Me.btnQuestionNext.Depth = 0
-        Me.btnQuestionNext.Location = New System.Drawing.Point(641, 456)
+        Me.btnQuestionNext.Location = New System.Drawing.Point(796, 532)
         Me.btnQuestionNext.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionNext.Name = "btnQuestionNext"
         Me.btnQuestionNext.Primary = True
@@ -379,49 +365,49 @@ Partial Class ExamineeTest
         Me.dgvQuestionNumber.AllowUserToResizeRows = False
         Me.dgvQuestionNumber.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvQuestionNumber.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvQuestionNumber.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvQuestionNumber.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvQuestionNumber.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvQuestionNumber.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvQuestionNumber.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgvQuestionNumber.EnableHeadersVisualStyles = False
         Me.dgvQuestionNumber.GridColor = System.Drawing.SystemColors.MenuBar
-        Me.dgvQuestionNumber.Location = New System.Drawing.Point(733, 130)
+        Me.dgvQuestionNumber.Location = New System.Drawing.Point(15, 131)
         Me.dgvQuestionNumber.Name = "dgvQuestionNumber"
         Me.dgvQuestionNumber.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvQuestionNumber.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvQuestionNumber.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgvQuestionNumber.RowHeadersVisible = False
         Me.dgvQuestionNumber.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvQuestionNumber.Size = New System.Drawing.Size(149, 436)
+        Me.dgvQuestionNumber.Size = New System.Drawing.Size(149, 431)
         Me.dgvQuestionNumber.TabIndex = 10
         '
         'btnAnswer
         '
         Me.btnAnswer.Depth = 0
-        Me.btnAnswer.Location = New System.Drawing.Point(504, 453)
+        Me.btnAnswer.Location = New System.Drawing.Point(692, 532)
         Me.btnAnswer.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnAnswer.Name = "btnAnswer"
         Me.btnAnswer.Primary = True
-        Me.btnAnswer.Size = New System.Drawing.Size(86, 33)
+        Me.btnAnswer.Size = New System.Drawing.Size(86, 30)
         Me.btnAnswer.TabIndex = 11
         Me.btnAnswer.Text = "Answer"
         Me.btnAnswer.UseVisualStyleBackColor = True
@@ -443,6 +429,7 @@ Partial Class ExamineeTest
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(897, 574)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnFinishTest)
         Me.Controls.Add(Me.btnAnswer)
         Me.Controls.Add(Me.dgvQuestionNumber)
@@ -472,12 +459,12 @@ Partial Class ExamineeTest
         Me.Controls.Add(Me.lblExamineeDateID)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.dgvQuestion)
         Me.Controls.Add(Me.rtfQuestion)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "ExamineeTest"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Examinee Test"
-        CType(Me.dgvQuestion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvQuestionNumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -485,7 +472,6 @@ Partial Class ExamineeTest
     End Sub
 
     Friend WithEvents rtfQuestion As RichTextBox
-    Friend WithEvents dgvQuestion As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label

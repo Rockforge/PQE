@@ -480,6 +480,9 @@ Public Class ExamineeTest
         UncheckRadioButton()
         examineeAnswer = ""
 
+        ' If there is an answer 
+        ReloadRecordedAnswer()
+
     End Sub
 
     Private Sub btnFinishTest_Click(sender As Object, e As EventArgs) Handles btnFinishTest.Click

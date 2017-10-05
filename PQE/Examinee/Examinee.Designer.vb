@@ -533,6 +533,7 @@ Partial Class Examinee
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 400)
+        Me.ControlBox = False
         Me.Controls.Add(Me.MaterialDivider6)
         Me.Controls.Add(Me.MaterialDivider5)
         Me.Controls.Add(Me.MaterialDivider4)
@@ -577,6 +578,8 @@ Partial Class Examinee
         Me.Controls.Add(Me.lblExamineeDateID)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Examinee"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Examinee"
