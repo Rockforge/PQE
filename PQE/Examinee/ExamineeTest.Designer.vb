@@ -63,7 +63,7 @@ Partial Class ExamineeTest
         '
         'rtfQuestion
         '
-        Me.rtfQuestion.Location = New System.Drawing.Point(12, 130)
+        Me.rtfQuestion.Location = New System.Drawing.Point(167, 131)
         Me.rtfQuestion.Name = "rtfQuestion"
         Me.rtfQuestion.ReadOnly = True
         Me.rtfQuestion.Size = New System.Drawing.Size(715, 276)
@@ -75,7 +75,7 @@ Partial Class ExamineeTest
         Me.dgvQuestion.AllowUserToAddRows = False
         Me.dgvQuestion.AllowUserToDeleteRows = False
         Me.dgvQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvQuestion.Location = New System.Drawing.Point(487, 256)
+        Me.dgvQuestion.Location = New System.Drawing.Point(642, 257)
         Me.dgvQuestion.Name = "dgvQuestion"
         Me.dgvQuestion.ReadOnly = True
         Me.dgvQuestion.Size = New System.Drawing.Size(240, 150)
@@ -218,7 +218,7 @@ Partial Class ExamineeTest
         Me.rbChoice1.AutoSize = True
         Me.rbChoice1.Depth = 0
         Me.rbChoice1.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice1.Location = New System.Drawing.Point(12, 409)
+        Me.rbChoice1.Location = New System.Drawing.Point(167, 410)
         Me.rbChoice1.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice1.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice1.MouseState = MaterialSkin.MouseState.HOVER
@@ -235,7 +235,7 @@ Partial Class ExamineeTest
         Me.rbChoice2.AutoSize = True
         Me.rbChoice2.Depth = 0
         Me.rbChoice2.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice2.Location = New System.Drawing.Point(12, 439)
+        Me.rbChoice2.Location = New System.Drawing.Point(167, 440)
         Me.rbChoice2.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice2.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice2.MouseState = MaterialSkin.MouseState.HOVER
@@ -252,7 +252,7 @@ Partial Class ExamineeTest
         Me.rbChoice3.AutoSize = True
         Me.rbChoice3.Depth = 0
         Me.rbChoice3.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice3.Location = New System.Drawing.Point(12, 469)
+        Me.rbChoice3.Location = New System.Drawing.Point(167, 470)
         Me.rbChoice3.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice3.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice3.MouseState = MaterialSkin.MouseState.HOVER
@@ -269,7 +269,7 @@ Partial Class ExamineeTest
         Me.rbChoice4.AutoSize = True
         Me.rbChoice4.Depth = 0
         Me.rbChoice4.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.rbChoice4.Location = New System.Drawing.Point(12, 499)
+        Me.rbChoice4.Location = New System.Drawing.Point(167, 500)
         Me.rbChoice4.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice4.MouseLocation = New System.Drawing.Point(-1, -1)
         Me.rbChoice4.MouseState = MaterialSkin.MouseState.HOVER
@@ -284,7 +284,7 @@ Partial Class ExamineeTest
         'btnQuestionPrevious
         '
         Me.btnQuestionPrevious.Depth = 0
-        Me.btnQuestionPrevious.Location = New System.Drawing.Point(387, 536)
+        Me.btnQuestionPrevious.Location = New System.Drawing.Point(542, 537)
         Me.btnQuestionPrevious.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionPrevious.Name = "btnQuestionPrevious"
         Me.btnQuestionPrevious.Primary = True
@@ -296,7 +296,7 @@ Partial Class ExamineeTest
         'btnQuestionNext
         '
         Me.btnQuestionNext.Depth = 0
-        Me.btnQuestionNext.Location = New System.Drawing.Point(641, 536)
+        Me.btnQuestionNext.Location = New System.Drawing.Point(796, 537)
         Me.btnQuestionNext.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionNext.Name = "btnQuestionNext"
         Me.btnQuestionNext.Primary = True
@@ -362,7 +362,7 @@ Partial Class ExamineeTest
         'btnQuestionSkip
         '
         Me.btnQuestionSkip.Depth = 0
-        Me.btnQuestionSkip.Location = New System.Drawing.Point(516, 536)
+        Me.btnQuestionSkip.Location = New System.Drawing.Point(671, 537)
         Me.btnQuestionSkip.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnQuestionSkip.Name = "btnQuestionSkip"
         Me.btnQuestionSkip.Primary = True
@@ -398,7 +398,7 @@ Partial Class ExamineeTest
         Me.dgvQuestionAnswer.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvQuestionAnswer.EnableHeadersVisualStyles = False
         Me.dgvQuestionAnswer.GridColor = System.Drawing.SystemColors.MenuBar
-        Me.dgvQuestionAnswer.Location = New System.Drawing.Point(733, 130)
+        Me.dgvQuestionAnswer.Location = New System.Drawing.Point(15, 131)
         Me.dgvQuestionAnswer.Name = "dgvQuestionAnswer"
         Me.dgvQuestionAnswer.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -411,7 +411,7 @@ Partial Class ExamineeTest
         Me.dgvQuestionAnswer.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvQuestionAnswer.RowHeadersVisible = False
         Me.dgvQuestionAnswer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvQuestionAnswer.Size = New System.Drawing.Size(149, 436)
+        Me.dgvQuestionAnswer.Size = New System.Drawing.Size(149, 431)
         Me.dgvQuestionAnswer.TabIndex = 10
         '
         'ExamineeTest
