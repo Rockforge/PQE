@@ -1,27 +1,34 @@
 ﻿
+=============================================================================
+Comments
 
+TODO : Remove Textboxes
+
+TODO : AdminDashboard Sync to AdminTempDashboard
+
+
+AdminDashboard
+TODO : COLOR UI ng Examinee Fields .. pag nagclick green dapat lahat, pag nag clear fields dapat window-color lahat
+TODO?: Process bar kay Send all emails
+TODO : TabIndexing
+
+
+ExamineeTest
+TODO : ANSWER UI
+
+
+Emailing
+
+=====================================================
 - User manual needs to be finished
 
 ### Changed
 - AdminDashboard.vb; Edit button is not visible upon startup
 
-===================================
+=====================================================
 ' Bali ang mga kulang pa ay:
 
-' MessageBoxes tanggalin
-
-' May mali pa kay nonsupervisoryGenerateDocument
-' AdminDashboard Sync to AdminTempDashboard
-' AdminDashboard Send Pending emails button
-
 ' When taking exam, nagsabay yung failed kahit d naman siya nagtake doon
-
-' Process bar kay Send all emails
-
-' Yung ReloadRecorded Answer kay NEXT at Previous, gumagana pero hindi siya nag nnull if wala pang recorded answer
-' Hindi ako makaNext sa may last question, 
-
-' COLOR UI ng Examinee Fields .. pag nagclick green dapat lahat, pag nag clear fields dapat window-color lahat
 
 
 ' ============= CHCHECK MO PA KUNG Working yung SEND Pending Emails mem 

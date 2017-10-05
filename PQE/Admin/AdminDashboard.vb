@@ -3563,17 +3563,37 @@ Public Class AdminDashboard
 
 
     Private Sub LoadEmailSettings()
-        email.InitializeEmailSettings()
+        If Not Emailing.emailAddress = Nothing Then
+            txtSettingEmailAddress.Text = Emailing.emailAddress.ToString()
+        End If
 
-        txtSettingEmailAddress.Text = Emailing.emailAddress.ToString()
-        txtSettingSmtp.Text = Emailing.smtpServer.ToString()
-        txtSettingSmtpPort.Text = Emailing.smtpPort.ToString()
-        txtSettingGmailAppPassword.Text = Emailing.emailPassword.ToString()
-        txtSettingMailSubject.Text = Emailing.mailSubject.ToString()
-        txtSettingMessagePasser.Text = Emailing.mailMessagePasser.ToString()
-        txtSettingMessageNonPasser.Text = Emailing.mailMessageNonPasser.ToString()
+        If Not Emailing.smtpServer = Nothing Then
+            txtSettingSmtp.Text = Emailing.smtpServer.ToString()
+        End If
+
+        If Not Emailing.smtpPort = Nothing Then
+            txtSettingSmtpPort.Text = Emailing.smtpPort.ToString()
+        End If
+
+        If Not Emailing.emailPassword = Nothing Then
+            txtSettingGmailAppPassword.Text = Emailing.emailPassword.ToString()
+        End If
+
+        If Not Emailing.mailSubject = Nothing Then
+            txtSettingMailSubject.Text = Emailing.mailSubject.ToString()
+        End If
+
+        If Not Emailing.mailMessagePasser = Nothing Then
+            txtSettingMessagePasser.Text = Emailing.mailMessagePasser.ToString()
+        End If
+
+        If Not Emailing.mailMessageNonPasser = Nothing Then
+            txtSettingMessageNonPasser.Text = Emailing.mailMessageNonPasser.ToString()
+        End If
 
     End Sub
+
+
 
     Private Sub btnEmailSettingsSave_Click(sender As Object, e As EventArgs) Handles btnEmailSettingsSave.Click
         ' Error-catching
@@ -3622,19 +3642,23 @@ Public Class AdminDashboard
                          FROM tbl_pending_emails
                          INNER JOIN tbl_examinee ON tbl_pending_emails.examineeID = tbl_examinee.examineeID")
 
-            Dim emailID As New List(Of String)
+            Dim _emailID As New List(Of String)
 
             ' For Each process is .. for every row >> convert the pdf >> send the email
             For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
-                Emailing.ConvertToPDF(r("pdfDocument"))
-                Emailing.SendEmailFromAdmin(r("emailAddress").ToString(), r("result").ToString())
-                emailID.Add(r("emailID").ToString())
+                Emailing.ConvertToPDF(r("pdfDocument")) ' lalabas na yung ExamineeSummary.pdf
+                If Emailing.SendEmailFromAdmin(r("emailAddress").ToString(), r("result").ToString()) Then
+                    _emailID.Add(r("emailID").ToString())
+                Else
+                    MessageBox.Show("Failed to send a pending email. Now canceling request.")
+                    Exit Sub
+                End If
             Next
 
             ' For Each process is >> delete that sent email from database
-            For Each rEmailID As String In emailID
+            For Each rEmailID As String In _emailID
                 sql.AddParam("@emailID", rEmailID)
-                sql.ExecuteQuery("DELETE * FROM tbl_pending_emails WHERE emailID = @emailID")
+                sql.ExecuteQuery("DELETE FROM tbl_pending_emails WHERE emailID = @emailID")
             Next
 
         Catch ex As Exception
@@ -3642,6 +3666,7 @@ Public Class AdminDashboard
             Exit Sub
         End Try
 
-
+        'ReloadPendingEmailCount
+        LoadPendingEmailCount()
     End Sub
 End Class

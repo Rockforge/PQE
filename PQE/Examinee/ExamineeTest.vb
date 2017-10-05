@@ -245,26 +245,30 @@ Public Class ExamineeTest
             rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
             lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
-            If dgvQuestionNumber.CurrentRow.Index <= dgvQuestionNumber.Rows.Count - 1 Then
-
-            ElseIf dgvQuestionNumber.CurrentRow.Index = dgvQuestionNumber.Rows.Count - 1 Then
-                dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index).Selected = True
-
-                lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
-                sql.AddParam("@questionID", lblQuestionID.Text)
-                sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+            ReloadRecordedAnswer()
 
 
-                rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-                rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-                rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-                rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-                rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-                lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
-                ' Reloads answer
-                ReloadRecordedAnswer()
-            End If
+
+        ElseIf dgvQuestionNumber.CurrentRow.Index = dgvQuestionNumber.Rows.Count - 1 Then
+            dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index).Selected = True
+
+            lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
+            sql.AddParam("@questionID", lblQuestionID.Text)
+            sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+
+            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+            ' Reloads answer
+            ReloadRecordedAnswer()
+        End If
+
 
 
     End Sub
@@ -456,9 +460,9 @@ Public Class ExamineeTest
             examineeAnswer = rbChoice1.Text
         ElseIf rbChoice2.Checked = True Then
             examineeAnswer = rbChoice2.Text
-        ElseIf rbChoice3.Checked = rbChoice3.Text Then
+        ElseIf rbChoice3.Checked = True Then
             examineeAnswer = rbChoice3.Text
-        ElseIf rbChoice4.Checked = rbChoice4.Text Then
+        ElseIf rbChoice4.Checked = True Then
             examineeAnswer = rbChoice4.Text
         End If
 

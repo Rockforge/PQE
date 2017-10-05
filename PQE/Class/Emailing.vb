@@ -355,7 +355,9 @@ Public Class Emailing
     End Function
 
     Public Shared Sub ConvertToPDF(_pdfBytes As Byte())
-        File.WriteAllBytes("TesttestPDFYes.pdf", _pdfBytes)
+
+        File.WriteAllBytes("ExamineeSummary.pdf", _pdfBytes)
+
     End Sub
 
 
@@ -363,7 +365,7 @@ Public Class Emailing
 
         sql.AddParam("@examineeID", _examineeIDParam)
         sql.AddParam("@setDescription", _setDescriptionParam)
-        sql.AddParam("@levelDescription", "Supervisory")
+        sql.AddParam("@levelID", "1")
 
 
 
@@ -379,7 +381,8 @@ Public Class Emailing
                           INNER JOIN tbl_position
                           ON tbl_position.positionID = tbl_examinee_set.positionID
                           WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_level.levelID = @levelID
+                          AND tbl_examinee_set.levelID = @levelID
                           AND tbl_examinee_score.setDescription = @setDescription")
 
         ' Examinee Details
@@ -435,8 +438,18 @@ Public Class Emailing
             ' Add this at the end so that it doesn't interfere with our image
             _sect.Headers.Primary.Add(_headerText)
 
+
+
             'Footer 
             Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
+
+            _sect.Footers.Primary.Add(_footer)
+
+
+            'Footer 
+            _footer = New Paragraph()
             _footer.Format.Alignment = ParagraphAlignment.Right
             _footer.AddText("Page ")
             _footer.AddPageField()
@@ -511,11 +524,11 @@ Public Class Emailing
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
 
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+            'Dim _paraSignature As Paragraph = New Paragraph()
+            '_paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            '_paraSignature.Format.Alignment = ParagraphAlignment.Right
 
-            _sect.Add(_paraSignature)
+            '_sect.Add(_paraSignature)
 
 
             ' Renders the doocument
@@ -537,7 +550,7 @@ Public Class Emailing
 
         sql.AddParam("@examineeID", _examineeIDParam)
         sql.AddParam("@setDescription", _setDescriptionParam)
-        sql.AddParam("@levelDescription", "Non-Supervisory")
+        sql.AddParam("@levelID", "2")
 
 
 
@@ -553,7 +566,8 @@ Public Class Emailing
                           INNER JOIN tbl_position
                           ON tbl_position.positionID = tbl_examinee_set.positionID
                           WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_level.levelID = @levelID
+                          AND tbl_examinee_set.levelID = @levelID
                           AND tbl_examinee_score.setDescription = @setDescription")
 
         ' Examinee Detials
@@ -609,8 +623,16 @@ Public Class Emailing
             ' Add this at the end so that it doesn't interfere with our image
             _sect.Headers.Primary.Add(_headerText)
 
+
             'Footer 
             Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
+
+            _sect.Footers.Primary.Add(_footer)
+
+            'Footer 
+            _footer = New Paragraph()
             _footer.Format.Alignment = ParagraphAlignment.Right
             _footer.AddText("Page ")
             _footer.AddPageField()
@@ -685,11 +707,11 @@ Public Class Emailing
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
 
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+            'Dim _paraSignature As Paragraph = New Paragraph()
+            '_paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            '_paraSignature.Format.Alignment = ParagraphAlignment.Right
 
-            _sect.Add(_paraSignature)
+            '_sect.Add(_paraSignature)
 
 
             ' Renders the doocument
@@ -710,7 +732,7 @@ Public Class Emailing
 
         sql.AddParam("@examineeID", _examineeIDParam)
         sql.AddParam("@setDescription", _setDescriptionParam)
-        sql.AddParam("@levelDescription", "Clerical")
+        sql.AddParam("@levelID", "3")
 
 
 
@@ -726,7 +748,8 @@ Public Class Emailing
                           INNER JOIN tbl_position
                           ON tbl_position.positionID = tbl_examinee_set.positionID
                           WHERE tbl_examinee.examineeID = @examineeID
-                          AND tbl_level.levelDescription = @levelDescription
+                          AND tbl_level.levelID = @levelID
+                          AND tbl_examinee_set.levelID = @levelID
                           AND tbl_examinee_score.setDescription = @setDescription")
 
         ' Examinee Detials
@@ -782,8 +805,16 @@ Public Class Emailing
             ' Add this at the end so that it doesn't interfere with our image
             _sect.Headers.Primary.Add(_headerText)
 
+
             'Footer 
             Dim _footer As Paragraph = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
+
+            _sect.Footers.Primary.Add(_footer)
+
+            'Footer 
+            _footer = New Paragraph()
             _footer.Format.Alignment = ParagraphAlignment.Right
             _footer.AddText("Page ")
             _footer.AddPageField()
@@ -858,11 +889,11 @@ Public Class Emailing
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
             _sect.AddParagraph(vbNewLine & vbNewLine & vbNewLine & vbNewLine)
 
-            Dim _paraSignature As Paragraph = New Paragraph()
-            _paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
-            _paraSignature.Format.Alignment = ParagraphAlignment.Right
+            'Dim _paraSignature As Paragraph = New Paragraph()
+            '_paraSignature.AddFormattedText("______________________" & vbNewLine & "Printed Name and Signature", "Paragraph")
+            '_paraSignature.Format.Alignment = ParagraphAlignment.Right
 
-            _sect.Add(_paraSignature)
+            '_sect.Add(_paraSignature)
 
 
             ' Renders the doocument
@@ -879,7 +910,8 @@ Public Class Emailing
         End If
     End Sub
 
-    Public Shared Sub SendEmailFromAdmin(_examineeEmailAddress As String, _result As String)
+    Public Shared Function SendEmailFromAdmin(_examineeEmailAddress As String, _result As String) As Boolean
+
         Try
             Dim mail As New MailMessage()
             mail.From = New MailAddress(emailAddress)
@@ -898,13 +930,19 @@ Public Class Emailing
 
             ' sending mail
             smtp.Send(mail)
+
+            mail.Dispose()
             MessageBox.Show("Mail Sent")
+
+
+            Return True
 
 
         Catch ex As Exception
             MessageBox.Show("Email sending error. Now cancelling request." & vbNewLine & ex.Message)
-            Exit Sub
+            Return False
         End Try
-    End Sub
+
+    End Function
 
 End Class
