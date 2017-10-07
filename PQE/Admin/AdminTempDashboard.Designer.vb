@@ -22,9 +22,9 @@ Partial Class AdminTempDashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnUserManual = New MaterialSkin.Controls.MaterialRaisedButton()
         Me.btnBackLogin = New MaterialSkin.Controls.MaterialRaisedButton()
@@ -205,7 +205,7 @@ Partial Class AdminTempDashboard
         Me.txtEmailAddress.Location = New System.Drawing.Point(792, 334)
         Me.txtEmailAddress.Name = "txtEmailAddress"
         Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
-        Me.txtEmailAddress.TabIndex = 59
+        Me.txtEmailAddress.TabIndex = 2
         '
         'lblEmailError
         '
@@ -266,7 +266,7 @@ Partial Class AdminTempDashboard
         Me.txtLastName.MaxLength = 50
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.Size = New System.Drawing.Size(294, 22)
-        Me.txtLastName.TabIndex = 55
+        Me.txtLastName.TabIndex = 1
         '
         'Label2
         '
@@ -286,7 +286,7 @@ Partial Class AdminTempDashboard
         Me.txtFirstName.MaxLength = 50
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
-        Me.txtFirstName.TabIndex = 51
+        Me.txtFirstName.TabIndex = 0
         '
         'Label38
         '
@@ -445,7 +445,7 @@ Partial Class AdminTempDashboard
         Me.rbClericalActive.Name = "rbClericalActive"
         Me.rbClericalActive.Ripple = True
         Me.rbClericalActive.Size = New System.Drawing.Size(68, 30)
-        Me.rbClericalActive.TabIndex = 92
+        Me.rbClericalActive.TabIndex = 8
         Me.rbClericalActive.TabStop = True
         Me.rbClericalActive.Text = "Active"
         Me.rbClericalActive.UseVisualStyleBackColor = True
@@ -462,7 +462,7 @@ Partial Class AdminTempDashboard
         Me.rbNonSupervisoryActive.Name = "rbNonSupervisoryActive"
         Me.rbNonSupervisoryActive.Ripple = True
         Me.rbNonSupervisoryActive.Size = New System.Drawing.Size(68, 30)
-        Me.rbNonSupervisoryActive.TabIndex = 93
+        Me.rbNonSupervisoryActive.TabIndex = 7
         Me.rbNonSupervisoryActive.TabStop = True
         Me.rbNonSupervisoryActive.Text = "Active"
         Me.rbNonSupervisoryActive.UseVisualStyleBackColor = True
@@ -479,7 +479,7 @@ Partial Class AdminTempDashboard
         Me.rbSupervisoryActive.Name = "rbSupervisoryActive"
         Me.rbSupervisoryActive.Ripple = True
         Me.rbSupervisoryActive.Size = New System.Drawing.Size(68, 30)
-        Me.rbSupervisoryActive.TabIndex = 94
+        Me.rbSupervisoryActive.TabIndex = 6
         Me.rbSupervisoryActive.TabStop = True
         Me.rbSupervisoryActive.Text = "Active"
         Me.rbSupervisoryActive.UseVisualStyleBackColor = True
@@ -602,7 +602,7 @@ Partial Class AdminTempDashboard
         Me.cboSupervisoryPosition.Location = New System.Drawing.Point(762, 413)
         Me.cboSupervisoryPosition.Name = "cboSupervisoryPosition"
         Me.cboSupervisoryPosition.Size = New System.Drawing.Size(294, 24)
-        Me.cboSupervisoryPosition.TabIndex = 80
+        Me.cboSupervisoryPosition.TabIndex = 3
         '
         'cboNonSupervisoryPosition
         '
@@ -612,7 +612,7 @@ Partial Class AdminTempDashboard
         Me.cboNonSupervisoryPosition.Location = New System.Drawing.Point(762, 523)
         Me.cboNonSupervisoryPosition.Name = "cboNonSupervisoryPosition"
         Me.cboNonSupervisoryPosition.Size = New System.Drawing.Size(294, 24)
-        Me.cboNonSupervisoryPosition.TabIndex = 79
+        Me.cboNonSupervisoryPosition.TabIndex = 4
         '
         'cboClericalPosition
         '
@@ -622,7 +622,7 @@ Partial Class AdminTempDashboard
         Me.cboClericalPosition.Location = New System.Drawing.Point(762, 641)
         Me.cboClericalPosition.Name = "cboClericalPosition"
         Me.cboClericalPosition.Size = New System.Drawing.Size(294, 24)
-        Me.cboClericalPosition.TabIndex = 78
+        Me.cboClericalPosition.TabIndex = 5
         '
         'Label55
         '
@@ -794,36 +794,36 @@ Partial Class AdminTempDashboard
         Me.dgvExaminee.AllowUserToResizeRows = False
         Me.dgvExaminee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvExaminee.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExaminee.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExaminee.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvExaminee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvExaminee.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvExaminee.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvExaminee.EnableHeadersVisualStyles = False
         Me.dgvExaminee.GridColor = System.Drawing.SystemColors.MenuBar
         Me.dgvExaminee.Location = New System.Drawing.Point(52, 488)
         Me.dgvExaminee.Name = "dgvExaminee"
         Me.dgvExaminee.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExaminee.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExaminee.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvExaminee.RowHeadersVisible = False
         Me.dgvExaminee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvExaminee.Size = New System.Drawing.Size(416, 198)
@@ -920,7 +920,7 @@ Partial Class AdminTempDashboard
         Me.txtExamineeIDFilter.Location = New System.Drawing.Point(120, 18)
         Me.txtExamineeIDFilter.Name = "txtExamineeIDFilter"
         Me.txtExamineeIDFilter.Size = New System.Drawing.Size(272, 20)
-        Me.txtExamineeIDFilter.TabIndex = 1
+        Me.txtExamineeIDFilter.TabIndex = 0
         '
         'MaterialDivider6
         '
@@ -939,7 +939,7 @@ Partial Class AdminTempDashboard
         Me.rbNoResultFilter.Location = New System.Drawing.Point(297, 95)
         Me.rbNoResultFilter.Name = "rbNoResultFilter"
         Me.rbNoResultFilter.Size = New System.Drawing.Size(81, 17)
-        Me.rbNoResultFilter.TabIndex = 6
+        Me.rbNoResultFilter.TabIndex = 5
         Me.rbNoResultFilter.TabStop = True
         Me.rbNoResultFilter.Text = "No Result"
         Me.rbNoResultFilter.UseVisualStyleBackColor = True
@@ -950,7 +950,7 @@ Partial Class AdminTempDashboard
         Me.rbFailedFilter.Location = New System.Drawing.Point(214, 95)
         Me.rbFailedFilter.Name = "rbFailedFilter"
         Me.rbFailedFilter.Size = New System.Drawing.Size(59, 17)
-        Me.rbFailedFilter.TabIndex = 5
+        Me.rbFailedFilter.TabIndex = 4
         Me.rbFailedFilter.TabStop = True
         Me.rbFailedFilter.Text = "Failed"
         Me.rbFailedFilter.UseVisualStyleBackColor = True
@@ -961,7 +961,7 @@ Partial Class AdminTempDashboard
         Me.rbPassedFilter.Location = New System.Drawing.Point(123, 95)
         Me.rbPassedFilter.Name = "rbPassedFilter"
         Me.rbPassedFilter.Size = New System.Drawing.Size(66, 17)
-        Me.rbPassedFilter.TabIndex = 4
+        Me.rbPassedFilter.TabIndex = 3
         Me.rbPassedFilter.TabStop = True
         Me.rbPassedFilter.Text = "Passed"
         Me.rbPassedFilter.UseVisualStyleBackColor = True
@@ -982,14 +982,14 @@ Partial Class AdminTempDashboard
         Me.dtpToFilter.Location = New System.Drawing.Point(170, 173)
         Me.dtpToFilter.Name = "dtpToFilter"
         Me.dtpToFilter.Size = New System.Drawing.Size(222, 20)
-        Me.dtpToFilter.TabIndex = 9
+        Me.dtpToFilter.TabIndex = 8
         '
         'dtpFromFilter
         '
         Me.dtpFromFilter.Location = New System.Drawing.Point(170, 145)
         Me.dtpFromFilter.Name = "dtpFromFilter"
         Me.dtpFromFilter.Size = New System.Drawing.Size(222, 20)
-        Me.dtpFromFilter.TabIndex = 8
+        Me.dtpFromFilter.TabIndex = 7
         '
         'btnSearch
         '
@@ -1025,7 +1025,7 @@ Partial Class AdminTempDashboard
         Me.cboPositionFilter.Location = New System.Drawing.Point(120, 118)
         Me.cboPositionFilter.Name = "cboPositionFilter"
         Me.cboPositionFilter.Size = New System.Drawing.Size(272, 21)
-        Me.cboPositionFilter.TabIndex = 7
+        Me.cboPositionFilter.TabIndex = 6
         '
         'Label44
         '
@@ -1094,7 +1094,7 @@ Partial Class AdminTempDashboard
         Me.txtFirstNameFilter.MaxLength = 50
         Me.txtFirstNameFilter.Name = "txtFirstNameFilter"
         Me.txtFirstNameFilter.Size = New System.Drawing.Size(272, 22)
-        Me.txtFirstNameFilter.TabIndex = 2
+        Me.txtFirstNameFilter.TabIndex = 1
         '
         'txtLastNameFilter
         '
@@ -1103,7 +1103,7 @@ Partial Class AdminTempDashboard
         Me.txtLastNameFilter.MaxLength = 50
         Me.txtLastNameFilter.Name = "txtLastNameFilter"
         Me.txtLastNameFilter.Size = New System.Drawing.Size(272, 22)
-        Me.txtLastNameFilter.TabIndex = 3
+        Me.txtLastNameFilter.TabIndex = 2
         '
         'Label48
         '

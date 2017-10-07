@@ -4,24 +4,28 @@ Comments
 
 TODO : Remove Textboxes
 
-TODO : AdminDashboard Sync to AdminTempDashboard
-
 
 AdminDashboard
-TODO : COLOR UI ng Examinee Fields .. pag nagclick green dapat lahat, pag nag clear fields dapat window-color lahat
 TODO?: Process bar kay Send all emails
-TODO : TabIndexing
-
 
 ExamineeTest
 TODO : ANSWER UI
 
-
-Emailing
-
 =====================================================
 
+October 7,  2017 - Mem
 
+### DONE
+TODO : COLOR UI ng Examinee Fields .. pag nagclick green dapat lahat, pag nag clear fields dapat window-color lahat
+TODO : TabIndexing
+TODO : AdminDashboard Sync to AdminTempDashboard
+
+
+### Added
+AdminDashboard.vb; Configuration>txtSettingEmailAddress; Added validation
+
+
+=====================================================
 
 
 

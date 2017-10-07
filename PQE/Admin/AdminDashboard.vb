@@ -1007,19 +1007,23 @@ Public Class AdminDashboard
 
         _sect.AddParagraph(vbNewLine & vbNewLine)
 
+        Dim _tableHeader As Paragraph = New Paragraph()
+        _tableHeader.AddFormattedText("List of Examinees" & vbNewLine, "Heading3")
+        _tableHeader.Format.Alignment = ParagraphAlignment.Center
+        _sect.Add(_tableHeader)
+
         ' Declare table
         Dim _table As Table = New Table()
         _table.Borders.Width = 0.75
 
         ' First column
         Dim _column As Column = New Column()
-        _column = _table.AddColumn(Unit.FromCentimeter(3))
+        _column = _table.AddColumn(Unit.FromCentimeter(4))
         _column.Format.Alignment = ParagraphAlignment.Center
         ' NOTE BEFORE YOU CAN ADD CELLS, YOU MUST ADD THE COLUMN
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(7))
+        _column = _table.AddColumn(Unit.FromCentimeter(5))
+        _column = _table.AddColumn(Unit.FromCentimeter(5))
+        _column = _table.AddColumn(Unit.FromCentimeter(6.8))
         _column = _table.AddColumn(Unit.FromCentimeter(4))
         Dim _row As Row = New Row()
         ' For table header
@@ -1034,23 +1038,15 @@ Public Class AdminDashboard
         _cell = _row.Cells(2)
         _cell.AddParagraph("Last Name")
         _cell = _row.Cells(3)
-        _cell.AddParagraph("Level")
+        _cell.AddParagraph("Email Address")
         _cell = _row.Cells(4)
-        _cell.AddParagraph("Position")
-        _cell = _row.Cells(5)
-        _cell.AddParagraph("Result")
+        _cell.AddParagraph("Date Taken")
+
 
 
         ' Execute query to get data on the appropriate set
         'sql.AddParam("@setDescription", cboExamineeSet.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee
-                      INNER JOIN tbl_level
-                              ON tbl_examinee.levelID = tbl_level.levelID
-                      INNER JOIN tbl_position
-                              ON tbl_examinee.positionID = tbl_position.positionID
-                      INNER JOIN tbl_examinee_set
-                              ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
-                           WHERE tbl_examinee_set.setDescription = @setDescription")
+        sql.ExecuteQuery("SELECT examineeDateID, firstName, lastName, emailAddress, dateTaken FROM tbl_examinee")
 
         For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
             _row = _table.AddRow()
@@ -1064,18 +1060,11 @@ Public Class AdminDashboard
             _cell.AddParagraph(r("lastName"))
 
             _cell = _row.Cells(3)
-            _cell.AddParagraph(r("levelDescription"))
+            _cell.AddParagraph(r("emailAddress"))
 
             _cell = _row.Cells(4)
-            _cell.AddParagraph(r("positionDescription"))
+            _cell.AddParagraph(r("dateTaken"))
 
-            If IsDBNull(r("result")) Then
-                _cell = _row.Cells(5)
-                _cell.AddParagraph("N/A")
-            Else
-                _cell = _row.Cells(5)
-                _cell.AddParagraph(r("result"))
-            End If
         Next
 
         ' You need to add it to the section
@@ -3673,5 +3662,9 @@ Public Class AdminDashboard
 
         'ReloadPendingEmailCount
         LoadPendingEmailCount()
+    End Sub
+
+    Private Sub txtSettingEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtSettingEmailAddress.Leave
+        txtSettingEmailAddress.EmailAddressCheck(txtSettingEmailAddress.Text, "")
     End Sub
 End Class
