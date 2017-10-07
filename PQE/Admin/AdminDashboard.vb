@@ -539,6 +539,12 @@ Public Class AdminDashboard
         End If
 
 
+        'Used for dat gr33n colors
+        txtFirstName.NameCheck(txtFirstName.Text)
+        txtLastName.NameCheck(txtFirstName.Text)
+        txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text, lblExamineeDateID.Text)
+
+
     End Sub
 
     ' Code source: Saving an image from picturebox without savefiledialog by Frank L. Smith
@@ -609,7 +615,7 @@ Public Class AdminDashboard
 
     End Sub
 
-    Public Function CheckEmailIfExisting(emailAddress As String) As Boolean
+    Public Function CheckEmailIfExisting(emailAddress As String, examineeDateID As String) As Boolean
         If emailAddress = "" Then
             Return False
         Else
@@ -620,12 +626,8 @@ Public Class AdminDashboard
 
             If sql.recordCount > 0 Then
 
-                ' payagan mo na ko dito jurilla
                 ' If founded that the Boi is the same as the one who have that email
-                Dim _pastBoi As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString()
-
-
-                If _pastBoi = lblExamineeDateID.Text Then
+                If sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString() = examineeDateID Then
                     Return False
                 End If
 
@@ -1863,6 +1865,9 @@ Public Class AdminDashboard
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
 
+        txtExamineeIDFilter.Text = ""
+        txtFirstNameFilter.Text = ""
+        txtLastNameFilter.Text = ""
         cboPositionFilter.SelectedIndex = -1
 
         rbPassedFilter.Checked = False
@@ -1904,7 +1909,7 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub txtEmailAddress_Leave() Handles txtEmailAddress.Leave
-        If Not txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text) Then
+        If Not txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text, lblExamineeDateID.Text) Then
             lblEmailError.Visible = True
         Else
             lblEmailError.Visible = False
