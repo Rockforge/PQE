@@ -5,16 +5,27 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PQE", "PQE\PQE.vbproj", "{2D20CC35-516E-46BD-821E-A48CBFF5160E}"
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "pqesetup", "pqesetup\pqesetup.aiproj", "{3180B8CE-E9A3-4086-B9F2-03A878B09473}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DefaultBuild|Any CPU = DefaultBuild|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Debug|Any CPU.Build.0 = DefaultBuild
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

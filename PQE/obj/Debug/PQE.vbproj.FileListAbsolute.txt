@@ -226,7 +226,6 @@ C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.exe.config
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.exe
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.xml
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.pdb
 C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.exe
 C:\Users\Bacon\GitHub\PQE\PQE\bin\Debug\PQE.pdb
@@ -261,6 +260,9 @@ C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Login.resources
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Resources.resources
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MaterialSkin.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
@@ -293,6 +295,3 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.exe
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.pdb
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
