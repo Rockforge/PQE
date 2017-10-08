@@ -213,13 +213,9 @@ Public Class Emailing
         Try
             Dim _client As New WebClient()
 
-            Using _client.OpenRead("http://google.com")
-                Return True
-            End Using
-
-            Return False
+            Return My.Computer.Network.Ping(smtpServer)
         Catch ex As Exception
-            MessageBox.Show("No internet access")
+            MessageBox.Show("No internet access.")
             Return False
         End Try
 
