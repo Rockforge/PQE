@@ -8,14 +8,14 @@ Public Class TextBoxEx
         Me.BackColor = Color.LightCyan
     End Sub
 
-    Function EmailAddressCheck(ByVal emailAddress As String) As Boolean
+    Function EmailAddressCheck(ByVal emailAddress As String, examineeDateID As String) As Boolean
         Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
         'Dim pattern As String = "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
         Dim emailAddressMatch As Match = Regex.Match(emailAddress, pattern)
         If emailAddressMatch.Success Then
 
             ' Check if existing Email
-            If AdminDashboard.CheckEmailIfExisting(emailAddress) Then
+            If AdminDashboard.CheckEmailIfExisting(emailAddress, examineeDateID) Then
                 Me.BackColor = Color.Orange
                 MessageBox.Show("Email Address already existing.")
                 EmailAddressCheck = False

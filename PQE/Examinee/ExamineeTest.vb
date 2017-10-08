@@ -247,6 +247,10 @@ Public Class ExamineeTest
             dgvQuestionNumber.CurrentCell = _nextRow.Cells(0)
             _nextRow.Selected = True
 
+            ReloadRecordedAnswer()
+
+
+
             lblQuestionID.Text = _nextRow.Cells(1).Value.ToString
 
             sql.AddParam("@questionID", lblQuestionID.Text)
@@ -438,9 +442,9 @@ Public Class ExamineeTest
             examineeAnswer = rbChoice1.Text
         ElseIf rbChoice2.Checked = True Then
             examineeAnswer = rbChoice2.Text
-        ElseIf rbChoice3.Checked = rbChoice3.Text Then
+        ElseIf rbChoice3.Checked = True Then
             examineeAnswer = rbChoice3.Text
-        ElseIf rbChoice4.Checked = rbChoice4.Text Then
+        ElseIf rbChoice4.Checked = True Then
             examineeAnswer = rbChoice4.Text
         End If
 

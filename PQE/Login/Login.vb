@@ -3,6 +3,7 @@
 Public Class Login
 
     Public sql As New SQLControl
+    Public email As New Emailing
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim _skinManager As MaterialSkinManager = MaterialSkinManager.Instance
@@ -42,6 +43,7 @@ Public Class Login
 
         ' Checks if there is an admin
         If sql.recordCount > 0 Then
+            email.InitializeEmailSettings()
             AdminDashboard.Show()
             Me.Close()
             Exit Sub
@@ -77,6 +79,7 @@ Public Class Login
             If sql.recordCount > 0 Then
 
                 MessageBox.Show("Examinee exists")
+                email.InitializeEmailSettings()
                 ' Get both examinee ID and Active Level
                 Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
                 Dim _activeLevel As String = sql.sqlDataSet.Tables(0).Rows(0).Item("activeLevel").ToString

@@ -539,6 +539,12 @@ Public Class AdminDashboard
         End If
 
 
+        'Used for dat gr33n colors
+        txtFirstName.NameCheck(txtFirstName.Text)
+        txtLastName.NameCheck(txtFirstName.Text)
+        txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text, lblExamineeDateID.Text)
+
+
     End Sub
 
     ' Code source: Saving an image from picturebox without savefiledialog by Frank L. Smith
@@ -609,7 +615,7 @@ Public Class AdminDashboard
 
     End Sub
 
-    Public Function CheckEmailIfExisting(emailAddress As String) As Boolean
+    Public Function CheckEmailIfExisting(emailAddress As String, examineeDateID As String) As Boolean
         If emailAddress = "" Then
             Return False
         Else
@@ -620,12 +626,8 @@ Public Class AdminDashboard
 
             If sql.recordCount > 0 Then
 
-                ' payagan mo na ko dito jurilla
                 ' If founded that the Boi is the same as the one who have that email
-                Dim _pastBoi As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString()
-
-
-                If _pastBoi = lblExamineeDateID.Text Then
+                If sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString() = examineeDateID Then
                     Return False
                 End If
 
@@ -1005,19 +1007,23 @@ Public Class AdminDashboard
 
         _sect.AddParagraph(vbNewLine & vbNewLine)
 
+        Dim _tableHeader As Paragraph = New Paragraph()
+        _tableHeader.AddFormattedText("List of Examinees" & vbNewLine, "Heading3")
+        _tableHeader.Format.Alignment = ParagraphAlignment.Center
+        _sect.Add(_tableHeader)
+
         ' Declare table
         Dim _table As Table = New Table()
         _table.Borders.Width = 0.75
 
         ' First column
         Dim _column As Column = New Column()
-        _column = _table.AddColumn(Unit.FromCentimeter(3))
+        _column = _table.AddColumn(Unit.FromCentimeter(4))
         _column.Format.Alignment = ParagraphAlignment.Center
         ' NOTE BEFORE YOU CAN ADD CELLS, YOU MUST ADD THE COLUMN
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
-        _column = _table.AddColumn(Unit.FromCentimeter(7))
+        _column = _table.AddColumn(Unit.FromCentimeter(5))
+        _column = _table.AddColumn(Unit.FromCentimeter(5))
+        _column = _table.AddColumn(Unit.FromCentimeter(6.8))
         _column = _table.AddColumn(Unit.FromCentimeter(4))
         Dim _row As Row = New Row()
         ' For table header
@@ -1032,23 +1038,15 @@ Public Class AdminDashboard
         _cell = _row.Cells(2)
         _cell.AddParagraph("Last Name")
         _cell = _row.Cells(3)
-        _cell.AddParagraph("Level")
+        _cell.AddParagraph("Email Address")
         _cell = _row.Cells(4)
-        _cell.AddParagraph("Position")
-        _cell = _row.Cells(5)
-        _cell.AddParagraph("Result")
+        _cell.AddParagraph("Date Taken")
+
 
 
         ' Execute query to get data on the appropriate set
         'sql.AddParam("@setDescription", cboExamineeSet.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee
-                      INNER JOIN tbl_level
-                              ON tbl_examinee.levelID = tbl_level.levelID
-                      INNER JOIN tbl_position
-                              ON tbl_examinee.positionID = tbl_position.positionID
-                      INNER JOIN tbl_examinee_set
-                              ON tbl_examinee.examineeID = tbl_examinee_set.examineeID
-                           WHERE tbl_examinee_set.setDescription = @setDescription")
+        sql.ExecuteQuery("SELECT examineeDateID, firstName, lastName, emailAddress, dateTaken FROM tbl_examinee")
 
         For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
             _row = _table.AddRow()
@@ -1062,18 +1060,11 @@ Public Class AdminDashboard
             _cell.AddParagraph(r("lastName"))
 
             _cell = _row.Cells(3)
-            _cell.AddParagraph(r("levelDescription"))
+            _cell.AddParagraph(r("emailAddress"))
 
             _cell = _row.Cells(4)
-            _cell.AddParagraph(r("positionDescription"))
+            _cell.AddParagraph(r("dateTaken"))
 
-            If IsDBNull(r("result")) Then
-                _cell = _row.Cells(5)
-                _cell.AddParagraph("N/A")
-            Else
-                _cell = _row.Cells(5)
-                _cell.AddParagraph(r("result"))
-            End If
         Next
 
         ' You need to add it to the section
@@ -1863,6 +1854,9 @@ Public Class AdminDashboard
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
 
+        txtExamineeIDFilter.Text = ""
+        txtFirstNameFilter.Text = ""
+        txtLastNameFilter.Text = ""
         cboPositionFilter.SelectedIndex = -1
 
         rbPassedFilter.Checked = False
@@ -1904,7 +1898,7 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub txtEmailAddress_Leave() Handles txtEmailAddress.Leave
-        If Not txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text) Then
+        If Not txtEmailAddress.EmailAddressCheck(txtEmailAddress.Text, lblExamineeDateID.Text) Then
             lblEmailError.Visible = True
         Else
             lblEmailError.Visible = False
@@ -3563,17 +3557,37 @@ Public Class AdminDashboard
 
 
     Private Sub LoadEmailSettings()
-        email.InitializeEmailSettings()
+        If Not Emailing.emailAddress = Nothing Then
+            txtSettingEmailAddress.Text = Emailing.emailAddress.ToString()
+        End If
 
-        txtSettingEmailAddress.Text = Emailing.emailAddress.ToString()
-        txtSettingSmtp.Text = Emailing.smtpServer.ToString()
-        txtSettingSmtpPort.Text = Emailing.smtpPort.ToString()
-        txtSettingGmailAppPassword.Text = Emailing.emailPassword.ToString()
-        txtSettingMailSubject.Text = Emailing.mailSubject.ToString()
-        txtSettingMessagePasser.Text = Emailing.mailMessagePasser.ToString()
-        txtSettingMessageNonPasser.Text = Emailing.mailMessageNonPasser.ToString()
+        If Not Emailing.smtpServer = Nothing Then
+            txtSettingSmtp.Text = Emailing.smtpServer.ToString()
+        End If
+
+        If Not Emailing.smtpPort = Nothing Then
+            txtSettingSmtpPort.Text = Emailing.smtpPort.ToString()
+        End If
+
+        If Not Emailing.emailPassword = Nothing Then
+            txtSettingGmailAppPassword.Text = Emailing.emailPassword.ToString()
+        End If
+
+        If Not Emailing.mailSubject = Nothing Then
+            txtSettingMailSubject.Text = Emailing.mailSubject.ToString()
+        End If
+
+        If Not Emailing.mailMessagePasser = Nothing Then
+            txtSettingMessagePasser.Text = Emailing.mailMessagePasser.ToString()
+        End If
+
+        If Not Emailing.mailMessageNonPasser = Nothing Then
+            txtSettingMessageNonPasser.Text = Emailing.mailMessageNonPasser.ToString()
+        End If
 
     End Sub
+
+
 
     Private Sub btnEmailSettingsSave_Click(sender As Object, e As EventArgs) Handles btnEmailSettingsSave.Click
         ' Error-catching
@@ -3622,19 +3636,23 @@ Public Class AdminDashboard
                          FROM tbl_pending_emails
                          INNER JOIN tbl_examinee ON tbl_pending_emails.examineeID = tbl_examinee.examineeID")
 
-            Dim emailID As New List(Of String)
+            Dim _emailID As New List(Of String)
 
             ' For Each process is .. for every row >> convert the pdf >> send the email
             For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
-                Emailing.ConvertToPDF(r("pdfDocument"))
-                Emailing.SendEmailFromAdmin(r("emailAddress").ToString(), r("result").ToString())
-                emailID.Add(r("emailID").ToString())
+                Emailing.ConvertToPDF(r("pdfDocument")) ' lalabas na yung ExamineeSummary.pdf
+                If Emailing.SendEmailFromAdmin(r("emailAddress").ToString(), r("result").ToString()) Then
+                    _emailID.Add(r("emailID").ToString())
+                Else
+                    MessageBox.Show("Failed to send a pending email. Now canceling request.")
+                    Exit Sub
+                End If
             Next
 
             ' For Each process is >> delete that sent email from database
-            For Each rEmailID As String In emailID
+            For Each rEmailID As String In _emailID
                 sql.AddParam("@emailID", rEmailID)
-                sql.ExecuteQuery("DELETE * FROM tbl_pending_emails WHERE emailID = @emailID")
+                sql.ExecuteQuery("DELETE FROM tbl_pending_emails WHERE emailID = @emailID")
             Next
 
         Catch ex As Exception
@@ -3642,6 +3660,11 @@ Public Class AdminDashboard
             Exit Sub
         End Try
 
+        'ReloadPendingEmailCount
+        LoadPendingEmailCount()
+    End Sub
 
+    Private Sub txtSettingEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtSettingEmailAddress.Leave
+        txtSettingEmailAddress.EmailAddressCheck(txtSettingEmailAddress.Text, "")
     End Sub
 End Class
