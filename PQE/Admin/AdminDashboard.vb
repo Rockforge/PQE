@@ -1059,8 +1059,13 @@ Public Class AdminDashboard
             _cell = _row.Cells(2)
             _cell.AddParagraph(r("lastName"))
 
-            _cell = _row.Cells(3)
-            _cell.AddParagraph(r("emailAddress"))
+            If IsDBNull(r("emailAddress")) Or r("emailAddress").ToString() = "" Then
+                _cell = _row.Cells(3)
+                _cell.AddParagraph("N/A")
+            Else
+                _cell = _row.Cells(3)
+                _cell.AddParagraph(r("emailAddress"))
+            End If
 
             _cell = _row.Cells(4)
             _cell.AddParagraph(r("dateTaken"))
