@@ -249,5 +249,16 @@ Public Class Login
         End If
     End Sub
 
+    Private Sub btnServerIPChange_Click(sender As Object, e As EventArgs) Handles btnServerIPChange.Click
+        sql.ChangeConnectionString(txtServerIP.Text)
+        txtServerIP.Visible = False
+        Label8.Visible = False
+        btnServerIPChange.Visible = False
+    End Sub
 
+    Private Sub ChangeConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeConnectionToolStripMenuItem.Click
+        txtServerIP.Visible = True
+        Label8.Visible = True
+        btnServerIPChange.Visible = True
+    End Sub
 End Class

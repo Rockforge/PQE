@@ -22,6 +22,7 @@ Partial Class Login
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnLogin = New MaterialSkin.Controls.MaterialRaisedButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -34,7 +35,13 @@ Partial Class Login
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.cmsConnection = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ChangeConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.txtServerIP = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.btnServerIPChange = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmsConnection.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnLogin
@@ -179,11 +186,55 @@ Partial Class Login
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "Last Name"
         '
+        'cmsConnection
+        '
+        Me.cmsConnection.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeConnectionToolStripMenuItem})
+        Me.cmsConnection.Name = "cmsConnection"
+        Me.cmsConnection.Size = New System.Drawing.Size(179, 26)
+        '
+        'ChangeConnectionToolStripMenuItem
+        '
+        Me.ChangeConnectionToolStripMenuItem.Name = "ChangeConnectionToolStripMenuItem"
+        Me.ChangeConnectionToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.ChangeConnectionToolStripMenuItem.Text = "Change connection"
+        '
+        'txtServerIP
+        '
+        Me.txtServerIP.Location = New System.Drawing.Point(120, 252)
+        Me.txtServerIP.Name = "txtServerIP"
+        Me.txtServerIP.Size = New System.Drawing.Size(100, 20)
+        Me.txtServerIP.TabIndex = 7
+        Me.txtServerIP.Visible = False
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(59, 255)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(54, 13)
+        Me.Label8.TabIndex = 8
+        Me.Label8.Text = "Server IP:"
+        Me.Label8.Visible = False
+        '
+        'btnServerIPChange
+        '
+        Me.btnServerIPChange.Location = New System.Drawing.Point(226, 250)
+        Me.btnServerIPChange.Name = "btnServerIPChange"
+        Me.btnServerIPChange.Size = New System.Drawing.Size(75, 23)
+        Me.btnServerIPChange.TabIndex = 9
+        Me.btnServerIPChange.Text = "Change"
+        Me.btnServerIPChange.UseVisualStyleBackColor = True
+        Me.btnServerIPChange.Visible = False
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(339, 551)
+        Me.ContextMenuStrip = Me.cmsConnection
+        Me.Controls.Add(Me.btnServerIPChange)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtServerIP)
         Me.Controls.Add(Me.MaterialDivider1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtLastName)
@@ -200,6 +251,7 @@ Partial Class Login
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "         D.O.S.T - Pre-Qualification Exam"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cmsConnection.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -217,4 +269,9 @@ Partial Class Login
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents cmsConnection As ContextMenuStrip
+    Friend WithEvents ChangeConnectionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents txtServerIP As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents btnServerIPChange As Button
 End Class

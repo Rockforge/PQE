@@ -27,7 +27,6 @@
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_PdfSharpwpf.dll" Value="PdfSharp-wpf.dll"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCONTACT" Value="jurillachristian1@gmail.com"/>
-    <ROW Property="ARPPRODUCTICON" Value="rsz_dost.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="ITerate"/>
     <ROW Property="ProductCode" Value="1033:{4B95CAA2-D9AC-4CB2-808F-D7A4C6CCE54A} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
@@ -148,9 +147,6 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="rsz_dost.exe" SourcePath="..\..\..\..\Desktop\rsz_dost.png" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
