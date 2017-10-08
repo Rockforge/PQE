@@ -55,7 +55,6 @@ Public Class ExamineeTest
         dgvQuestionNumber.DataSource = sql.sqlDataSet.Tables(0)
         dgvQuestionNumber.Columns(1).Visible = False
 
-
         lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
 
         ' GET SPECIFIED TEST QUESTIONS
@@ -150,12 +149,16 @@ Public Class ExamineeTest
                 For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
                     If rbChoice1.Text = r("examineeAnswer") Then
                         rbChoice1.Checked = True
+                        rtfChosenAnswer.Rtf = rbChoice1.Text
                     ElseIf rbChoice2.Text = r("examineeAnswer") Then
                         rbChoice2.Checked = True
+                        rtfChosenAnswer.Rtf = rbChoice2.Text
                     ElseIf rbChoice3.Text = r("examineeAnswer") Then
                         rbChoice3.Checked = True
+                        rtfChosenAnswer.Rtf = rbChoice3.Text
                     ElseIf rbChoice4.Text = r("examineeAnswer") Then
                         rbChoice4.Checked = True
+                        rtfChosenAnswer.Rtf = rbChoice4.Text
                     End If
                 Next
             Else
@@ -163,6 +166,7 @@ Public Class ExamineeTest
             End If
 
         Else
+            rtfChosenAnswer.Rtf = ""
             Exit Sub
         End If
 
@@ -227,75 +231,55 @@ Public Class ExamineeTest
     ' Buttons
     Private Sub btnQuestionNext_Click(sender As Object, e As EventArgs) Handles btnQuestionNext.Click
 
-        dgvQuestionNumber.ClearSelection()
+        UncheckRadioButton()
 
-        If dgvQuestionNumber.CurrentRow.Index < dgvQuestionNumber.Rows.Count - 1 And dgvQuestionNumber.CurrentRow.Index <> dgvQuestionNumber.Rows.Count Then
+        Dim _maxRowIndex As Integer = dgvQuestionNumber.Rows.Count - 1
 
-            dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index + 1).Selected = True
+        Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
+        Dim _currentRowIndex As Integer = _currentGridViewRow.Index
 
-            lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
+
+        If _currentRowIndex >= _maxRowIndex Then
+            MessageBox.Show("No more rows left")
+        Else
+            Dim _nextRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex + 1)
+
+            dgvQuestionNumber.CurrentCell = _nextRow.Cells(0)
+            _nextRow.Selected = True
+
+            lblQuestionID.Text = _nextRow.Cells(1).Value.ToString
+
             sql.AddParam("@questionID", lblQuestionID.Text)
             sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
-
 
             rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
             rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
             rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
             rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
             rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
-            If dgvQuestionNumber.CurrentRow.Index <= dgvQuestionNumber.Rows.Count - 1 Then
-
-            ElseIf dgvQuestionNumber.CurrentRow.Index = dgvQuestionNumber.Rows.Count - 1 Then
-                dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index).Selected = True
-
-                lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
-                sql.AddParam("@questionID", lblQuestionID.Text)
-                sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
-
-
-                rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-                rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-                rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-                rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-                rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-                lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
-
-                ' Reloads answer
-                ReloadRecordedAnswer()
-            End If
-
+            ReloadRecordedAnswer()
+        End If
 
     End Sub
 
     Private Sub btnQuestionPrevious_Click(sender As Object, e As EventArgs) Handles btnQuestionPrevious.Click
 
-        dgvQuestionNumber.ClearSelection()
+        UncheckRadioButton()
 
-        If dgvQuestionNumber.CurrentRow.Index > 0 And dgvQuestionNumber.CurrentRow.Index <> 0 Then
+        Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
+        Dim _currentRowIndex As Integer = _currentGridViewRow.Index
 
-            dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index - 1).Selected = True
+        If _currentRowIndex <= 0 Then
+            MessageBox.Show("No more rows left")
+        Else
+            Dim _prevRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex - 1)
 
-            lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
-            sql.AddParam("@questionID", lblQuestionID.Text)
-            sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+            dgvQuestionNumber.CurrentCell = _prevRow.Cells(0)
+            _prevRow.Selected = True
 
+            lblQuestionID.Text = _prevRow.Cells(1).Value.ToString
 
-            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
-
-            ' Reloads answer
-            ReloadRecordedAnswer()
-
-        ElseIf dgvQuestionNumber.CurrentRow.Index = 0 Then
-
-            dgvQuestionNumber.Rows(dgvQuestionNumber.CurrentRow.Index).Selected = True
-            lblQuestionID.Text = dgvQuestionNumber.SelectedRows(0).Cells("questionID").Value.ToString
             sql.AddParam("@questionID", lblQuestionID.Text)
             sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
 
@@ -304,13 +288,9 @@ Public Class ExamineeTest
             rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
             rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
             rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
-            ' Reloads answer
             ReloadRecordedAnswer()
-
         End If
-
 
     End Sub
 
@@ -320,6 +300,8 @@ Public Class ExamineeTest
         If _ht.Type = DataGridViewHitTestType.None Or _ht.Type = DataGridViewHitTestType.ColumnHeader Then
             Exit Sub
         End If
+
+        UncheckRadioButton()
 
         rowClicked = dgvQuestionNumber.HitTest(e.Location.X, e.Location.Y).RowIndex
         dgvQuestionNumber.ClearSelection()
@@ -472,8 +454,10 @@ Public Class ExamineeTest
         ' Insert Answer by Examinee. NOTE: examineeAnswer is reliant upon Radio Buttons
         InsertResponse(examineeAnswer)
 
-        ' Uncheck radio button first to not cause conflicts and remove examineeAnswer
-        UncheckRadioButton()
+        ' Place examinee answer inside the box
+        rtfChosenAnswer.Rtf = examineeAnswer
+
+        ' Remove examinee answer
         examineeAnswer = ""
 
 
