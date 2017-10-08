@@ -66,6 +66,7 @@ Public Class Examinee
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
         ExamineeTest.lblLevelID.Text = lblLevelID.Text
+        ExamineeTest.lblTestTypeID.Text = lblTestID1.Text
         ExamineeTest.lblSetDescription.Text = lblSetDescription.Text
         ExamineeTest.lblKindID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("kindID")
         ' Getting the value of time and passing it
@@ -97,6 +98,7 @@ Public Class Examinee
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
         ExamineeTest.lblLevelID.Text = lblLevelID.Text
+        ExamineeTest.lblTestTypeID.Text = lblTestID2.Text
         ExamineeTest.lblSetDescription.Text = lblSetDescription.Text
         ExamineeTest.lblKindID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("kindID")
 
@@ -129,6 +131,7 @@ Public Class Examinee
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
         ExamineeTest.lblLevelID.Text = lblLevelID.Text
+        ExamineeTest.lblTestTypeID.Text = lblTestID3.Text
         ExamineeTest.lblSetDescription.Text = lblSetDescription.Text
         ExamineeTest.lblKindID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("kindID")
 
@@ -161,6 +164,7 @@ Public Class Examinee
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
         ExamineeTest.lblLevelID.Text = lblLevelID.Text
+        ExamineeTest.lblTestTypeID.Text = lblTestID4.Text
         ExamineeTest.lblSetDescription.Text = lblSetDescription.Text
         ExamineeTest.lblKindID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("kindID")
 
@@ -193,6 +197,7 @@ Public Class Examinee
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
         ExamineeTest.lblLevelID.Text = lblLevelID.Text
+        ExamineeTest.lblTestTypeID.Text = lblTestID5.Text
         ExamineeTest.lblSetDescription.Text = lblSetDescription.Text
         ExamineeTest.lblKindID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("kindID")
 

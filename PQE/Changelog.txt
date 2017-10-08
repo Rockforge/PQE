@@ -1,4 +1,15 @@
 ﻿
+10/8/2017 - Jurilla
+
+### Added
+- ExamineeTest.vb; Created dgvUnansweredQuestion
+
+- Emailing.vb; Added mail.dispose()
+
+### Changed
+- Changed the placement of comma in print
+
+
 =============================================================================
 Comments
 

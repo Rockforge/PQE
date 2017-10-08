@@ -95,7 +95,6 @@ Public Class AdminDashboard
         lblLastRestore.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("lastRestore").ToString()
 
 
-
         rs.FindAllControls(Me)
     End Sub
 
@@ -1135,7 +1134,7 @@ Public Class AdminDashboard
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -1964,7 +1963,7 @@ Public Class AdminDashboard
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -2162,7 +2161,7 @@ Public Class AdminDashboard
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -2360,7 +2359,7 @@ Public Class AdminDashboard
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -3671,5 +3670,17 @@ Public Class AdminDashboard
 
     Private Sub txtSettingEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtSettingEmailAddress.Leave
         txtSettingEmailAddress.EmailAddressCheck(txtSettingEmailAddress.Text, "")
+    End Sub
+
+    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
+
+    End Sub
+
+    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
+
+    End Sub
+
+    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
+
     End Sub
 End Class

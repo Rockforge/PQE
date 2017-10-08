@@ -22,15 +22,15 @@ Partial Class AdminDashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -53,7 +53,6 @@ Partial Class AdminDashboard
         Me.MaterialDivider8 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider9 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider7 = New MaterialSkin.Controls.MaterialDivider()
-        Me.txtEmailAddress = New PQE.TextBoxEx()
         Me.rbClericalActive = New MaterialSkin.Controls.MaterialRadioButton()
         Me.rbNonSupervisoryActive = New MaterialSkin.Controls.MaterialRadioButton()
         Me.rbSupervisoryActive = New MaterialSkin.Controls.MaterialRadioButton()
@@ -110,8 +109,6 @@ Partial Class AdminDashboard
         Me.cboSupervisoryPosition = New System.Windows.Forms.ComboBox()
         Me.cboNonSupervisoryPosition = New System.Windows.Forms.ComboBox()
         Me.cboClericalPosition = New System.Windows.Forms.ComboBox()
-        Me.txtLastName = New PQE.TextBoxEx()
-        Me.txtFirstName = New PQE.TextBoxEx()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label55 = New System.Windows.Forms.Label()
         Me.txtClericalResultB = New System.Windows.Forms.Label()
@@ -243,11 +240,6 @@ Partial Class AdminDashboard
         Me.Label63 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtSettingMailSubject = New PQE.TextBoxEx()
-        Me.txtSettingGmailAppPassword = New PQE.TextBoxEx()
-        Me.txtSettingSmtpPort = New PQE.TextBoxEx()
-        Me.txtSettingSmtp = New PQE.TextBoxEx()
-        Me.txtSettingEmailAddress = New PQE.TextBoxEx()
         Me.mtsAdminDashboard = New MaterialSkin.Controls.MaterialTabSelector()
         Me.sfdBackup = New System.Windows.Forms.SaveFileDialog()
         Me.ofdRestore = New System.Windows.Forms.OpenFileDialog()
@@ -259,6 +251,14 @@ Partial Class AdminDashboard
         Me.MaterialDivider4 = New MaterialSkin.Controls.MaterialDivider()
         Me.sfdExcel = New System.Windows.Forms.SaveFileDialog()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.txtEmailAddress = New PQE.TextBoxEx()
+        Me.txtLastName = New PQE.TextBoxEx()
+        Me.txtFirstName = New PQE.TextBoxEx()
+        Me.txtSettingMailSubject = New PQE.TextBoxEx()
+        Me.txtSettingGmailAppPassword = New PQE.TextBoxEx()
+        Me.txtSettingSmtpPort = New PQE.TextBoxEx()
+        Me.txtSettingSmtp = New PQE.TextBoxEx()
+        Me.txtSettingEmailAddress = New PQE.TextBoxEx()
         Me.mtcAdminDashboard.SuspendLayout()
         Me.tabExaminee.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -598,18 +598,11 @@ Partial Class AdminDashboard
         Me.MaterialDivider7.TabIndex = 36
         Me.MaterialDivider7.Text = "MaterialDivider10"
         '
-        'txtEmailAddress
-        '
-        Me.txtEmailAddress.Location = New System.Drawing.Point(744, 128)
-        Me.txtEmailAddress.Name = "txtEmailAddress"
-        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
-        Me.txtEmailAddress.TabIndex = 2
-        '
         'rbClericalActive
         '
         Me.rbClericalActive.AutoSize = True
         Me.rbClericalActive.Depth = 0
-        Me.rbClericalActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbClericalActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbClericalActive.Location = New System.Drawing.Point(564, 437)
         Me.rbClericalActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbClericalActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -626,7 +619,7 @@ Partial Class AdminDashboard
         '
         Me.rbNonSupervisoryActive.AutoSize = True
         Me.rbNonSupervisoryActive.Depth = 0
-        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbNonSupervisoryActive.Location = New System.Drawing.Point(563, 320)
         Me.rbNonSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbNonSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -643,7 +636,7 @@ Partial Class AdminDashboard
         '
         Me.rbSupervisoryActive.AutoSize = True
         Me.rbSupervisoryActive.Depth = 0
-        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbSupervisoryActive.Location = New System.Drawing.Point(563, 208)
         Me.rbSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1148,36 +1141,36 @@ Partial Class AdminDashboard
         Me.dgvExaminee.AllowUserToResizeRows = False
         Me.dgvExaminee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvExaminee.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExaminee.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExaminee.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvExaminee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvExaminee.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvExaminee.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvExaminee.EnableHeadersVisualStyles = False
         Me.dgvExaminee.GridColor = System.Drawing.SystemColors.MenuBar
         Me.dgvExaminee.Location = New System.Drawing.Point(21, 281)
         Me.dgvExaminee.Name = "dgvExaminee"
         Me.dgvExaminee.ReadOnly = True
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExaminee.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExaminee.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvExaminee.RowHeadersVisible = False
         Me.dgvExaminee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvExaminee.Size = New System.Drawing.Size(416, 198)
@@ -1186,11 +1179,11 @@ Partial Class AdminDashboard
         'btnExamineeClear
         '
         Me.btnExamineeClear.Depth = 0
-        Me.btnExamineeClear.Location = New System.Drawing.Point(1054, 112)
+        Me.btnExamineeClear.Location = New System.Drawing.Point(1054, 99)
         Me.btnExamineeClear.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnExamineeClear.Name = "btnExamineeClear"
         Me.btnExamineeClear.Primary = True
-        Me.btnExamineeClear.Size = New System.Drawing.Size(130, 36)
+        Me.btnExamineeClear.Size = New System.Drawing.Size(130, 27)
         Me.btnExamineeClear.TabIndex = 4
         Me.btnExamineeClear.Text = "Clear Fields"
         Me.btnExamineeClear.UseVisualStyleBackColor = True
@@ -1198,11 +1191,11 @@ Partial Class AdminDashboard
         'btnExamineeEdit
         '
         Me.btnExamineeEdit.Depth = 0
-        Me.btnExamineeEdit.Location = New System.Drawing.Point(1054, 141)
+        Me.btnExamineeEdit.Location = New System.Drawing.Point(1054, 132)
         Me.btnExamineeEdit.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnExamineeEdit.Name = "btnExamineeEdit"
         Me.btnExamineeEdit.Primary = True
-        Me.btnExamineeEdit.Size = New System.Drawing.Size(130, 36)
+        Me.btnExamineeEdit.Size = New System.Drawing.Size(130, 27)
         Me.btnExamineeEdit.TabIndex = 4
         Me.btnExamineeEdit.Text = "Edit"
         Me.btnExamineeEdit.UseVisualStyleBackColor = True
@@ -1210,11 +1203,11 @@ Partial Class AdminDashboard
         'btnExamineeRegister
         '
         Me.btnExamineeRegister.Depth = 0
-        Me.btnExamineeRegister.Location = New System.Drawing.Point(1054, 70)
+        Me.btnExamineeRegister.Location = New System.Drawing.Point(1054, 64)
         Me.btnExamineeRegister.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnExamineeRegister.Name = "btnExamineeRegister"
         Me.btnExamineeRegister.Primary = True
-        Me.btnExamineeRegister.Size = New System.Drawing.Size(130, 36)
+        Me.btnExamineeRegister.Size = New System.Drawing.Size(130, 29)
         Me.btnExamineeRegister.TabIndex = 4
         Me.btnExamineeRegister.Text = "Register"
         Me.btnExamineeRegister.UseVisualStyleBackColor = True
@@ -1258,25 +1251,6 @@ Partial Class AdminDashboard
         Me.cboClericalPosition.Size = New System.Drawing.Size(294, 24)
         Me.cboClericalPosition.TabIndex = 5
         '
-        'txtLastName
-        '
-        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLastName.Location = New System.Drawing.Point(744, 86)
-        Me.txtLastName.MaxLength = 50
-        Me.txtLastName.Name = "txtLastName"
-        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
-        Me.txtLastName.TabIndex = 1
-        '
-        'txtFirstName
-        '
-        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
-        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFirstName.Location = New System.Drawing.Point(744, 44)
-        Me.txtFirstName.MaxLength = 50
-        Me.txtFirstName.Name = "txtFirstName"
-        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
-        Me.txtFirstName.TabIndex = 0
-        '
         'Label38
         '
         Me.Label38.AutoSize = True
@@ -1299,61 +1273,55 @@ Partial Class AdminDashboard
         '
         'txtClericalResultB
         '
-        Me.txtClericalResultB.AutoSize = True
-        Me.txtClericalResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultB.Location = New System.Drawing.Point(747, 472)
         Me.txtClericalResultB.Name = "txtClericalResultB"
-        Me.txtClericalResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultB.Size = New System.Drawing.Size(79, 16)
         Me.txtClericalResultB.TabIndex = 0
         Me.txtClericalResultB.Text = "N/A"
         '
         'txtNonSupervisoryResultB
         '
-        Me.txtNonSupervisoryResultB.AutoSize = True
-        Me.txtNonSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultB.Location = New System.Drawing.Point(747, 354)
         Me.txtNonSupervisoryResultB.Name = "txtNonSupervisoryResultB"
-        Me.txtNonSupervisoryResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultB.Size = New System.Drawing.Size(79, 16)
         Me.txtNonSupervisoryResultB.TabIndex = 0
         Me.txtNonSupervisoryResultB.Text = "N/A"
         '
         'txtClericalResultC
         '
-        Me.txtClericalResultC.AutoSize = True
-        Me.txtClericalResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultC.Location = New System.Drawing.Point(747, 495)
         Me.txtClericalResultC.Name = "txtClericalResultC"
-        Me.txtClericalResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultC.Size = New System.Drawing.Size(79, 16)
         Me.txtClericalResultC.TabIndex = 0
         Me.txtClericalResultC.Text = "N/A"
         '
         'txtSupervisoryResultB
         '
-        Me.txtSupervisoryResultB.AutoSize = True
-        Me.txtSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultB.Location = New System.Drawing.Point(747, 241)
         Me.txtSupervisoryResultB.Name = "txtSupervisoryResultB"
-        Me.txtSupervisoryResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultB.Size = New System.Drawing.Size(79, 16)
         Me.txtSupervisoryResultB.TabIndex = 0
         Me.txtSupervisoryResultB.Text = "N/A"
         '
         'txtNonSupervisoryResultC
         '
-        Me.txtNonSupervisoryResultC.AutoSize = True
-        Me.txtNonSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultC.Location = New System.Drawing.Point(747, 378)
         Me.txtNonSupervisoryResultC.Name = "txtNonSupervisoryResultC"
-        Me.txtNonSupervisoryResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultC.Size = New System.Drawing.Size(79, 16)
         Me.txtNonSupervisoryResultC.TabIndex = 0
         Me.txtNonSupervisoryResultC.Text = "N/A"
         '
         'txtClericalResultA
         '
-        Me.txtClericalResultA.AutoSize = True
-        Me.txtClericalResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultA.Location = New System.Drawing.Point(747, 449)
         Me.txtClericalResultA.Name = "txtClericalResultA"
-        Me.txtClericalResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultA.Size = New System.Drawing.Size(79, 16)
         Me.txtClericalResultA.TabIndex = 0
         Me.txtClericalResultA.Text = "N/A"
         '
@@ -1369,31 +1337,28 @@ Partial Class AdminDashboard
         '
         'txtNonSupervisoryResultA
         '
-        Me.txtNonSupervisoryResultA.AutoSize = True
-        Me.txtNonSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultA.Location = New System.Drawing.Point(747, 331)
         Me.txtNonSupervisoryResultA.Name = "txtNonSupervisoryResultA"
-        Me.txtNonSupervisoryResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultA.Size = New System.Drawing.Size(79, 16)
         Me.txtNonSupervisoryResultA.TabIndex = 0
         Me.txtNonSupervisoryResultA.Text = "N/A"
         '
         'txtSupervisoryResultC
         '
-        Me.txtSupervisoryResultC.AutoSize = True
-        Me.txtSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultC.Location = New System.Drawing.Point(747, 264)
         Me.txtSupervisoryResultC.Name = "txtSupervisoryResultC"
-        Me.txtSupervisoryResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultC.Size = New System.Drawing.Size(79, 16)
         Me.txtSupervisoryResultC.TabIndex = 0
         Me.txtSupervisoryResultC.Text = "N/A"
         '
         'txtSupervisoryResultA
         '
-        Me.txtSupervisoryResultA.AutoSize = True
-        Me.txtSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultA.Location = New System.Drawing.Point(747, 218)
         Me.txtSupervisoryResultA.Name = "txtSupervisoryResultA"
-        Me.txtSupervisoryResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultA.Size = New System.Drawing.Size(79, 16)
         Me.txtSupervisoryResultA.TabIndex = 0
         Me.txtSupervisoryResultA.Text = "N/A"
         '
@@ -1620,7 +1585,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice4.AutoSize = True
         Me.rbChoice4.Depth = 0
-        Me.rbChoice4.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice4.Location = New System.Drawing.Point(27, 491)
         Me.rbChoice4.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice4.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1637,7 +1602,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice3.AutoSize = True
         Me.rbChoice3.Depth = 0
-        Me.rbChoice3.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice3.Location = New System.Drawing.Point(27, 463)
         Me.rbChoice3.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice3.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1654,7 +1619,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice2.AutoSize = True
         Me.rbChoice2.Depth = 0
-        Me.rbChoice2.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice2.Location = New System.Drawing.Point(27, 435)
         Me.rbChoice2.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice2.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1671,7 +1636,7 @@ Partial Class AdminDashboard
         '
         Me.rbChoice1.AutoSize = True
         Me.rbChoice1.Depth = 0
-        Me.rbChoice1.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbChoice1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbChoice1.Location = New System.Drawing.Point(27, 407)
         Me.rbChoice1.Margin = New System.Windows.Forms.Padding(0)
         Me.rbChoice1.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -1761,36 +1726,36 @@ Partial Class AdminDashboard
         Me.dgvExam.AllowUserToResizeRows = False
         Me.dgvExam.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvExam.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExam.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExam.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvExam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvExam.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvExam.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgvExam.EnableHeadersVisualStyles = False
         Me.dgvExam.GridColor = System.Drawing.SystemColors.MenuBar
         Me.dgvExam.Location = New System.Drawing.Point(1059, 109)
         Me.dgvExam.Name = "dgvExam"
         Me.dgvExam.ReadOnly = True
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvExam.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvExam.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgvExam.RowHeadersVisible = False
         Me.dgvExam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvExam.Size = New System.Drawing.Size(185, 411)
@@ -2142,37 +2107,37 @@ Partial Class AdminDashboard
         Me.dgvTempo.AllowUserToResizeRows = False
         Me.dgvTempo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvTempo.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTempo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTempo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvTempo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTempo.ContextMenuStrip = Me.cmsPrintExaminee
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTempo.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTempo.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgvTempo.EnableHeadersVisualStyles = False
         Me.dgvTempo.GridColor = System.Drawing.SystemColors.MenuBar
         Me.dgvTempo.Location = New System.Drawing.Point(801, 447)
         Me.dgvTempo.Name = "dgvTempo"
         Me.dgvTempo.ReadOnly = True
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTempo.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTempo.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgvTempo.RowHeadersVisible = False
         Me.dgvTempo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvTempo.Size = New System.Drawing.Size(422, 67)
@@ -2265,7 +2230,7 @@ Partial Class AdminDashboard
         '
         Me.chkShowPassword.AutoSize = True
         Me.chkShowPassword.Depth = 0
-        Me.chkShowPassword.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.chkShowPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.chkShowPassword.Location = New System.Drawing.Point(929, 319)
         Me.chkShowPassword.Margin = New System.Windows.Forms.Padding(0)
         Me.chkShowPassword.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -2774,41 +2739,6 @@ Partial Class AdminDashboard
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Exam Timer (minutes)"
         '
-        'txtSettingMailSubject
-        '
-        Me.txtSettingMailSubject.Location = New System.Drawing.Point(541, 169)
-        Me.txtSettingMailSubject.Name = "txtSettingMailSubject"
-        Me.txtSettingMailSubject.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingMailSubject.TabIndex = 15
-        '
-        'txtSettingGmailAppPassword
-        '
-        Me.txtSettingGmailAppPassword.Location = New System.Drawing.Point(541, 143)
-        Me.txtSettingGmailAppPassword.Name = "txtSettingGmailAppPassword"
-        Me.txtSettingGmailAppPassword.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingGmailAppPassword.TabIndex = 14
-        '
-        'txtSettingSmtpPort
-        '
-        Me.txtSettingSmtpPort.Location = New System.Drawing.Point(541, 116)
-        Me.txtSettingSmtpPort.Name = "txtSettingSmtpPort"
-        Me.txtSettingSmtpPort.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtpPort.TabIndex = 13
-        '
-        'txtSettingSmtp
-        '
-        Me.txtSettingSmtp.Location = New System.Drawing.Point(541, 89)
-        Me.txtSettingSmtp.Name = "txtSettingSmtp"
-        Me.txtSettingSmtp.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingSmtp.TabIndex = 12
-        '
-        'txtSettingEmailAddress
-        '
-        Me.txtSettingEmailAddress.Location = New System.Drawing.Point(541, 63)
-        Me.txtSettingEmailAddress.Name = "txtSettingEmailAddress"
-        Me.txtSettingEmailAddress.Size = New System.Drawing.Size(210, 20)
-        Me.txtSettingEmailAddress.TabIndex = 11
-        '
         'mtsAdminDashboard
         '
         Me.mtsAdminDashboard.BaseTabControl = Me.mtcAdminDashboard
@@ -2888,6 +2818,72 @@ Partial Class AdminDashboard
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
+        '
+        'txtEmailAddress
+        '
+        Me.txtEmailAddress.Location = New System.Drawing.Point(744, 128)
+        Me.txtEmailAddress.Name = "txtEmailAddress"
+        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
+        Me.txtEmailAddress.TabIndex = 2
+        '
+        'txtLastName
+        '
+        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLastName.Location = New System.Drawing.Point(744, 86)
+        Me.txtLastName.MaxLength = 50
+        Me.txtLastName.Name = "txtLastName"
+        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
+        Me.txtLastName.TabIndex = 1
+        '
+        'txtFirstName
+        '
+        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
+        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFirstName.Location = New System.Drawing.Point(744, 44)
+        Me.txtFirstName.MaxLength = 50
+        Me.txtFirstName.Name = "txtFirstName"
+        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
+        Me.txtFirstName.TabIndex = 0
+        '
+        'txtSettingMailSubject
+        '
+        Me.txtSettingMailSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSettingMailSubject.Location = New System.Drawing.Point(541, 170)
+        Me.txtSettingMailSubject.Name = "txtSettingMailSubject"
+        Me.txtSettingMailSubject.Size = New System.Drawing.Size(210, 22)
+        Me.txtSettingMailSubject.TabIndex = 15
+        '
+        'txtSettingGmailAppPassword
+        '
+        Me.txtSettingGmailAppPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSettingGmailAppPassword.Location = New System.Drawing.Point(541, 142)
+        Me.txtSettingGmailAppPassword.Name = "txtSettingGmailAppPassword"
+        Me.txtSettingGmailAppPassword.Size = New System.Drawing.Size(210, 22)
+        Me.txtSettingGmailAppPassword.TabIndex = 14
+        '
+        'txtSettingSmtpPort
+        '
+        Me.txtSettingSmtpPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSettingSmtpPort.Location = New System.Drawing.Point(541, 114)
+        Me.txtSettingSmtpPort.Name = "txtSettingSmtpPort"
+        Me.txtSettingSmtpPort.Size = New System.Drawing.Size(210, 22)
+        Me.txtSettingSmtpPort.TabIndex = 13
+        '
+        'txtSettingSmtp
+        '
+        Me.txtSettingSmtp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSettingSmtp.Location = New System.Drawing.Point(541, 86)
+        Me.txtSettingSmtp.Name = "txtSettingSmtp"
+        Me.txtSettingSmtp.Size = New System.Drawing.Size(210, 22)
+        Me.txtSettingSmtp.TabIndex = 12
+        '
+        'txtSettingEmailAddress
+        '
+        Me.txtSettingEmailAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSettingEmailAddress.Location = New System.Drawing.Point(541, 60)
+        Me.txtSettingEmailAddress.Name = "txtSettingEmailAddress"
+        Me.txtSettingEmailAddress.Size = New System.Drawing.Size(210, 22)
+        Me.txtSettingEmailAddress.TabIndex = 11
         '
         'AdminDashboard
         '

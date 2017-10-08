@@ -1602,4 +1602,16 @@ Public Class AdminTempDashboard
         End If
 
     End Sub
+
+    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
+
+    End Sub
+
+    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
+
+    End Sub
+
+    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
+
+    End Sub
 End Class

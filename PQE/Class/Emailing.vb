@@ -139,12 +139,13 @@ Public Class Emailing
 
                 ' sending mail
                 smtp.Send(mail)
-
+                mail.Dispose()
                 ' Delete instance of the mail in database(tbl_pending_emails)
                 sql.AddParam("@emailID", _emailID)
                 sql.ExecuteQuery("DELETE FROM tbl_pending_emails WHERE emailID = @emailID")
 
                 MessageBox.Show("Mail Sent")
+
 
             Else
                 MessageBox.Show("No Connection yet")
@@ -180,7 +181,9 @@ Public Class Emailing
 
                 ' sending mail
                 smtp.Send(mail)
+                mail.Dispose()
                 MessageBox.Show("Mail Sent")
+
                 Exit Sub
 
             Else
@@ -394,7 +397,7 @@ Public Class Emailing
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -579,7 +582,7 @@ Public Class Emailing
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -761,7 +764,7 @@ Public Class Emailing
             Dim _setDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("setDescription").ToString
 
             Dim _dateTakenHolder As Date = Date.Parse(_dateTaken)
-            _dateTaken = _dateTakenHolder.ToString("MMMM, dd yyyy")
+            _dateTaken = _dateTakenHolder.ToString("MMMM dd, yyyy")
 
 
             Dim _doc As Document = New Document()
@@ -929,7 +932,6 @@ Public Class Emailing
 
             mail.Dispose()
             MessageBox.Show("Mail Sent")
-
 
             Return True
 
