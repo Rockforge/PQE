@@ -144,7 +144,6 @@ Public Class Emailing
                 sql.AddParam("@emailID", _emailID)
                 sql.ExecuteQuery("DELETE FROM tbl_pending_emails WHERE emailID = @emailID")
 
-                MessageBox.Show("Mail Sent")
 
 
             Else
@@ -182,7 +181,7 @@ Public Class Emailing
                 ' sending mail
                 smtp.Send(mail)
                 mail.Dispose()
-                MessageBox.Show("Mail Sent")
+
 
                 Exit Sub
 
@@ -230,7 +229,7 @@ Public Class Emailing
         If _levelID = "1" Then
 
             GenerateSupervisoryDocument(_examineeIDParam, _setDescriptionParam)
-            MessageBox.Show("natapos siya mag generate")
+
             ' Ilagay mo yung sending process sa GenerateSupervisoryDocument then dun, Catch mo kung nagsend o hindi, pag hindi pasok mo sa database
 
             ' Get positionID of positionDescription
@@ -270,7 +269,6 @@ Public Class Emailing
         ElseIf _levelID = "2" Then
 
             GenerateNonSupervisoryDocument(_examineeIDParam, _setDescriptionParam)
-            MessageBox.Show("natapos siya mag generate")
             ' Ilagay mo yung sending process sa GenerateSupervisoryDocument then dun, Catch mo kung nagsend o hindi, pag hindi pasok mo sa database
 
             ' Get positionID of positionDescription
@@ -310,7 +308,7 @@ Public Class Emailing
         ElseIf _levelID = "3" Then
 
             GenerateClericalDocument(_examineeIDParam, _setDescriptionParam)
-            MessageBox.Show("natapos siya mag generateClerical")
+
             ' Ilagay mo yung sending process sa GenerateSupervisoryDocument then dun, Catch mo kung nagsend o hindi, pag hindi pasok mo sa database
 
             ' Get positionID of positionDescription
@@ -440,12 +438,7 @@ Public Class Emailing
 
 
             'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Center
-            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
-
-            _sect.Footers.Primary.Add(_footer)
-
+            Dim _footer As Paragraph
 
             'Footer 
             _footer = New Paragraph()
@@ -454,6 +447,12 @@ Public Class Emailing
             _footer.AddPageField()
             _footer.AddText(" of ")
             _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            _footer = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
 
             _sect.Footers.Primary.Add(_footer)
 
@@ -624,11 +623,7 @@ Public Class Emailing
 
 
             'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Center
-            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
-
-            _sect.Footers.Primary.Add(_footer)
+            Dim _footer As Paragraph
 
             'Footer 
             _footer = New Paragraph()
@@ -637,6 +632,12 @@ Public Class Emailing
             _footer.AddPageField()
             _footer.AddText(" of ")
             _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            _footer = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
 
             _sect.Footers.Primary.Add(_footer)
 
@@ -806,11 +807,7 @@ Public Class Emailing
 
 
             'Footer 
-            Dim _footer As Paragraph = New Paragraph()
-            _footer.Format.Alignment = ParagraphAlignment.Center
-            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
-
-            _sect.Footers.Primary.Add(_footer)
+            Dim _footer As Paragraph
 
             'Footer 
             _footer = New Paragraph()
@@ -819,6 +816,12 @@ Public Class Emailing
             _footer.AddPageField()
             _footer.AddText(" of ")
             _footer.AddNumPagesField()
+
+            _sect.Footers.Primary.Add(_footer)
+
+            _footer = New Paragraph()
+            _footer.Format.Alignment = ParagraphAlignment.Center
+            _footer.AddFormattedText("Note: This is a system generated report and does not need a seal or signature.", TextFormat.Italic)
 
             _sect.Footers.Primary.Add(_footer)
 
@@ -931,7 +934,6 @@ Public Class Emailing
             smtp.Send(mail)
 
             mail.Dispose()
-            MessageBox.Show("Mail Sent")
 
             Return True
 

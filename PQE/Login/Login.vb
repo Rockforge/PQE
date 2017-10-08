@@ -78,7 +78,6 @@ Public Class Login
             ' Checks if Examinee exists
             If sql.recordCount > 0 Then
 
-                MessageBox.Show("Examinee exists")
                 email.InitializeEmailSettings()
                 ' Get both examinee ID and Active Level
                 Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
@@ -128,7 +127,7 @@ Public Class Login
                         End If
 
                     ElseIf sql.recordCount = 3 Then
-                        MessageBox.Show("You have done all 3 tests")
+                        MessageBox.Show("You have done all 3 tests for the specified level")
                         Exit Sub
                     End If ' End of if statement for tbl_examinee_set 
 

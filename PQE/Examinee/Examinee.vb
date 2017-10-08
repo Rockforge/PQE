@@ -215,9 +215,6 @@ Public Class Examinee
         Dim _examineeScore As Integer = 0
         Dim _result As String
 
-        MessageBox.Show("Examinee ID: " & lblExamineeID.Text)
-        MessageBox.Show("Set Description: " & lblSetDescription.Text)
-        MessageBox.Show("Position Description" & lblPositionDescription.Text)
 
         ' GET ALL SCORES OF EXAMINEE
         sql.AddParam("@examineeID", lblExamineeID.Text)

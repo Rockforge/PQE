@@ -1,15 +1,4 @@
 ﻿
-10/8/2017 - Jurilla
-
-### Added
-- ExamineeTest.vb; Created dgvUnansweredQuestion
-
-- Emailing.vb; Added mail.dispose()
-
-### Changed
-- Changed the placement of comma in print
-
-
 =============================================================================
 Comments
 
@@ -24,20 +13,24 @@ TODO : ANSWER UI
 
 =====================================================
 
+10/8/2017 - Jurilla
+
+### Added
+- ExamineeTest.vb; Created dgvUnansweredQuestion
+
+- Emailing.vb; Added mail.dispose()
+
+### Changed
+- Changed the placement of comma in print
+
+====================================================
+
 October 8, 2017 - Mem
 
 ### Fixed
 AdminTempDashboard.vb; PrintExamineeTable_Click(); fixed what to print
 AdminDashboard.vb; PrintExamineeTable_Click(); fixed what to print
 Emailing.vb; HasInternetConnectioN(); Renewed from using stream to ping -> My.Computer.Network.Ping(smtpServer)
-
-
-
-
-
-
-
-
 
 
 

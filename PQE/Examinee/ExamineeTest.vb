@@ -30,14 +30,17 @@ Public Class ExamineeTest
         _skinManager.Theme = MaterialSkinManager.Themes.LIGHT
         _skinManager.ColorScheme = New ColorScheme(Primary.Blue600, Primary.Blue700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)
 
-        MessageBox.Show("Loaded")
+
+        ' DGV UI
+        dgvQuestionNumber.MultiSelect = False
+        dgvUnansweredQuestion.MultiSelect = False
+
+
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
         sql.ExecuteQuery("SELECT * FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
         If sql.recordCount <= 0 Then
-            MessageBox.Show("No questions yet.
-                             Please inform the administrator.
-                             The application will now close.")
+            MessageBox.Show("No questions yet." & vbNewLine & "Please inform the administrator." & vbNewLine & "The application will now close.")
 
             ' Close Examinee.vb and this form. Go back to Login.vb
             Login.Show()
@@ -505,7 +508,7 @@ Public Class ExamineeTest
     End Sub
 
     Private Sub btnFinishTest_Click(sender As Object, e As EventArgs) Handles btnFinishTest.Click
-        If MessageBox.Show("You will not be able to go back to this test after you finish it. Are you sure you want to finish the test?", "Caption", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show("You will not be able to go back to this test after you finish it. " & vbNewLine & "Are you sure you want to finish the test?", "Caption", MessageBoxButtons.YesNo) = DialogResult.Yes Then
             TestTypeFinished()
         End If
     End Sub

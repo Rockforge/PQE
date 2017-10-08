@@ -6,6 +6,57 @@ PQE
 </name>
 </assembly>
 <members>
+<member name="T:PQE.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.AddImage">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.ChangeFont">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.dost">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.error1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.NoExamineePic">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.NoExamineePicture">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:PQE.My.Resources.Resources.rsz_dost">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:PQE.DSCamCapture.IsConnected">
  <summary>
  Indicates if this instance is currently connected to a device.
@@ -67,57 +118,6 @@ PQE
  <summary>
  Gets the current video frame and passes the captured image as the (capImage) parameter in the (FrameCaptured) event.
  </summary>
-</member>
-<member name="T:PQE.My.Resources.Resources">
-<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.ResourceManager">
-<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.Culture">
-<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.AddImage">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.ChangeFont">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.dost">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.error1">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.NoExamineePic">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.NoExamineePicture">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:PQE.My.Resources.Resources.rsz_dost">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
 </member>
 </members>
 </doc>

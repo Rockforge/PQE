@@ -69,6 +69,7 @@ Public Class AdminDashboard
         btnExamineeEdit.Visible = False
         lblExamineeError.Visible = False
         picExamineeError.Visible = False
+        dgvExaminee.MultiSelect = False
 
         ' Filter Dates
         dtpFromFilter.Enabled = False
@@ -78,6 +79,7 @@ Public Class AdminDashboard
         LoadExamSet()
         picExamError.Visible = False
         lblExamError.Visible = False
+        dgvExam.MultiSelect = False
 
         ' Configuration Tab
         LoadDgvTempo()
@@ -1045,7 +1047,7 @@ Public Class AdminDashboard
 
         ' Execute query to get data on the appropriate set
         'sql.AddParam("@setDescription", cboExamineeSet.Text)
-        sql.ExecuteQuery("SELECT examineeDateID, firstName, lastName, emailAddress, dateTaken FROM tbl_examinee")
+        sql.ExecuteQuery("SELECT examineeDateID, firstName, lastName, emailAddress, dateTaken FROM tbl_examinee ORDER BY examineeDateID DESC")
 
         For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
             _row = _table.AddRow()
@@ -1794,9 +1796,9 @@ Public Class AdminDashboard
                            WHERE 1 ")
 
         ' Examinee ID Filter
-        If txtExamineeIDFilter.Text <> Nothing Then
-            sql.AddParam("@examineeIDFilter", txtExamineeIDFilter.Text)
-            _stringBuilder.Append("AND tbl_examinee.examineeID LIKE CONCAT('%',@examineeIDFilter,'%') ")
+        If txtExamineeDateIDFilter.Text <> Nothing Then
+            sql.AddParam("@examineeIDFilter", txtExamineeDateIDFilter.Text)
+            _stringBuilder.Append("AND tbl_examinee.examineeDateID LIKE CONCAT('%',@examineeIDFilter,'%') ")
         End If
 
 
@@ -1858,7 +1860,7 @@ Public Class AdminDashboard
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
 
-        txtExamineeIDFilter.Text = ""
+        txtExamineeDateIDFilter.Text = ""
         txtFirstNameFilter.Text = ""
         txtLastNameFilter.Text = ""
         cboPositionFilter.SelectedIndex = -1
@@ -3551,6 +3553,7 @@ Public Class AdminDashboard
                                       OR adminLevel = 0)")
 
         dgvTempo.DataSource = sql.sqlDataSet.Tables(0)
+        dgvTempo.Columns(0).Visible = False
     End Sub
 
     Private Sub dgvTempo_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTempo.CellClick
