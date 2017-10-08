@@ -24,60 +24,17 @@ Public Class ExamineeTest
     Dim targetDT As DateTime
     Dim countdownFrom As TimeSpan
 
-    ' Loads our DGV
-    Private Sub LoadDgvQuestionNumber()
-        sql.AddParam("@kindID", lblKindID.Text)
-        sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT questionNumber AS 'Question Number', questionID FROM tbl_questions WHERE kindID = @kindID AND setDescription = @setDescription")
-
-        dgvQuestionNumber.DataSource = sql.sqlDataSet.Tables(0)
-        dgvQuestionNumber.Columns(1).Visible = False
-    End Sub
-
     Private Sub ExamineeTest_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim _skinManager As MaterialSkinManager = MaterialSkinManager.Instance
         _skinManager.AddFormToManage(Me)
         _skinManager.Theme = MaterialSkinManager.Themes.LIGHT
         _skinManager.ColorScheme = New ColorScheme(Primary.Blue600, Primary.Blue700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)
 
-
-        ' Timer configuration
-        countdownFrom = TimeSpan.FromMinutes(Integer.Parse(lblTimer.Text))
-        tmrTest.Interval = 500
-        targetDT = DateTime.Now.Add(countdownFrom)
-        ' Starts timer
-        tmrTest.Start()
-
-        ' Load All Question Number for the specific test with the Question ID
+        MessageBox.Show("Loaded")
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT questionNumber AS 'Question Number', questionID FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
-        dgvQuestionNumber.DataSource = sql.sqlDataSet.Tables(0)
-        dgvQuestionNumber.Columns(1).Visible = False
-
-        lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
-
-        ' GET SPECIFIED TEST QUESTIONS
-        sql.AddParam("@questionID", lblQuestionID.Text)
-        sql.AddParam("@kindID", lblKindID.Text)
-        sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_question 
-                           WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
-
-        MessageBox.Show("Sql record count" & sql.recordCount)
-
-        ' Load first question
-        If sql.recordCount > 0 Then
-            lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
-            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-            lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
-
-        Else
-
+        sql.ExecuteQuery("SELECT * FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
+        If sql.recordCount <= 0 Then
             MessageBox.Show("No questions yet.
                              Please inform the administrator.
                              The application will now close.")
@@ -86,8 +43,35 @@ Public Class ExamineeTest
             Login.Show()
             Examinee.Close()
             Me.Close()
-
         End If
+
+        ' Loads all unanswered questions
+        LoadDgvUnansweredQuestion()
+        ' Load All Question Number for the specific test with the Question ID
+        LoadDgvQuestionNumber()
+
+        ' Query for first question
+        sql.AddParam("@questionID", lblQuestionID.Text)
+        sql.AddParam("@kindID", lblKindID.Text)
+        sql.AddParam("@setDescription", lblSetDescription.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_question 
+                           WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
+
+        ' Loads first question
+        lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
+        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+        lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+        ' Timer configuration
+        countdownFrom = TimeSpan.FromMinutes(Integer.Parse(lblTimer.Text))
+        tmrTest.Interval = 500
+        targetDT = DateTime.Now.Add(countdownFrom)
+        ' Starts timer
+        tmrTest.Start()
 
         rs.FindAllControls(Me)
     End Sub
@@ -96,6 +80,39 @@ Public Class ExamineeTest
         rs.ResizeAllControls(Me)
     End Sub
 
+    ' Loads our DGV
+    Private Sub LoadDgvQuestionNumber()
+        sql.AddParam("@kindID", lblKindID.Text)
+        sql.AddParam("@setDescription", lblSetDescription.Text)
+        sql.ExecuteQuery("SELECT questionNumber AS 'Question Number', questionID FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
+
+
+        dgvQuestionNumber.DataSource = sql.sqlDataSet.Tables(0)
+        dgvQuestionNumber.Columns(1).Visible = False
+
+        lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
+    End Sub
+
+    Private Sub LoadDgvUnansweredQuestion()
+        sql.AddParam("@examineeID", lblExamineeID.Text)
+        sql.AddParam("@levelID", lblLevelID.Text)
+        sql.AddParam("@testTypeID", lblTestTypeID.Text)
+        sql.AddParam("@setDescription", lblSetDescription.Text)
+
+        sql.ExecuteQuery("SELECT questionNumber AS 'Unanswered Question Number' FROM tbl_question
+                      INNER JOIN tbl_kind
+                              ON tbl_question.kindID = tbl_kind.kindID
+                      INNER JOIN tbl_level
+                              ON tbl_kind.levelID = tbl_level.levelID
+                      INNER JOIN tbl_test_type
+                              ON tbl_kind.testTypeID = tbl_test_type.testTypeID
+                           WHERE questionID NOT IN (SELECT questionID FROM tbl_response WHERE tbl_response.examineeID = @examineeID)
+                             AND tbl_level.levelID = @levelID
+                             AND tbl_test_type.testTypeID = @testTypeID
+                             AND tbl_question.setDescription = @setDescription")
+
+        dgvUnansweredQuestion.DataSource = sql.sqlDataSet.Tables(0)
+    End Sub
     ' Insertion/Update of Answer
     Private Sub InsertResponse(examineeAnswer As String)
         ' CHECK IF EXISTING EXAMINEE ANSWER .. IF YES UPDATE .. ELSE INSERT
@@ -149,24 +166,27 @@ Public Class ExamineeTest
                 For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
                     If rbChoice1.Text = r("examineeAnswer") Then
                         rbChoice1.Checked = True
-                        rtfChosenAnswer.Rtf = rbChoice1.Text
+                        rtfChosenAnswer.Text = rbChoice1.Text
                     ElseIf rbChoice2.Text = r("examineeAnswer") Then
                         rbChoice2.Checked = True
-                        rtfChosenAnswer.Rtf = rbChoice2.Text
+                        rtfChosenAnswer.Text = rbChoice2.Text
                     ElseIf rbChoice3.Text = r("examineeAnswer") Then
                         rbChoice3.Checked = True
-                        rtfChosenAnswer.Rtf = rbChoice3.Text
+                        rtfChosenAnswer.Text = rbChoice3.Text
                     ElseIf rbChoice4.Text = r("examineeAnswer") Then
                         rbChoice4.Checked = True
-                        rtfChosenAnswer.Rtf = rbChoice4.Text
+                        rtfChosenAnswer.Text = rbChoice4.Text
                     End If
                 Next
             Else
+                UncheckRadioButton()
+                rtfChosenAnswer.Text = ""
                 Exit Sub
             End If
 
         Else
-            rtfChosenAnswer.Rtf = ""
+            UncheckRadioButton()
+            rtfChosenAnswer.Text = ""
             Exit Sub
         End If
 
@@ -231,7 +251,6 @@ Public Class ExamineeTest
     ' Buttons
     Private Sub btnQuestionNext_Click(sender As Object, e As EventArgs) Handles btnQuestionNext.Click
 
-        UncheckRadioButton()
 
         Dim _maxRowIndex As Integer = dgvQuestionNumber.Rows.Count - 1
 
@@ -241,6 +260,7 @@ Public Class ExamineeTest
 
         If _currentRowIndex >= _maxRowIndex Then
             MessageBox.Show("No more rows left")
+            Exit Sub
         Else
             Dim _nextRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex + 1)
 
@@ -248,8 +268,6 @@ Public Class ExamineeTest
             _nextRow.Selected = True
 
             ReloadRecordedAnswer()
-
-
 
             lblQuestionID.Text = _nextRow.Cells(1).Value.ToString
 
@@ -269,13 +287,13 @@ Public Class ExamineeTest
 
     Private Sub btnQuestionPrevious_Click(sender As Object, e As EventArgs) Handles btnQuestionPrevious.Click
 
-        UncheckRadioButton()
 
         Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
         Dim _currentRowIndex As Integer = _currentGridViewRow.Index
 
         If _currentRowIndex <= 0 Then
             MessageBox.Show("No more rows left")
+            Exit Sub
         Else
             Dim _prevRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex - 1)
 
@@ -297,6 +315,24 @@ Public Class ExamineeTest
         End If
 
     End Sub
+
+    Private Function HasRadioButtonsChecked() As Boolean
+        Dim _isChecked As Boolean = False
+
+        If rbChoice1.Checked = True Then
+            _isChecked = True
+        ElseIf rbChoice2.Checked = True Then
+            _isChecked = True
+        ElseIf rbChoice3.Checked = True Then
+            _isChecked = True
+        ElseIf rbChoice4.Checked = True Then
+            _isChecked = True
+        Else
+            _isChecked = False
+        End If
+
+        Return _isChecked
+    End Function
 
     Private Sub dgvQuestionNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvQuestionNumber.MouseDown
         Dim _ht = dgvQuestionNumber.HitTest(e.Location.X, e.Location.Y)
@@ -459,12 +495,13 @@ Public Class ExamineeTest
         InsertResponse(examineeAnswer)
 
         ' Place examinee answer inside the box
-        rtfChosenAnswer.Rtf = examineeAnswer
+        rtfChosenAnswer.Text = examineeAnswer
 
         ' Remove examinee answer
         examineeAnswer = ""
 
-
+        ' Loads dgv to remove answered question
+        LoadDgvUnansweredQuestion()
     End Sub
 
     Private Sub btnFinishTest_Click(sender As Object, e As EventArgs) Handles btnFinishTest.Click
@@ -472,4 +509,5 @@ Public Class ExamineeTest
             TestTypeFinished()
         End If
     End Sub
+
 End Class

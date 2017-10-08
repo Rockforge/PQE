@@ -454,11 +454,10 @@ Partial Class Examinee
         '
         'lblSetDescription
         '
-        Me.lblSetDescription.AutoSize = True
         Me.lblSetDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSetDescription.Location = New System.Drawing.Point(361, 79)
         Me.lblSetDescription.Name = "lblSetDescription"
-        Me.lblSetDescription.Size = New System.Drawing.Size(34, 20)
+        Me.lblSetDescription.Size = New System.Drawing.Size(43, 20)
         Me.lblSetDescription.TabIndex = 11
         Me.lblSetDescription.Text = "Set"
         '

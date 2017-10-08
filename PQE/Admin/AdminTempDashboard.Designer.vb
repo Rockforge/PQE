@@ -33,15 +33,12 @@ Partial Class AdminTempDashboard
         Me.MaterialDivider4 = New MaterialSkin.Controls.MaterialDivider()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.MaterialDivider1 = New MaterialSkin.Controls.MaterialDivider()
-        Me.txtEmailAddress = New PQE.TextBoxEx()
         Me.lblEmailError = New System.Windows.Forms.Label()
         Me.lblLastNameError = New System.Windows.Forms.Label()
         Me.lblFirstNameError = New System.Windows.Forms.Label()
         Me.lblExamineeDateID = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtLastName = New PQE.TextBoxEx()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtFirstName = New PQE.TextBoxEx()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnExamineeRegister = New MaterialSkin.Controls.MaterialRaisedButton()
@@ -117,6 +114,9 @@ Partial Class AdminTempDashboard
         Me.txtLastNameFilter = New System.Windows.Forms.TextBox()
         Me.Label48 = New System.Windows.Forms.Label()
         Me.MaterialDivider12 = New MaterialSkin.Controls.MaterialDivider()
+        Me.txtEmailAddress = New PQE.TextBoxEx()
+        Me.txtLastName = New PQE.TextBoxEx()
+        Me.txtFirstName = New PQE.TextBoxEx()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picExaminee, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picExamineeError, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,13 +200,6 @@ Partial Class AdminTempDashboard
         Me.MaterialDivider1.TabIndex = 48
         Me.MaterialDivider1.Text = "MaterialDivider1"
         '
-        'txtEmailAddress
-        '
-        Me.txtEmailAddress.Location = New System.Drawing.Point(792, 334)
-        Me.txtEmailAddress.Name = "txtEmailAddress"
-        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
-        Me.txtEmailAddress.TabIndex = 2
-        '
         'lblEmailError
         '
         Me.lblEmailError.AutoSize = True
@@ -259,15 +252,6 @@ Partial Class AdminTempDashboard
         Me.Label1.TabIndex = 49
         Me.Label1.Text = "Examinee ID:"
         '
-        'txtLastName
-        '
-        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLastName.Location = New System.Drawing.Point(792, 292)
-        Me.txtLastName.MaxLength = 50
-        Me.txtLastName.Name = "txtLastName"
-        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
-        Me.txtLastName.TabIndex = 1
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -277,16 +261,6 @@ Partial Class AdminTempDashboard
         Me.Label2.Size = New System.Drawing.Size(76, 16)
         Me.Label2.TabIndex = 50
         Me.Label2.Text = "First Name:"
-        '
-        'txtFirstName
-        '
-        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
-        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFirstName.Location = New System.Drawing.Point(792, 250)
-        Me.txtFirstName.MaxLength = 50
-        Me.txtFirstName.Name = "txtFirstName"
-        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
-        Me.txtFirstName.TabIndex = 0
         '
         'Label38
         '
@@ -437,7 +411,7 @@ Partial Class AdminTempDashboard
         '
         Me.rbClericalActive.AutoSize = True
         Me.rbClericalActive.Depth = 0
-        Me.rbClericalActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbClericalActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbClericalActive.Location = New System.Drawing.Point(582, 662)
         Me.rbClericalActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbClericalActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -454,7 +428,7 @@ Partial Class AdminTempDashboard
         '
         Me.rbNonSupervisoryActive.AutoSize = True
         Me.rbNonSupervisoryActive.Depth = 0
-        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbNonSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbNonSupervisoryActive.Location = New System.Drawing.Point(581, 545)
         Me.rbNonSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbNonSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -471,7 +445,7 @@ Partial Class AdminTempDashboard
         '
         Me.rbSupervisoryActive.AutoSize = True
         Me.rbSupervisoryActive.Depth = 0
-        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.rbSupervisoryActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.rbSupervisoryActive.Location = New System.Drawing.Point(581, 433)
         Me.rbSupervisoryActive.Margin = New System.Windows.Forms.Padding(0)
         Me.rbSupervisoryActive.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -637,60 +611,60 @@ Partial Class AdminTempDashboard
         'txtClericalResultB
         '
         Me.txtClericalResultB.AutoSize = True
-        Me.txtClericalResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultB.Location = New System.Drawing.Point(765, 697)
         Me.txtClericalResultB.Name = "txtClericalResultB"
-        Me.txtClericalResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultB.Size = New System.Drawing.Size(32, 18)
         Me.txtClericalResultB.TabIndex = 67
         Me.txtClericalResultB.Text = "N/A"
         '
         'txtNonSupervisoryResultB
         '
         Me.txtNonSupervisoryResultB.AutoSize = True
-        Me.txtNonSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultB.Location = New System.Drawing.Point(765, 579)
         Me.txtNonSupervisoryResultB.Name = "txtNonSupervisoryResultB"
-        Me.txtNonSupervisoryResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultB.Size = New System.Drawing.Size(32, 18)
         Me.txtNonSupervisoryResultB.TabIndex = 68
         Me.txtNonSupervisoryResultB.Text = "N/A"
         '
         'txtClericalResultC
         '
         Me.txtClericalResultC.AutoSize = True
-        Me.txtClericalResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultC.Location = New System.Drawing.Point(765, 720)
         Me.txtClericalResultC.Name = "txtClericalResultC"
-        Me.txtClericalResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultC.Size = New System.Drawing.Size(32, 18)
         Me.txtClericalResultC.TabIndex = 71
         Me.txtClericalResultC.Text = "N/A"
         '
         'txtSupervisoryResultB
         '
         Me.txtSupervisoryResultB.AutoSize = True
-        Me.txtSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultB.Location = New System.Drawing.Point(765, 466)
         Me.txtSupervisoryResultB.Name = "txtSupervisoryResultB"
-        Me.txtSupervisoryResultB.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultB.Size = New System.Drawing.Size(32, 18)
         Me.txtSupervisoryResultB.TabIndex = 69
         Me.txtSupervisoryResultB.Text = "N/A"
         '
         'txtNonSupervisoryResultC
         '
         Me.txtNonSupervisoryResultC.AutoSize = True
-        Me.txtNonSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultC.Location = New System.Drawing.Point(765, 603)
         Me.txtNonSupervisoryResultC.Name = "txtNonSupervisoryResultC"
-        Me.txtNonSupervisoryResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultC.Size = New System.Drawing.Size(32, 18)
         Me.txtNonSupervisoryResultC.TabIndex = 70
         Me.txtNonSupervisoryResultC.Text = "N/A"
         '
         'txtClericalResultA
         '
         Me.txtClericalResultA.AutoSize = True
-        Me.txtClericalResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClericalResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClericalResultA.Location = New System.Drawing.Point(765, 674)
         Me.txtClericalResultA.Name = "txtClericalResultA"
-        Me.txtClericalResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtClericalResultA.Size = New System.Drawing.Size(32, 18)
         Me.txtClericalResultA.TabIndex = 76
         Me.txtClericalResultA.Text = "N/A"
         '
@@ -707,30 +681,30 @@ Partial Class AdminTempDashboard
         'txtNonSupervisoryResultA
         '
         Me.txtNonSupervisoryResultA.AutoSize = True
-        Me.txtNonSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNonSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNonSupervisoryResultA.Location = New System.Drawing.Point(765, 556)
         Me.txtNonSupervisoryResultA.Name = "txtNonSupervisoryResultA"
-        Me.txtNonSupervisoryResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtNonSupervisoryResultA.Size = New System.Drawing.Size(32, 18)
         Me.txtNonSupervisoryResultA.TabIndex = 73
         Me.txtNonSupervisoryResultA.Text = "N/A"
         '
         'txtSupervisoryResultC
         '
         Me.txtSupervisoryResultC.AutoSize = True
-        Me.txtSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultC.Location = New System.Drawing.Point(765, 489)
         Me.txtSupervisoryResultC.Name = "txtSupervisoryResultC"
-        Me.txtSupervisoryResultC.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultC.Size = New System.Drawing.Size(32, 18)
         Me.txtSupervisoryResultC.TabIndex = 74
         Me.txtSupervisoryResultC.Text = "N/A"
         '
         'txtSupervisoryResultA
         '
         Me.txtSupervisoryResultA.AutoSize = True
-        Me.txtSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupervisoryResultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSupervisoryResultA.Location = New System.Drawing.Point(765, 443)
         Me.txtSupervisoryResultA.Name = "txtSupervisoryResultA"
-        Me.txtSupervisoryResultA.Size = New System.Drawing.Size(31, 16)
+        Me.txtSupervisoryResultA.Size = New System.Drawing.Size(32, 18)
         Me.txtSupervisoryResultA.TabIndex = 75
         Me.txtSupervisoryResultA.Text = "N/A"
         '
@@ -1125,6 +1099,32 @@ Partial Class AdminTempDashboard
         Me.MaterialDivider12.Size = New System.Drawing.Size(2, 480)
         Me.MaterialDivider12.TabIndex = 44
         Me.MaterialDivider12.Text = "MaterialDivider10"
+        '
+        'txtEmailAddress
+        '
+        Me.txtEmailAddress.Location = New System.Drawing.Point(792, 334)
+        Me.txtEmailAddress.Name = "txtEmailAddress"
+        Me.txtEmailAddress.Size = New System.Drawing.Size(294, 20)
+        Me.txtEmailAddress.TabIndex = 2
+        '
+        'txtLastName
+        '
+        Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLastName.Location = New System.Drawing.Point(792, 292)
+        Me.txtLastName.MaxLength = 50
+        Me.txtLastName.Name = "txtLastName"
+        Me.txtLastName.Size = New System.Drawing.Size(294, 22)
+        Me.txtLastName.TabIndex = 1
+        '
+        'txtFirstName
+        '
+        Me.txtFirstName.BackColor = System.Drawing.Color.LightCyan
+        Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFirstName.Location = New System.Drawing.Point(792, 250)
+        Me.txtFirstName.MaxLength = 50
+        Me.txtFirstName.Name = "txtFirstName"
+        Me.txtFirstName.Size = New System.Drawing.Size(294, 22)
+        Me.txtFirstName.TabIndex = 0
         '
         'AdminTempDashboard
         '
