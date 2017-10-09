@@ -113,7 +113,7 @@ Public Class AdminDashboard
 
         'Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
         'Also view Invoice Example for Migradoc. Really useful
-        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
         _logo.LockAspectRatio = True
         _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
         _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -197,7 +197,7 @@ Public Class AdminDashboard
         _renderer.RenderDocument()
 
         'Save document
-        Dim filename As String = "UserManual.pdf"
+        Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\UserManual.pdf"
         _renderer.PdfDocument.Save(filename)
         'Start view
         Process.Start(filename)
@@ -1082,7 +1082,7 @@ Public Class AdminDashboard
         _renderer.RenderDocument()
 
         ' Save document
-        Dim filename As String = "Examinee.pdf"
+        Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\Examinee.pdf"
         _renderer.PdfDocument.Save(filename)
         ' Start view
         Process.Start(filename)
@@ -1146,7 +1146,7 @@ Public Class AdminDashboard
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -1338,10 +1338,16 @@ Public Class AdminDashboard
         ' Get Scores. Uses kindID, setDescription, and examineeID
         sql.AddParam("@setDescription", _setDescription)
         sql.AddParam("@examineeID", _examineeID)
+        sql.AddParam("@levelID", 1)
         sql.ExecuteQuery("SELECT tbl_kind.kindID, tbl_examinee_score.examineeScore AS ExamineeScore FROM tbl_examinee_score
+
                       INNER JOIN tbl_kind
                               ON tbl_examinee_score.kindID = tbl_kind.kindID
-                           WHERE tbl_examinee_score.setDescription = @setDescription AND tbl_examinee_score.examineeID = @examineeID
+
+                           WHERE tbl_examinee_score.setDescription = @setDescription
+                             AND tbl_examinee_score.examineeID = @examineeID
+                             AND tbl_kind.levelID = @levelID
+
                         ORDER BY tbl_kind.kindID ASC")
 
         Dim _supervisoryManagement As String = sql.sqlDataSet.Tables(0).Rows(0).Item("ExamineeScore").ToString
@@ -1462,10 +1468,16 @@ Public Class AdminDashboard
         ' Get Scores. Uses kindID, setDescription, and examineeID
         sql.AddParam("@setDescription", _setDescription)
         sql.AddParam("@examineeID", _examineeID)
+        sql.AddParam("@levelID", 2)
         sql.ExecuteQuery("SELECT tbl_kind.kindID, tbl_examinee_score.examineeScore AS ExamineeScore FROM tbl_examinee_score
+
                       INNER JOIN tbl_kind
                               ON tbl_examinee_score.kindID = tbl_kind.kindID
-                           WHERE tbl_examinee_score.setDescription = @setDescription AND tbl_examinee_score.examineeID = @examineeID
+
+                           WHERE tbl_examinee_score.setDescription = @setDescription
+                             AND tbl_examinee_score.examineeID = @examineeID
+                             AND tbl_kind.levelID = @levelID
+
                         ORDER BY tbl_kind.kindID ASC")
 
         Dim _nonSupervisoryReading As String = sql.sqlDataSet.Tables(0).Rows(0).Item("ExamineeScore").ToString
@@ -1591,10 +1603,16 @@ Public Class AdminDashboard
         ' Get Scores. Uses kindID, setDescription, and examineeID
         sql.AddParam("@setDescription", _setDescription)
         sql.AddParam("@examineeID", _examineeID)
+        sql.AddParam("@levelID", 3)
         sql.ExecuteQuery("SELECT tbl_kind.kindID, tbl_examinee_score.examineeScore AS ExamineeScore FROM tbl_examinee_score
+
                       INNER JOIN tbl_kind
                               ON tbl_examinee_score.kindID = tbl_kind.kindID
-                           WHERE tbl_examinee_score.setDescription = @setDescription AND tbl_examinee_score.examineeID = @examineeID
+
+                           WHERE tbl_examinee_score.setDescription = @setDescription
+                             AND tbl_examinee_score.examineeID = @examineeID
+                             AND tbl_kind.levelID = @levelID
+
                         ORDER BY tbl_kind.kindID ASC")
 
         Dim _clericalNumerical As String = sql.sqlDataSet.Tables(0).Rows(0).Item("ExamineeScore").ToString
@@ -1975,7 +1993,7 @@ Public Class AdminDashboard
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -2094,7 +2112,7 @@ Public Class AdminDashboard
             _renderer.RenderDocument()
 
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
             ' Start view
             Process.Start(filename)
@@ -2134,6 +2152,7 @@ Public Class AdminDashboard
 
 
         sql.ExecuteQuery("SELECT * FROM tbl_examinee
+
                           INNER JOIN tbl_examinee_score
                           ON tbl_examinee.examineeID = tbl_examinee_score.examineeID
                           INNER JOIN tbl_examinee_set
@@ -2144,6 +2163,7 @@ Public Class AdminDashboard
                           ON tbl_kind.levelID = tbl_level.levelID
                           INNER JOIN tbl_position
                           ON tbl_position.positionID = tbl_examinee_set.positionID
+
                           WHERE tbl_examinee.examineeID = @examineeID
                           AND tbl_level.levelDescription = @levelDescription
                           AND tbl_examinee_score.setDescription = @setDescription
@@ -2173,7 +2193,7 @@ Public Class AdminDashboard
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -2292,7 +2312,7 @@ Public Class AdminDashboard
             _renderer.RenderDocument()
 
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
             ' Start view
             Process.Start(filename)
@@ -2371,7 +2391,7 @@ Public Class AdminDashboard
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -2490,7 +2510,7 @@ Public Class AdminDashboard
             _renderer.RenderDocument()
 
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
             ' Start view
             Process.Start(filename)
@@ -3675,15 +3695,8 @@ Public Class AdminDashboard
         txtSettingEmailAddress.EmailAddressCheck(txtSettingEmailAddress.Text, "")
     End Sub
 
-    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
-
+    Public Sub TabConfiguration_Click() Handles tabConfiguration.Click
+        LoadPendingEmailCount()
     End Sub
 
-    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
-
-    End Sub
-
-    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
-
-    End Sub
 End Class

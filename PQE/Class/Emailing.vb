@@ -191,7 +191,7 @@ Public Class Emailing
 
                 sql.AddParam("@examineeID", _examineeIDParam)
                 sql.AddParam("@result", _result)
-                sql.AddParam("@pdfBlob", ConvertToBytes("ExamineeSummary.pdf"))
+                sql.AddParam("@pdfBlob", ConvertToBytes(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"))
                 sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
                 MessageBox.Show("Examinee result temporarily uploaded to database.")
@@ -204,7 +204,7 @@ Public Class Emailing
             ' Insert the email to database
             sql.AddParam("@examineeID", _examineeIDParam)
             sql.AddParam("@result", _result)
-            sql.AddParam("@pdfBlob", ConvertToBytes("ExamineeSummary.pdf"))
+            sql.AddParam("@pdfBlob", ConvertToBytes(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"))
             sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
             MessageBox.Show("Examinee result temporarily uploaded to database.")
@@ -353,7 +353,7 @@ Public Class Emailing
 
     Public Shared Sub ConvertToPDF(_pdfBytes As Byte())
 
-        File.WriteAllBytes("ExamineeSummary.pdf", _pdfBytes)
+        File.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf", _pdfBytes)
 
     End Sub
 
@@ -534,9 +534,11 @@ Public Class Emailing
             _renderer.Document = _doc
             _renderer.RenderDocument()
 
+
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
+
 
         Else
             MessageBox.Show("Examinee has no results yet on the specified Set")
@@ -720,8 +722,9 @@ Public Class Emailing
             _renderer.RenderDocument()
 
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
+
         Else
             MessageBox.Show("Examinee has no results yet on the specified Set")
         End If
@@ -904,7 +907,7 @@ Public Class Emailing
             _renderer.RenderDocument()
 
             ' Save document
-            Dim filename As String = "ExamineeSummary.pdf"
+            Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
             _renderer.PdfDocument.Save(filename)
 
         Else
@@ -913,10 +916,10 @@ Public Class Emailing
     End Sub
 
     Public Shared Function SendEmailFromAdmin(_examineeEmailAddress As String, _result As String) As Boolean
-
+        Dim mail As New MailMessage()
         Try
-            Dim mail As New MailMessage()
-            mail.From = New MailAddress(emailAddress)
+
+            Mail.From = New MailAddress(emailAddress)
             mail.To.Add(_examineeEmailAddress)
             mail.Subject = mailSubject
 
@@ -927,7 +930,7 @@ Public Class Emailing
             End If
 
             Dim attachment As System.Net.Mail.Attachment
-            attachment = New System.Net.Mail.Attachment("ExamineeSummary.pdf")
+            attachment = New System.Net.Mail.Attachment(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf")
             mail.Attachments.Add(attachment)
 
             ' sending mail
@@ -940,9 +943,11 @@ Public Class Emailing
 
         Catch ex As Exception
             MessageBox.Show("Email sending error. Now cancelling request." & vbNewLine & ex.Message)
+            mail.Dispose()
             Return False
         End Try
 
     End Function
+
 
 End Class

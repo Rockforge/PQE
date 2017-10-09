@@ -219,7 +219,14 @@ Public Class Examinee
         ' GET ALL SCORES OF EXAMINEE
         sql.AddParam("@examineeID", lblExamineeID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_examinee_score WHERE examineeID = @examineeID AND setDescription = @setDescription")
+        sql.AddParam("@levelID", lblLevelID.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee_score
+
+                      INNER JOIN tbl_kind ON tbl_examinee_score.kindID = tbl_kind.kindID
+                                
+                           WHERE examineeID = @examineeID 
+                             AND tbl_kind.levelID = @levelID
+                             AND setDescription = @setDescription")
 
         _examineeScore = _examineeScore + sql.sqlDataSet.Tables(0).Rows(0).Item("examineeScore")
         _examineeScore = _examineeScore + sql.sqlDataSet.Tables(0).Rows(1).Item("examineeScore")
@@ -238,15 +245,24 @@ Public Class Examinee
         Else
             _result = "Failed"
         End If
+
+        ' Since there is no positionID
+        Dim _positionID As String = GetPositionID()
+
         ' Since a record for Set A was already inserted upon register
         If lblSetDescription.Text = "A" Then
             sql.AddParam("@examineeID", lblExamineeID.Text)
             sql.AddParam("@setDescription", lblSetDescription.Text)
+            sql.AddParam("@levelID", lblLevelID.Text)
+
+            sql.AddParam("@positionID", _positionID)
             sql.AddParam("@result", _result)
-            sql.ExecuteQuery("UPDATE tbl_examinee_set SET result = @result WHERE examineeID = @examineeID AND setDescription = @setDescription")
+            sql.ExecuteQuery("UPDATE tbl_examinee_set SET result = @result 
+                               WHERE examineeID = @examineeID
+                                 AND levelID = @levelID
+                                 AND setDescription = @setDescription
+                                 AND positionID = @positionID")
         Else
-            ' Since there is no positionID
-            Dim _positionID As String = GetPositionID()
 
             sql.AddParam("@levelID", lblLevelID.Text)
             sql.AddParam("@positionID", _positionID)
