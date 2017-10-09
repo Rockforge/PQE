@@ -920,6 +920,8 @@ Public Class AdminDashboard
         rbNonSupervisoryActive.Checked = False
         rbClericalActive.Checked = False
 
+        picExaminee.Image = My.Resources.NoExamineePic
+
         btnExamineeEdit.Visible = False
         btnExamineeRegister.Visible = True
 
