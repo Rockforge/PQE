@@ -173,7 +173,7 @@ Public Class AdminDashboard
         _sect.AddParagraph("Step 3. The Admin must first insert the Examinee credentials like first name and last name. The admin must also choose a level and position." & vbNewLine & vbNewLine)
         _sect.AddParagraph("Step 4. After registering the Examinee, the Admin can allow the Examinee to take a picture." & vbNewLine & vbNewLine)
         _sect.AddParagraph("Step 5. Then the Admin can go to the Exams tab to insert a variety of questions for the examinee. The Admin can categorize the question to a specific level and to a specific exam type." & vbNewLine & vbNewLine)
-        _sect.AddParagraph("Step 6. Next to the Exams tab is the Configuration tab wherein the Admin can configure the time for each level of exam, backup and restore database, and lastly " & vbNewLine & vbNewLine)
+        _sect.AddParagraph("Step 6. Next to the Exams tab is the Configuration tab wherein the Admin can configure the time for each level of exam, backup and restore database, and set the necessary parameters for send pending emails " & vbNewLine & vbNewLine)
 
         _sect.AddParagraph(vbNewLine & vbNewLine)
 
@@ -185,7 +185,7 @@ Public Class AdminDashboard
         _sect.AddParagraph("Step 1. As you open the login module the Examinee must enter the required fields in order to take the exam prepared by the Admin. (The Examinee must ask for their ID from the Admin)" & vbNewLine & vbNewLine)
         _sect.AddParagraph("Step 2. In the Examinee dashboard, the Examinee can select what type of exam he can take first then continue onto the exam." & vbNewLine & vbNewLine)
         _sect.AddParagraph("Step 3. In the Examination module, the Examinee will take the exam with the given time limit. If the Examinee can’t finish the exam within the given time, the exam will automatically stop." & vbNewLine & vbNewLine)
-        _sect.AddParagraph("Step 4. After the exam is over, the program will compute for the grade of the examinee and the result will be notified to the Administrator" & vbNewLine & vbNewLine)
+        _sect.AddParagraph("Step 4. After the exam is over, the program will compute for the grade of the examinee and the result will be notified to the Administrator. An email will also be sent to the examinee as an attachment." & vbNewLine & vbNewLine)
         _sect.AddParagraph("Step 5. The Examinee then must consult the Administrator." & vbNewLine & vbNewLine)
 
 
