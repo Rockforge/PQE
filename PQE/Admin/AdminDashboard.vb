@@ -3656,6 +3656,7 @@ Public Class AdminDashboard
     Private Sub btnSendPendingEmails_Click(sender As Object, e As EventArgs) Handles btnSendPendingEmails.Click
         ' Dapat may process bar or enabled as background process to eh
         Try
+            MessageBox.Show("Sending of all email will now begin")
             ' Get ALL EMAILS and EMAIL ADDRESSES
             sql.ExecuteQuery("SELECT 
                                 tbl_pending_emails.emailID, 

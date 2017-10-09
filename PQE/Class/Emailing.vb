@@ -134,7 +134,7 @@ Public Class Emailing
                 End If
 
                 Dim attachment As System.Net.Mail.Attachment
-                attachment = New System.Net.Mail.Attachment("ExamineeSummary.pdf")
+                attachment = New System.Net.Mail.Attachment(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf")
                 mail.Attachments.Add(attachment)
 
                 ' sending mail
@@ -175,7 +175,7 @@ Public Class Emailing
                 End If
 
                 Dim attachment As System.Net.Mail.Attachment
-                attachment = New System.Net.Mail.Attachment("ExamineeSummary.pdf")
+                attachment = New System.Net.Mail.Attachment(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf")
                 mail.Attachments.Add(attachment)
 
                 ' sending mail
@@ -400,7 +400,7 @@ Public Class Emailing
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -588,7 +588,7 @@ Public Class Emailing
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -773,7 +773,7 @@ Public Class Emailing
 
             ' Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
             ' Also view Invoice Example for Migradoc. Really useful
-            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+            Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
             _logo.LockAspectRatio = True
             _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
             _logo.WrapFormat.Style = Shapes.WrapStyle.None
