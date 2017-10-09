@@ -1531,7 +1531,7 @@ Public Class AdminDashboard
         _cell.AddParagraph(_maxNonSupervisoryVerbal)
         _cell = _row.Cells(2)
         _cell.Format.Alignment = ParagraphAlignment.Center
-        _cell.AddParagraph(_nonSupervisoryNumerical)
+        _cell.AddParagraph(_nonSupervisoryVerbal)
 
 
         _row = _table.AddRow()
