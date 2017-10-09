@@ -46,6 +46,7 @@ Public Class ExamineeTest
             Login.Show()
             Examinee.Close()
             Me.Close()
+            Exit Sub
         End If
 
         ' Loads all unanswered questions
@@ -435,6 +436,7 @@ Public Class ExamineeTest
         Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
 
         ' nilipat ni mem yung TestDoneChecker() sa Test.vb
+        ' If tapos na yung exam
         If (Examinee.lblLevelID.Text = "3" And Examinee.lblTestsDone.Text = "5") Or (Examinee.lblLevelID.Text <> 3 And Examinee.lblTestsDone.Text = "3") Then
             ' Insertion of pass or Fail
             Examinee.InsertPassOrFail()
@@ -465,6 +467,8 @@ Public Class ExamineeTest
 
             Login.txtExamineeDateID.Text = ""
             Login.txtLastName.Text = ""
+
+            MessageBox.Show("Thank you for taking the Pre-qualification exam." & vbNewLine & "Please consult the administrator for further instructions")
             Examinee.Close()
 
             Login.Show()

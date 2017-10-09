@@ -186,28 +186,23 @@ Public Class Emailing
                 Exit Sub
 
             Else
-                MessageBox.Show("Mail not sent. No internet connection")
-                ' Start uploading pdf to database(tbl_pending_emails)
+                ' Insert the email to database
 
                 sql.AddParam("@examineeID", _examineeIDParam)
                 sql.AddParam("@result", _result)
                 sql.AddParam("@pdfBlob", ConvertToBytes(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"))
                 sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
-                MessageBox.Show("Examinee result temporarily uploaded to database.")
 
             End If
 
         Catch ex As Exception
-            MessageBox.Show("Email not sent" & vbNewLine & ex.Message)
-
             ' Insert the email to database
             sql.AddParam("@examineeID", _examineeIDParam)
             sql.AddParam("@result", _result)
             sql.AddParam("@pdfBlob", ConvertToBytes(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"))
             sql.ExecuteQuery("INSERT INTO tbl_pending_emails (examineeID, result, pdfDocument) VALUES (@examineeID, @result, @pdfBlob)")
 
-            MessageBox.Show("Examinee result temporarily uploaded to database.")
         End Try
     End Sub
 

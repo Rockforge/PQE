@@ -752,7 +752,7 @@ Public Class AdminDashboard
         LoadExamineeDgv()
 
         ' Select who is REGISTERED
-
+        MessageBox.Show("Examinee Registered")
         dgvExaminee.Rows(0).Selected = True
 
         lblExamineeError.Visible = False
@@ -883,6 +883,9 @@ Public Class AdminDashboard
 
         LoadExamineeDgv()
 
+
+        MessageBox.Show("Examinee Edited")
+
         ' Select who is EDITED
         ' TO SELECT ROW OF WHAT IS EDITED
         For Each row In dgvExaminee.Rows
@@ -895,11 +898,12 @@ Public Class AdminDashboard
     End Sub
 
     Private Function GetExamineeID() As Integer
+        If Not lblExamineeDateID.Text = "" Then
+            sql.AddParam("@examineeDateID", lblExamineeDateID.Text)
+            sql.ExecuteQuery("SELECT examineeID from tbl_examinee WHERE examineeDateID = @examineeDateID")
 
-        sql.AddParam("@examineeDateID", lblExamineeDateID.Text)
-        sql.ExecuteQuery("SELECT examineeID from tbl_examinee WHERE examineeDateID = @examineeDateID")
-
-        Return Integer.Parse(sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID"))
+            Return Integer.Parse(sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID"))
+        End If
     End Function
 
 
