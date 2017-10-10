@@ -30,11 +30,9 @@ Public Class ExamineeTest
         _skinManager.Theme = MaterialSkinManager.Themes.LIGHT
         _skinManager.ColorScheme = New ColorScheme(Primary.Blue600, Primary.Blue700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)
 
-
         ' DGV UI
         dgvQuestionNumber.MultiSelect = False
         dgvUnansweredQuestion.MultiSelect = False
-
 
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
@@ -49,26 +47,22 @@ Public Class ExamineeTest
             Exit Sub
         End If
 
-        ' Loads all unanswered questions
-        LoadDgvUnansweredQuestion()
-        ' Load All Question Number for the specific test with the Question ID
-        LoadDgvQuestionNumber()
 
-        ' Query for first question
-        sql.AddParam("@questionID", lblQuestionID.Text)
-        sql.AddParam("@kindID", lblKindID.Text)
-        sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_question 
-                           WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
+        '' Query for first question
+        'sql.AddParam("@questionID", lblQuestionID.Text)
+        'sql.AddParam("@kindID", lblKindID.Text)
+        'sql.AddParam("@setDescription", lblSetDescription.Text)
+        'sql.ExecuteQuery("SELECT * FROM tbl_question 
+        '                   WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
 
-        ' Loads first question
-        lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
-        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-        lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+        '' Loads first question
+        'lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
+        'rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        'rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        'rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        'rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        'rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+        'lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
         ' Timer configuration
         countdownFrom = TimeSpan.FromMinutes(Integer.Parse(lblTimer.Text))
@@ -76,6 +70,11 @@ Public Class ExamineeTest
         targetDT = DateTime.Now.Add(countdownFrom)
         ' Starts timer
         tmrTest.Start()
+
+        ' Loads all unanswered questions
+        LoadDgvUnansweredQuestion()
+        ' Load All Question Number for the specific test with the Question ID
+        LoadDgvQuestionNumber()
 
         rs.FindAllControls(Me)
     End Sub
@@ -86,37 +85,45 @@ Public Class ExamineeTest
 
     ' Loads our DGV
     Private Sub LoadDgvQuestionNumber()
+        sql.AddParam("@examineeID", lblExamineeID.Text)
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
-        sql.ExecuteQuery("SELECT questionNumber AS 'Question Number', questionID FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
+        sql.ExecuteQuery("SET @rowNumber = 0;
+                       SELECT @rowNumber:=@rowNumber + 1 AS 'Question List', questionID FROM tbl_question
+                        WHERE questionID IN (SELECT questionID FROM tbl_response WHERE tbl_response.examineeID = @examineeID)
+                          AND kindID = @kindID
+                          AND setDescription = @setDescription")
+
 
 
         dgvQuestionNumber.DataSource = sql.sqlDataSet.Tables(0)
         dgvQuestionNumber.Columns(1).Visible = False
 
-        lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
     End Sub
 
     Private Sub LoadDgvUnansweredQuestion()
         sql.AddParam("@examineeID", lblExamineeID.Text)
-        sql.AddParam("@levelID", lblLevelID.Text)
-        sql.AddParam("@testTypeID", lblTestTypeID.Text)
+        sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
 
-        sql.ExecuteQuery("SELECT questionNumber AS 'Unanswered Question Number' FROM tbl_question
-                      INNER JOIN tbl_kind
-                              ON tbl_question.kindID = tbl_kind.kindID
-                      INNER JOIN tbl_level
-                              ON tbl_kind.levelID = tbl_level.levelID
-                      INNER JOIN tbl_test_type
-                              ON tbl_kind.testTypeID = tbl_test_type.testTypeID
-                           WHERE questionID NOT IN (SELECT questionID FROM tbl_response WHERE tbl_response.examineeID = @examineeID)
-                             AND tbl_level.levelID = @levelID
-                             AND tbl_test_type.testTypeID = @testTypeID
-                             AND tbl_question.setDescription = @setDescription")
+        sql.ExecuteQuery("SET @rowNumber = 0;
+                       SELECT @rowNumber:=@rowNumber +1 AS 'Unanswered Question', questionID FROM tbl_question
+                        WHERE questionID NOT IN (SELECT questionID FROM tbl_response WHERE tbl_response.examineeID = @examineeID)
+                          AND kindID = @kindID
+                          AND setDescription = @setDescription")
 
         dgvUnansweredQuestion.DataSource = sql.sqlDataSet.Tables(0)
+        dgvUnansweredQuestion.Columns(1).Visible = False
+
+        ' Catches error if there is no record left
+        If sql.recordCount > 0 Then
+            lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
+        Else
+            Exit Sub
+        End If
+
     End Sub
+
     ' Insertion/Update of Answer
     Private Sub InsertResponse(examineeAnswer As String)
         ' CHECK IF EXISTING EXAMINEE ANSWER .. IF YES UPDATE .. ELSE INSERT
@@ -255,7 +262,9 @@ Public Class ExamineeTest
     ' Buttons
     Private Sub btnQuestionNext_Click(sender As Object, e As EventArgs) Handles btnQuestionNext.Click
 
-
+        If dgvQuestionNumber.RowCount <= 0 Then
+            Exit Sub
+        End If
         Dim _maxRowIndex As Integer = dgvQuestionNumber.Rows.Count - 1
 
         Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
@@ -291,6 +300,9 @@ Public Class ExamineeTest
 
     Private Sub btnQuestionPrevious_Click(sender As Object, e As EventArgs) Handles btnQuestionPrevious.Click
 
+        If dgvQuestionNumber.RowCount <= 0 Then
+            Exit Sub
+        End If
 
         Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
         Dim _currentRowIndex As Integer = _currentGridViewRow.Index
@@ -320,24 +332,6 @@ Public Class ExamineeTest
 
     End Sub
 
-    Private Function HasRadioButtonsChecked() As Boolean
-        Dim _isChecked As Boolean = False
-
-        If rbChoice1.Checked = True Then
-            _isChecked = True
-        ElseIf rbChoice2.Checked = True Then
-            _isChecked = True
-        ElseIf rbChoice3.Checked = True Then
-            _isChecked = True
-        ElseIf rbChoice4.Checked = True Then
-            _isChecked = True
-        Else
-            _isChecked = False
-        End If
-
-        Return _isChecked
-    End Function
-
     Private Sub dgvQuestionNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvQuestionNumber.MouseDown
         Dim _ht = dgvQuestionNumber.HitTest(e.Location.X, e.Location.Y)
 
@@ -363,6 +357,7 @@ Public Class ExamineeTest
         lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
 
         ReloadRecordedAnswer()
+        dgvUnansweredQuestion.ClearSelection()
     End Sub
 
     Private Sub UncheckRadioButton()
@@ -509,12 +504,46 @@ Public Class ExamineeTest
 
         ' Loads dgv to remove answered question
         LoadDgvUnansweredQuestion()
+        LoadDgvQuestionNumber()
+
+        ' Clear selection from dgvUnansweredQuestion
+        dgvUnansweredQuestion.ClearSelection()
+
     End Sub
 
     Private Sub btnFinishTest_Click(sender As Object, e As EventArgs) Handles btnFinishTest.Click
-        If MessageBox.Show("You will not be able to go back to this test after you finish it. " & vbNewLine & "Are you sure you want to finish the test?", "Caption", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show("You will not be able to go back to this test after you finish it. " & vbNewLine & "Are you sure you want to finish the test?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             TestTypeFinished()
         End If
     End Sub
 
+    Private Sub dgvUnansweredQuestion_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvUnansweredQuestion.MouseDown
+        Dim _ht = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y)
+
+        If _ht.Type = DataGridViewHitTestType.None Or _ht.Type = DataGridViewHitTestType.ColumnHeader Then
+            Exit Sub
+        End If
+
+        UncheckRadioButton()
+
+        rowClicked = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y).RowIndex
+        dgvUnansweredQuestion.ClearSelection()
+        dgvUnansweredQuestion.Rows(rowClicked).Selected = True
+
+        lblQuestionID.Text = dgvUnansweredQuestion.SelectedRows(0).Cells("questionID").Value.ToString
+        sql.AddParam("@questionID", lblQuestionID.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+        lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+        ReloadRecordedAnswer()
+
+        ' Deselect anything from dgvQuestionNumber
+        dgvQuestionNumber.ClearSelection()
+    End Sub
 End Class

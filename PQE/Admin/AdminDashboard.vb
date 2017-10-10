@@ -36,7 +36,6 @@ Public Class AdminDashboard
     Dim examTypeID As Integer
     Dim correctAnswer As String
     Dim rowClicked As Integer
-    Dim questionNumber As Integer
 
     ' Configuration Tab variables
     Dim tempoAdminID As String = ""
@@ -2772,10 +2771,10 @@ Public Class AdminDashboard
 
 
         ' GETS kind_ID and setDescription for questions 
-        sql.ExecuteQuery("SELECT questionNumber AS Question_Number, questionID
-                            FROM tbl_question 
-                           WHERE kindID = @kindID
-                             AND setDescription = @setDescription")
+        sql.ExecuteQuery("SET @rowNumber = 0;
+                       SELECT @rowNumber:=@rowNumber + 1 AS 'Question Number', questionID FROM tbl_question
+                        WHERE kindID = @kindID
+                          AND setDescription = @setDescription")
 
 
 
@@ -2944,17 +2943,9 @@ Public Class AdminDashboard
         ' Inserting Question
         If lblQuestionID.Text = "" Then
 
-            If lblQuestionCounter.Text = "0" Then ' If there are records
-                questionNumber = 1 ' Then set questionNumber to 1
-            Else
-                questionNumber = Integer.Parse(lblQuestionCounter.Text) + 1
-            End If
-
-
             _questionContent = System.Text.Encoding.ASCII.GetBytes(rtfQuestion.Rtf)
 
             sql.AddParam("@kindID", lblKindID.Text)
-            sql.AddParam("@questionNumber", questionNumber)
             sql.AddParam("@question", _questionContent)
             sql.AddParam("@choice1", txtChoice1.Text)
             sql.AddParam("@choice2", txtChoice2.Text)
@@ -2963,8 +2954,8 @@ Public Class AdminDashboard
             sql.AddParam("@correctAnswer", correctAnswer)
             sql.AddParam("@setDescription", lblExamSet.Text)
             sql.ExecuteQuery("INSERT 
-            INTO tbl_question (kindID, questionNumber,question, choice1, choice2, choice3, choice4, correctAnswer, setDescription)
-            VALUES (@kindID, @questionNumber,@question, @choice1, @choice2, @choice3, @choice4, @correctAnswer, @setDescription)")
+            INTO tbl_question (kindID ,question, choice1, choice2, choice3, choice4, correctAnswer, setDescription)
+            VALUES (@kindID ,@question, @choice1, @choice2, @choice3, @choice4, @correctAnswer, @setDescription)")
 
         End If
 
@@ -2972,7 +2963,6 @@ Public Class AdminDashboard
 
         ' TO SELECT ROW OF WHAT IS EDITED
         If Not lblQuestionID.Text = "" Then
-
             For Each row In dgvExam.Rows
                 If Convert.ToInt32(row.Cells(0).Value) = Convert.ToInt32(lblQuestionID.Text) Then
                     row.Selected = True
@@ -2991,11 +2981,10 @@ Public Class AdminDashboard
             Next
         End If
 
+        MessageBox.Show("Question Saved")
+
         picExamError.Visible = False
         lblExamError.Visible = False
-
-        ' Reset the questionNumber
-        questionNumber = 0
 
     End Sub
 
