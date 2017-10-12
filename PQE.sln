@@ -7,8 +7,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PQE", "PQE\PQE.vbproj", "{2
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "connectionCustomAction", "connectionCustomAction\connectionCustomAction.vbproj", "{0726ECE2-B878-446A-B82F-610243E458EF}"
 EndProject
-Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "pqeSetup", "pqeSetup\pqeSetup.aiproj", "{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,18 +39,6 @@ Global
 		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|Any CPU.ActiveCfg = Release|x86
 		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.ActiveCfg = Release|x86
 		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.Build.0 = Release|x86
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|Any CPU.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|Any CPU.Build.0 = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|x86.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|x86.Build.0 = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|x86.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|x86.Build.0 = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|Any CPU.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|Any CPU.Build.0 = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|x86.ActiveCfg = DefaultBuild
-		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|x86.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

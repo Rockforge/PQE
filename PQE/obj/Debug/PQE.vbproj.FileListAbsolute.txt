@@ -295,4 +295,3 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.exe
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.pdb
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
