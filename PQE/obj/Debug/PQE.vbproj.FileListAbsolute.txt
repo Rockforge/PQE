@@ -259,18 +259,14 @@ C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Form1.resources
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Login.resources
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.Resources.resources
 C:\Users\Bacon\GitHub\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource.Cache
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MaterialSkin.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MySql.Data.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MySql.Data.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.xml
@@ -282,6 +278,7 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.r
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
@@ -295,3 +292,7 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.GenerateResource
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.exe
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PQE", "PQE\PQE.vbproj", "{2D20CC35-516E-46BD-821E-A48CBFF5160E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "connectionCustomAction", "connectionCustomAction\connectionCustomAction.vbproj", "{0726ECE2-B878-446A-B82F-610243E458EF}"
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "pqeSetup", "pqeSetup\pqeSetup.aiproj", "{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,16 +29,18 @@ Global
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|x86.Build.0 = Release|Any CPU
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|x86.ActiveCfg = Debug|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|x86.Build.0 = Debug|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|Any CPU.ActiveCfg = Release|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|Any CPU.Build.0 = Release|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|x86.ActiveCfg = Debug|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|x86.Build.0 = Debug|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|Any CPU.ActiveCfg = Release|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.ActiveCfg = Release|x86
-		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.Build.0 = Release|x86
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Debug|Any CPU.Build.0 = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Debug|x86.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Debug|x86.Build.0 = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.DefaultBuild|x86.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.DefaultBuild|x86.Build.0 = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Release|Any CPU.Build.0 = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Release|x86.ActiveCfg = DefaultBuild
+		{0B00ADD4-DC11-4CFD-8284-C1FC84CD0295}.Release|x86.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
