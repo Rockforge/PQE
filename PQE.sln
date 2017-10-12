@@ -5,27 +5,54 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PQE", "PQE\PQE.vbproj", "{2D20CC35-516E-46BD-821E-A48CBFF5160E}"
 EndProject
-Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "pqesetup", "pqesetup\pqesetup.aiproj", "{3180B8CE-E9A3-4086-B9F2-03A878B09473}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "connectionCustomAction", "connectionCustomAction\connectionCustomAction.vbproj", "{0726ECE2-B878-446A-B82F-610243E458EF}"
+EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "pqeSetup", "pqeSetup\pqeSetup.aiproj", "{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		DefaultBuild|Any CPU = DefaultBuild|Any CPU
+		DefaultBuild|x86 = DefaultBuild|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Debug|x86.Build.0 = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.DefaultBuild|x86.Build.0 = Debug|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Debug|Any CPU.ActiveCfg = DefaultBuild
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Debug|Any CPU.Build.0 = DefaultBuild
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Release|Any CPU.ActiveCfg = DefaultBuild
-		{3180B8CE-E9A3-4086-B9F2-03A878B09473}.Release|Any CPU.Build.0 = DefaultBuild
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2D20CC35-516E-46BD-821E-A48CBFF5160E}.Release|x86.Build.0 = Release|Any CPU
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|x86.ActiveCfg = Debug|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Debug|x86.Build.0 = Debug|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|Any CPU.ActiveCfg = Release|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|Any CPU.Build.0 = Release|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|x86.ActiveCfg = Debug|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.DefaultBuild|x86.Build.0 = Debug|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|Any CPU.ActiveCfg = Release|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.ActiveCfg = Release|x86
+		{0726ECE2-B878-446A-B82F-610243E458EF}.Release|x86.Build.0 = Release|x86
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|Any CPU.Build.0 = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|x86.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Debug|x86.Build.0 = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|x86.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.DefaultBuild|x86.Build.0 = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|Any CPU.Build.0 = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|x86.ActiveCfg = DefaultBuild
+		{5B29A4C9-6007-44D8-A5F8-861D0AC82C54}.Release|x86.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
