@@ -76,11 +76,26 @@ Public Class ExamineeTest
         ' Load All Question Number for the specific test with the Question ID
         LoadDgvQuestionNumber()
 
+        ' Getting first question
+        LoadFirstQuestion()
+
         rs.FindAllControls(Me)
     End Sub
 
     Private Sub ExamineeTest_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         rs.ResizeAllControls(Me)
+    End Sub
+
+
+    Private Sub LoadFirstQuestion()
+        sql.AddParam("@questionID", lblQuestionID.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
     End Sub
 
     ' Loads our DGV
