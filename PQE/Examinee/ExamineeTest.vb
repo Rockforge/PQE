@@ -34,6 +34,7 @@ Public Class ExamineeTest
         dgvQuestionNumber.MultiSelect = False
         dgvUnansweredQuestion.MultiSelect = False
 
+        ' Checks question availability
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
         sql.ExecuteQuery("SELECT * FROM tbl_question WHERE kindID = @kindID AND setDescription = @setDescription")
@@ -46,24 +47,6 @@ Public Class ExamineeTest
             Me.Close()
             Exit Sub
         End If
-
-
-        '' Query for first question
-        'sql.AddParam("@questionID", lblQuestionID.Text)
-        'sql.AddParam("@kindID", lblKindID.Text)
-        'sql.AddParam("@setDescription", lblSetDescription.Text)
-        'sql.ExecuteQuery("SELECT * FROM tbl_question 
-        '                   WHERE kindID = @kindID AND setDescription = @setDescription AND questionID = @questionID")
-
-        '' Loads first question
-        'lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
-        'rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-        'rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-        'rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-        'rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-        'rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-        'lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
-
         ' Timer configuration
         countdownFrom = TimeSpan.FromMinutes(Integer.Parse(lblTimer.Text))
         tmrTest.Interval = 500
