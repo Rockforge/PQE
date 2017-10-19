@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define PQE_TargetDir=$(var.PQE.TargetDir)?>
+  <?define connectionCustom_TargetDir=$(var.connectionCustom.TargetDir)?>
+  <Product Id="*" Name="Pre-Qualification Examination" Language="1033" Version="1.0.0.0" Manufacturer="ITerate" UpgradeCode="38068a71-7845-4a66-98c0-3a36af842586">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+    <Feature Id="ProductFeature" Title="pqeSetup" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Pre-Qualification Examination">
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      <!-- </Component> -->
+      <Component Id="PQE.exe" Guid="87040384-c9c1-4389-85d9-e68f3d48733b">
+        <File Id="PQE.exe" Name="PQE.exe" Source="$(var.PQE_TargetDir)PQE.exe" />
+      </Component>
+      <Component Id="DirectShowLib_2005.dll" Guid="2b93e8c7-236e-4c4f-aa78-f73b8bb7214e">
+        <File Id="DirectShowLib_2005.dll" Name="DirectShowLib-2005.dll" Source="$(var.PQE_TargetDir)DirectShowLib-2005.dll" />
+      </Component>
+      <Component Id="MaterialSkin.dll" Guid="e3296e27-c218-467a-8d58-9927fd691f73">
+        <File Id="MaterialSkin.dll" Name="MaterialSkin.dll" Source="$(var.PQE_TargetDir)MaterialSkin.dll" />
+      </Component>
+      <Component Id="MigraDoc.DocumentObjectModel_wpf.dll" Guid="15f2de58-0671-4d5c-a8e1-c656d3cb67b5">
+        <File Id="MigraDoc.DocumentObjectModel_wpf.dll" Name="MigraDoc.DocumentObjectModel-wpf.dll" Source="$(var.PQE_TargetDir)MigraDoc.DocumentObjectModel-wpf.dll" />
+      </Component>
+      <Component Id="MigraDoc.Rendering_wpf.dll" Guid="fb6a1b4b-237f-403c-9922-de0959c3a75b">
+        <File Id="MigraDoc.Rendering_wpf.dll" Name="MigraDoc.Rendering-wpf.dll" Source="$(var.PQE_TargetDir)MigraDoc.Rendering-wpf.dll" />
+      </Component>
+      <Component Id="MigraDoc.RtfRendering_wpf.dll" Guid="bf447928-dffd-4b34-ad23-c48ee1fd1b3c">
+        <File Id="MigraDoc.RtfRendering_wpf.dll" Name="MigraDoc.RtfRendering-wpf.dll" Source="$(var.PQE_TargetDir)MigraDoc.RtfRendering-wpf.dll" />
+      </Component>
+      <Component Id="MySql.Data.dll" Guid="c7639f40-6487-4e42-af23-a89ec70f816f">
+        <File Id="MySql.Data.dll" Name="MySql.Data.dll" Source="$(var.PQE_TargetDir)MySql.Data.dll" />
+      </Component>
+      <Component Id="PdfSharp_wpf.dll" Guid="88a40e8d-dfa1-4550-a697-616924298954">
+        <File Id="PdfSharp_wpf.dll" Name="PdfSharp-wpf.dll" Source="$(var.PQE_TargetDir)PdfSharp-wpf.dll" />
+      </Component>
+      <Component Id="PdfSharp.Charting_wpf.dll" Guid="f7fae9f7-a0ac-4d94-82d1-c251e436ca58">
+        <File Id="PdfSharp.Charting_wpf.dll" Name="PdfSharp.Charting-wpf.dll" Source="$(var.PQE_TargetDir)PdfSharp.Charting-wpf.dll" />
+      </Component>
+      <Component Id="connectionCustom.dll" Guid="4a5dba17-efdd-45a4-ac90-a2f902d9cdca">
+        <File Id="connectionCustom.dll" Name="connectionCustom.dll" Source="$(var.connectionCustom_TargetDir)connectionCustom.dll" />
+      </Component>
+      <Component Id="PQE.exe.config" Guid="f4b585c8-38f7-420a-a53b-d4bb106a9364">
+        <File Id="PQE.exe.config" Name="PQE.exe.config" Source="$(var.connectionCustom_TargetDir)PQE.exe.config" />
+      </Component>
+      <Component Id="CustomAction.config" Guid="c56936f9-6da2-4bb5-ba46-2a7e9520aada">
+        <File Id="CustomAction.config" Name="CustomAction.config" Source="$(var.connectionCustom_TargetDir)CustomAction.config" />
+      </Component>
+      <Component Id="Microsoft.Deployment.WindowsInstaller.dll" Guid="b9d66526-c86a-4c63-9b8d-d3a6d20c2e3b">
+        <File Id="Microsoft.Deployment.WindowsInstaller.dll" Name="Microsoft.Deployment.WindowsInstaller.dll" Source="$(var.connectionCustom_TargetDir)Microsoft.Deployment.WindowsInstaller.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

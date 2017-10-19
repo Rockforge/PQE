@@ -1,0 +1,3 @@
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\cab1.cab
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\pqeSetup.msi
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\pqeSetup.wixpdb

@@ -1,0 +1,7 @@
+obj\Debug\Product.wixobj
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\cab1.cab
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\pqeSetup.msi
+C:\Users\Chunchunmaru\Source\Repos\PQE\pqeSetup\bin\Debug\pqeSetup.wixpdb
+obj\Debug\pqeSetup.wixproj.BindContentsFileListnull.txt
+obj\Debug\pqeSetup.wixproj.BindOutputsFileListnull.txt
+obj\Debug\pqeSetup.wixproj.BindBuiltOutputsFileListnull.txt

@@ -278,7 +278,6 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.Rendering-wpf.r
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\MigraDoc.RtfRendering-wpf.resources.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp-wpf.resources.dll
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\de\PdfSharp.Charting-wpf.resources.dll
-C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminDashboard.resources
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.AdminTempDashboard.resources
@@ -296,3 +295,4 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.CoreCompileInputs.cache

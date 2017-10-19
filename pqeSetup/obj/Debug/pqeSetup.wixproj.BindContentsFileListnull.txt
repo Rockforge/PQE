@@ -1,0 +1,11 @@
+C:\Users\Chunchunmaru\Source\Repos\PQE\connectionCustom\bin\Debug\connectionCustom.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\DirectShowLib-2005.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MaterialSkin.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.DocumentObjectModel-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.Rendering-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MigraDoc.RtfRendering-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\MySql.Data.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp.Charting-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PdfSharp-wpf.dll
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe
+C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config

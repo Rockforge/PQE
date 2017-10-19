@@ -1,4 +1,5 @@
 ﻿Imports MaterialSkin
+Imports System.Net
 
 Public Class Login
 
@@ -13,6 +14,32 @@ Public Class Login
 
         MaximizeBox = False
         MinimizeBox = False
+
+        ' Get IP .. lagay natin to kung mas okay as security ..
+        'Dim myClientMachineAddressList As IPHostEntry = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName())
+        'Dim myClientMachineIP As String = myClientMachineAddressList.AddressList(0).ToString()
+
+        ' Reads the config.ini to get the SQL Connection
+        Dim connectionIni As New IniFile
+        With connectionIni
+            .Filename = My.Application.Info.DirectoryPath & "\config.ini"
+            Dim db_Server As String
+            Dim db_Name As String
+            Dim db_Username As String
+            Dim db_Password As String
+
+            If .OpenIniFile() Then
+                db_Server = .GetValue("1")
+                db_Name = .GetValue("2")
+                db_Username = .GetValue("3")
+                db_Password = .GetValue("4")
+                SQLControl.sqlConn.ConnectionString = "server=" & db_Server & "; userid=" & db_Username & "; password= " & db_Password & "; database=" & db_Name & "; allowuservariables=true"
+            Else
+                SQLControl.TestConnection()
+            End If
+        End With
+
+
 
     End Sub
 
@@ -249,16 +276,6 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub btnServerIPChange_Click(sender As Object, e As EventArgs) Handles btnServerIPChange.Click
-        sql.ChangeConnectionString(txtServerIP.Text)
-        txtServerIP.Visible = False
-        Label8.Visible = False
-        btnServerIPChange.Visible = False
-    End Sub
 
-    Private Sub ChangeConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeConnectionToolStripMenuItem.Click
-        txtServerIP.Visible = True
-        Label8.Visible = True
-        btnServerIPChange.Visible = True
-    End Sub
+
 End Class

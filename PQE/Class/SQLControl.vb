@@ -2,7 +2,7 @@
 
 Public Class SQLControl
 
-    Public Shared sqlConn As New MySqlConnection With {.ConnectionString = "server=localhost; userid=root; database=db_dost; allowuservariables=true"}
+    Public Shared sqlConn As New MySqlConnection
     Public sqlCommand As MySqlCommand
     Public sqlDataAdapter As MySqlDataAdapter
     Public sqlDataSet As DataSet
@@ -14,18 +14,8 @@ Public Class SQLControl
     'Stores record count
     Public recordCount As Integer
 
-    Public Sub ChangeConnectionString(connectionString As String)
 
-        sqlConn.ConnectionString = "server=" & connectionString & "; uid=client; database=db_dost;"
-
-        'MessageBox.Show("Login: " & Login.sql.sqlConn.ConnectionString)
-        'MessageBox.Show("Admin: " & Admin.sql.sqlConn.ConnectionString)
-        'MessageBox.Show("Examinee: " & Examinee.sql.sqlConn.ConnectionString)
-        'MessageBox.Show("ExamineePicture: " & ExamineePicture.sql.sqlConn.ConnectionString)
-        'MessageBox.Show("Test: " & Test.sql.sqlConn.ConnectionString)
-    End Sub
-
-    Public Sub TestConnection()
+    Public Shared Sub TestConnection()
         Try
             sqlConn.Open()
             MessageBox.Show("Connection successful")

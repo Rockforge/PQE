@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Class\DSCamCapture.vb" />
     <Compile Include="Class\Emailing.vb" />
+    <Compile Include="Class\IniFile.vb" />
     <Compile Include="Class\Resizer.vb" />
     <Compile Include="Class\SQLControl.vb" />
     <Compile Include="Class\TextBoxEx.vb">
