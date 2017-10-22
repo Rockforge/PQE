@@ -460,7 +460,6 @@ Public Class Emailing
             If Not IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")) Then
                 Dim _imgBytes As Byte() = sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")
                 File.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg", _imgBytes)
-                MessageBox.Show("Ginawa nya to")
                 Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
                 _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
                 _examineePic.Top = Shapes.ShapePosition.Top
@@ -650,6 +649,8 @@ Public Class Emailing
 
 
             If Not IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")) Then
+                Dim _imgBytes As Byte() = sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")
+                File.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg", _imgBytes)
                 Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
                 _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
                 _examineePic.Top = Shapes.ShapePosition.Top
@@ -835,6 +836,8 @@ Public Class Emailing
 
 
             If Not IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")) Then
+                Dim _imgBytes As Byte() = sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")
+                File.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg", _imgBytes)
                 Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
                 _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
                 _examineePic.Top = Shapes.ShapePosition.Top
