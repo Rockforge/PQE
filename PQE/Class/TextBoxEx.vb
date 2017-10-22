@@ -31,7 +31,7 @@ Public Class TextBoxEx
     End Function
 
     Function NameCheck(ByVal name As String)
-        Dim pattern As String = "^[a-zA-ZÑñ'-]+$"
+        Dim pattern As String = "^[a-zA-Z'-]+$"
         Dim nameMatch As Match = Regex.Match(name, pattern)
         If nameMatch.Success Then
             Me.BackColor = Color.LightGreen
