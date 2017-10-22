@@ -458,11 +458,16 @@ Public Class Emailing
 
 
             If Not IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")) Then
+                Dim _imgBytes As Byte() = sql.sqlDataSet.Tables(0).Rows(0).Item("examineePic")
+                File.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg", _imgBytes)
+                MessageBox.Show("Ginawa nya to")
                 Dim _examineePic As Shapes.Image = _sect.AddImage(My.Computer.FileSystem.SpecialDirectories.MyPictures & "\Image.jpg")
                 _examineePic.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
                 _examineePic.Top = Shapes.ShapePosition.Top
                 _examineePic.Left = Shapes.ShapePosition.Right
                 _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+                _examineePic.Height = Integer.Parse(Unit.FromInch(1))
+                _examineePic.Width = Integer.Parse(Unit.FromInch(1))
             End If
 
 
