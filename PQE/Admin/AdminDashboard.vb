@@ -195,11 +195,19 @@ Public Class AdminDashboard
         _renderer.Document = _doc
         _renderer.RenderDocument()
 
+
+
         'Save document
         Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\UserManual.pdf"
-        _renderer.PdfDocument.Save(filename)
-        'Start view
-        Process.Start(filename)
+
+        Try
+            'Process is not running then view
+            _renderer.PdfDocument.Save(filename)
+            'Start view
+            Process.Start(filename)
+        Catch ex As Exception
+            MessageBox.Show("An existing UserManual document might be open." & vbNewLine & "Please close the opened User Manual first.")
+        End Try
 
     End Sub
 
@@ -639,8 +647,6 @@ Public Class AdminDashboard
     Private Sub btnExamineeRegister_Click(sender As Object, e As EventArgs) Handles btnExamineeRegister.Click
 
         ' Error catching
-
-
         If txtFirstName.Text = "" Or txtLastName.Text = "" Then
             picExamineeError.Visible = True
             lblExamineeError.Text = "Incorrect Details"
@@ -714,8 +720,6 @@ Public Class AdminDashboard
 
 
 
-
-
         ' The Examinee Date ID
         newID = currentDate
 
@@ -725,7 +729,9 @@ Public Class AdminDashboard
         sql.AddParam("@newID", newID)
         sql.AddParam("@activeLevel", _activeLevel)
         sql.AddParam("@emailAddress", txtEmailAddress.Text)
+
         sql.ExecuteQuery("INSERT INTO tbl_examinee (firstName, lastName, dateTaken, activeLevel, emailAddress) VALUES (@firstName, @lastName, @newID, @activeLevel, @emailAddress)")
+
 
         ' PUT newID/examineeDateID to LAST INSERTED ROW
         sql.AddParam("@newID", newID)
@@ -733,6 +739,10 @@ Public Class AdminDashboard
                            SET examineeDateID = CONCAT(@newID, '-', LAST_INSERT_ID())
                          WHERE examineeID = LAST_INSERT_ID() ")
 
+
+        ' Update of Picture
+        ExamineePicture.SaveExamineePic(picExaminee.Image, lblExamineePicChanged.Text)
+        lblExamineePicChanged.Text = 0
 
         If cboSupervisoryPosition.Text <> "" Then
             InsertExamLevels(1)
@@ -912,6 +922,7 @@ Public Class AdminDashboard
         txtLastName.Text = ""
         txtEmailAddress.Text = ""
         lblExamineeDateID.Text = ""
+        lblExamineePicChanged.Text = 0
         cboSupervisoryPosition.SelectedIndex = -1
         cboNonSupervisoryPosition.SelectedIndex = -1
         cboClericalPosition.SelectedIndex = -1
@@ -1837,6 +1848,11 @@ Public Class AdminDashboard
         End If
 
 
+        ' Email Filter
+        If txtEmailFilter.Text <> Nothing Then
+            sql.AddParam("@emailFilter", txtEmailFilter.Text)
+            _stringBuilder.Append("AND tbl_examinee.emailAddress LIKE CONCAT('%',@emailFilter,'%') ")
+        End If
 
         ' Passed/Failed Filters
         If rbPassedFilter.Checked Then
@@ -1874,7 +1890,7 @@ Public Class AdminDashboard
         End If
 
 
-        _stringBuilder.Append("ORDER BY CASE WHEN tbl_examinee.examineeID = LAST_INSERT_ID() THEN 1 Else 2 END, tbl_examinee.examineeID DESC")
+        _stringBuilder.Append(" ORDER BY CASE WHEN tbl_examinee.examineeID = LAST_INSERT_ID() THEN 1 Else 2 END, tbl_examinee.examineeID DESC")
 
         sql.ExecuteQuery(_stringBuilder.ToString())
         dgvExaminee.DataSource = sql.sqlDataSet.Tables(0)
@@ -1886,6 +1902,7 @@ Public Class AdminDashboard
         txtExamineeDateIDFilter.Text = ""
         txtFirstNameFilter.Text = ""
         txtLastNameFilter.Text = ""
+        txtEmailFilter.Text = ""
         cboPositionFilter.SelectedIndex = -1
 
         rbPassedFilter.Checked = False
@@ -3695,4 +3712,15 @@ Public Class AdminDashboard
         LoadPendingEmailCount()
     End Sub
 
+    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
+
+    End Sub
+
+    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
+
+    End Sub
+
+    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
+
+    End Sub
 End Class

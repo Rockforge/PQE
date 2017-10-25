@@ -457,4 +457,4 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
 
 GRANT PROXY ON ''@'%' TO 'root'@'localhost' WITH GRANT OPTION;
 
-TRUNCATE TABLE 'tbl_examinee'
+ALTER TABLE tbl_examinee AUTO_INCREMENT = 1

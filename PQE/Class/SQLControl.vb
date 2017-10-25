@@ -2,7 +2,7 @@
 
 Public Class SQLControl
 
-    Public Shared sqlConn As New MySqlConnection
+    Public Shared sqlConn As New MySqlConnection With {.ConnectionString = "server=localhost; database=db_dost; userid=root; allowuservariables=true"}
     Public sqlCommand As MySqlCommand
     Public sqlDataAdapter As MySqlDataAdapter
     Public sqlDataSet As DataSet

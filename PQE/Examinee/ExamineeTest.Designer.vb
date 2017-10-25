@@ -195,7 +195,7 @@ Partial Class ExamineeTest
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(682, 93)
+        Me.Label4.Location = New System.Drawing.Point(685, 112)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(36, 13)
         Me.Label4.TabIndex = 4
@@ -204,7 +204,7 @@ Partial Class ExamineeTest
         'lblTimer
         '
         Me.lblTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTimer.Location = New System.Drawing.Point(724, 86)
+        Me.lblTimer.Location = New System.Drawing.Point(727, 105)
         Me.lblTimer.Name = "lblTimer"
         Me.lblTimer.Size = New System.Drawing.Size(158, 20)
         Me.lblTimer.TabIndex = 5
@@ -424,7 +424,7 @@ Partial Class ExamineeTest
         'btnFinishTest
         '
         Me.btnFinishTest.Depth = 0
-        Me.btnFinishTest.Location = New System.Drawing.Point(776, 29)
+        Me.btnFinishTest.Location = New System.Drawing.Point(785, 65)
         Me.btnFinishTest.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnFinishTest.Name = "btnFinishTest"
         Me.btnFinishTest.Primary = True

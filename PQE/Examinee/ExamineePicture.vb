@@ -128,7 +128,7 @@ Public Class ExamineePicture
     End Sub
 
     ' Our function for saving
-    Private Sub SaveExamineePic(ByVal capImage As System.Drawing.Bitmap)
+    Public Sub SaveExamineePic(ByVal capImage As System.Drawing.Bitmap)
         Dim arrImage As Byte()
 
         Using mstream As New System.IO.MemoryStream
@@ -142,6 +142,27 @@ Public Class ExamineePicture
         sql.AddParam("@examineePic", arrImage)
         sql.AddParam("@examineeDateID", lblExamineeDateID.Text)
         sql.ExecuteQuery("UPDATE tbl_examinee SET examineePic = @examineePic WHERE examineeDateID = @examineeDateID")
+
+    End Sub
+
+    Public Sub SaveExamineePic(ByVal capImage As System.Drawing.Bitmap, ByVal isRegisterClicked As String)
+
+        ' If register ba pinindot or nah .. if register then go insert ze picture
+        If isRegisterClicked <> 1 Then
+            Exit Sub
+        End If
+
+        Dim arrImage As Byte()
+
+        Using mstream As New System.IO.MemoryStream
+            capImage.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
+            arrImage = mstream.GetBuffer()
+            mstream.Close()
+        End Using
+
+
+        sql.AddParam("@examineePic", arrImage)
+        sql.ExecuteQuery("UPDATE tbl_examinee SET examineePic = @examineePic WHERE examineeID = LAST_INSERT_ID()")
 
     End Sub
 
@@ -179,6 +200,8 @@ Public Class ExamineePicture
         ' Save to database
         SaveExamineePic(examineePic)
 
+        AdminDashboard.lblExamineePicChanged.Text = 1
+        AdminDashboard.picExaminee.Image = examineePic
         AdminDashboard.LoadExamineeDgv()
 
         Me.Close()
