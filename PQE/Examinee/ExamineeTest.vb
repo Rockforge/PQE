@@ -260,12 +260,12 @@ Public Class ExamineeTest
     ' Buttons
     Private Sub btnQuestionNext_Click(sender As Object, e As EventArgs) Handles btnQuestionNext.Click
 
-        If dgvQuestionNumber.RowCount <= 0 Then
+        If dgvUnansweredQuestion.RowCount <= 0 Then
             Exit Sub
         End If
-        Dim _maxRowIndex As Integer = dgvQuestionNumber.Rows.Count - 1
+        Dim _maxRowIndex As Integer = dgvUnansweredQuestion.Rows.Count - 1
 
-        Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
+        Dim _currentGridViewRow As DataGridViewRow = dgvUnansweredQuestion.CurrentRow
         Dim _currentRowIndex As Integer = _currentGridViewRow.Index
 
 
@@ -273,9 +273,9 @@ Public Class ExamineeTest
             MessageBox.Show("No more rows left")
             Exit Sub
         Else
-            Dim _nextRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex + 1)
+            Dim _nextRow As DataGridViewRow = dgvUnansweredQuestion.Rows(_currentRowIndex + 1)
 
-            dgvQuestionNumber.CurrentCell = _nextRow.Cells(0)
+            dgvUnansweredQuestion.CurrentCell = _nextRow.Cells(0)
             _nextRow.Selected = True
 
             ReloadRecordedAnswer()
@@ -298,20 +298,20 @@ Public Class ExamineeTest
 
     Private Sub btnQuestionPrevious_Click(sender As Object, e As EventArgs) Handles btnQuestionPrevious.Click
 
-        If dgvQuestionNumber.RowCount <= 0 Then
+        If dgvUnansweredQuestion.RowCount <= 0 Then
             Exit Sub
         End If
 
-        Dim _currentGridViewRow As DataGridViewRow = dgvQuestionNumber.CurrentRow
+        Dim _currentGridViewRow As DataGridViewRow = dgvUnansweredQuestion.CurrentRow
         Dim _currentRowIndex As Integer = _currentGridViewRow.Index
 
         If _currentRowIndex <= 0 Then
             MessageBox.Show("No more rows left")
             Exit Sub
         Else
-            Dim _prevRow As DataGridViewRow = dgvQuestionNumber.Rows(_currentRowIndex - 1)
+            Dim _prevRow As DataGridViewRow = dgvUnansweredQuestion.Rows(_currentRowIndex - 1)
 
-            dgvQuestionNumber.CurrentCell = _prevRow.Cells(0)
+            dgvUnansweredQuestion.CurrentCell = _prevRow.Cells(0)
             _prevRow.Selected = True
 
             lblQuestionID.Text = _prevRow.Cells(1).Value.ToString
