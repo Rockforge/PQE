@@ -291,3 +291,7 @@ C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.pdb
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\bin\Debug\PQE.xml
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.CoreCompileInputs.cache
 C:\Users\Chunchunmaru\Source\Repos\PQE\PQE\obj\Debug\PQE.vbprojResolveAssemblyReference.cache
+C:\Users\Bacon\Source\Repos\PQE\PQE\bin\Debug\PQE.exe.config
+C:\Users\Bacon\Source\Repos\PQE\PQE\obj\Debug\PQE.vbproj.ResolveComReference.cache
+C:\Users\Bacon\Source\Repos\PQE\PQE\obj\Debug\PQE.exe
+C:\Users\Bacon\Source\Repos\PQE\PQE\obj\Debug\PQE.xml
