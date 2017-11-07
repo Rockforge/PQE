@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0AA3551995F647CB929F1569BEE85BDF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_147EA4C134B8BFCF51E259B15AC687DD"
         "OwnerKey" = "8:_E85AAA142D7940F1AF808DBCE027DD1B"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5839FA419B714A1ABBA667A6BA3EA509"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5F596CBD5B274B4FAD19AC1F247C0858"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -106,6 +106,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7F54E7B1CA084A80AB1CAC017FFC04A8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F9AC2EB8DAD45CBBCCE28ED18EF97E5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -470,26 +476,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0AA3551995F647CB929F1569BEE85BDF"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\config.ini"
-            "TargetName" = "8:config.ini"
-            "Tag" = "8:"
-            "Folder" = "8:_868CFDF3399D469C90B1939BE620AB2A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_147EA4C134B8BFCF51E259B15AC687DD"
             {
             "AssemblyRegister" = "3:1"
@@ -670,6 +656,26 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5839FA419B714A1ABBA667A6BA3EA509"
+            {
+            "SourcePath" = "8:config.ini"
+            "TargetName" = "8:config.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_868CFDF3399D469C90B1939BE620AB2A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
@@ -711,6 +717,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_868CFDF3399D469C90B1939BE620AB2A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F9AC2EB8DAD45CBBCCE28ED18EF97E5"
+            {
+            "SourcePath" = "8:..\\PQE\\Resources\\rsz_dost_qSz_icon.ico"
+            "TargetName" = "8:rsz_dost_qSz_icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_04EF2C7D54644EA5BF862A136F82FD8E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1090,7 +1116,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Pre-Qualification Examination"
         "ProductCode" = "8:{53902684-0CE0-4042-90C9-744131C77E5B}"
-        "PackageCode" = "8:{04082444-D505-4815-A919-6550BDE198D7}"
+        "PackageCode" = "8:{A14FCDE8-0DBB-4582-B40E-3DD6FA1F502B}"
         "UpgradeCode" = "8:{F74EB72C-90F6-4E7D-B77D-1FAEB6EB1D1F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1221,7 +1247,7 @@
             "Target" = "8:_E85AAA142D7940F1AF808DBCE027DD1B"
             "Folder" = "8:_3BAF6F76432148F491EC86D9D3B28041"
             "WorkingFolder" = "8:_868CFDF3399D469C90B1939BE620AB2A"
-            "Icon" = "8:"
+            "Icon" = "8:_7F9AC2EB8DAD45CBBCCE28ED18EF97E5"
             "Feature" = "8:"
             }
         }

@@ -38,6 +38,9 @@ Public Class Examinee
             btnTestStart5.Visible = True
 
         End If
+
+
+
         rs.FindAllControls(Me)
     End Sub
 

@@ -6,6 +6,10 @@ Public Class Login
     Public sql As New SQLControl
     Public email As New Emailing
 
+    Dim score As Integer = 0
+
+    Public doneKindsList As New List(Of Integer)
+
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim _skinManager As MaterialSkinManager = MaterialSkinManager.Instance
         _skinManager.AddFormToManage(Me)
@@ -129,12 +133,12 @@ Public Class Login
 
                         If _result = "" Then
                             ' No test taken yet
-                            DoExamination(_activeLevel)
                             Examinee.lblSetDescription.Text = "A"
+                            DoExamination(_activeLevel)
                         ElseIf _result = "Failed" Then
                             ' Examinee has taken test A but failed
-                            DoExamination(_activeLevel)
                             Examinee.lblSetDescription.Text = "B"
+                            DoExamination(_activeLevel)
                         ElseIf _result = "Passed" Then
                             MessageBox.Show("You have passed")
                             Exit Sub
@@ -146,8 +150,8 @@ Public Class Login
                         _result = sql.sqlDataSet.Tables(0).Rows(1).Item("result").ToString
 
                         If _result = "Failed" Then
-                            DoExamination(_activeLevel)
                             Examinee.lblSetDescription.Text = "C"
+                            DoExamination(_activeLevel)
                         ElseIf _result = "Passed" Then
                             MessageBox.Show("You have passed")
                             Exit Sub
@@ -170,6 +174,9 @@ Public Class Login
 
     ' Proceed to Examination
     Private Sub DoExamination(_activeLevel As String)
+
+        Dim _allTestsDone As Boolean
+
         Examinee.lblExamineeDateID.Text = txtExamineeDateID.Text
 
         ' Getting results for Examinee
@@ -237,10 +244,238 @@ Public Class Login
 
         Examinee.lblLevelID.Text = _activeLevel
 
+        If HasAlreadyAnswered(Examinee.lblExamineeID.Text, _activeLevel, Examinee.lblSetDescription.Text) Then
 
 
-        Examinee.Show()
-        Me.Close()
+            Dim _questionCount As Integer
+            Dim _answeredCount As Integer
+
+            ' Check if the KindIDs are already done for Examinee's set
+            For Each kindID As Integer In doneKindsList
+                ' Get Question_Count of kindID and Level
+                sql.AddParam("@kindID", kindID)
+                sql.AddParam("@activeLevel", _activeLevel)
+                sql.AddParam("@setDescription", Examinee.lblSetDescription.Text)
+                sql.ExecuteQuery("SELECT COUNT(*) AS Question_Count 
+                                                FROM tbl_question 
+                                          INNER JOIN tbl_kind
+                                                  ON tbl_kind.kindID = tbl_question.kindID
+                                               WHERE tbl_kind.levelID = @activeLevel
+                                                 AND tbl_question.kindID = @kindID
+                                                 AND tbl_question.setDescription = @setDescription")
+
+                _questionCount = sql.sqlDataSet.Tables(0).Rows(0).Item("Question_Count")
+
+
+                ' Retrieves how many Examinee has answered for KindID
+                sql.AddParam("@examineeID", Examinee.lblExamineeID.Text)
+                sql.AddParam("@kindID", kindID)
+                sql.AddParam("@activeLevel", _activeLevel)
+                sql.ExecuteQuery("SELECT COUNT(*) As Examinee_Question_Count 
+                                                     FROM tbl_kind
+                                                     JOIN tbl_question 
+                                                       ON tbl_question.kindID = tbl_kind.kindID
+                                                     JOIN tbl_response 
+                                                       ON tbl_response.questionID = tbl_question.questionID
+                                                    WHERE tbl_response.examineeID = @examineeID 
+                                                      AND tbl_question.kindID = @kindID")
+
+                _answeredCount = sql.sqlDataSet.Tables(0).Rows(0).Item("Examinee_Question_Count")
+
+                ' If Question_Count == Examinee.Answered_Question_Count .. Then Compute Scores + Insert Scores + increment Test Done + Hide Button
+                If _questionCount = _answeredCount Then
+                    ComputeScore(Examinee.lblExamineeID.Text, kindID, Examinee.lblSetDescription.Text)
+                    InsertScore(Examinee.lblExamineeID.Text, kindID, Examinee.lblSetDescription.Text)
+
+
+
+                    ' Hide Button by kindID
+                    '   '   Level = { 1, 2 }
+                    '    ' Button 1 { 1, 4 }
+                    '    ' Button 2 { 2, 5 }
+                    '    ' Button 3 { 3, 6 }
+
+                    '   '   Level = { 3 }
+                    '    ' Button 1 { 7 }
+                    '    ' Button 2 { 8 }
+                    '    ' Button 3 { 9 }
+                    '    ' Button 4 { 10 }
+                    '    ' Button 5 { 11 }
+                    If _activeLevel <> 3 Then
+                        If kindID = 1 Or kindID = 4 Then
+                            Examinee.btnTestStart1.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 2 Or kindID = 5 Then
+                            Examinee.btnTestStart2.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 3 Or kindID = 6 Then
+                            Examinee.btnTestStart3.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                    Else
+                        If kindID = 7 Then
+                            Examinee.btnTestStart1.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 8 Then
+                            Examinee.btnTestStart2.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 9 Then
+                            Examinee.btnTestStart3.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 10 Then
+                            Examinee.btnTestStart4.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                        If kindID = 11 Then
+                            Examinee.btnTestStart5.Visible = False
+                            Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
+                        End If
+
+                    End If
+
+                    _allTestsDone = TestTypeFinished(_activeLevel)
+
+                End If
+            Next
+
+
+
+        End If
+
+        If _allTestsDone = False Then
+            Examinee.Show()
+            Me.Close()
+        End If
+
+
+    End Sub
+
+    Private Function TestTypeFinished(_activeLevel As String) As Boolean
+
+        ' If tapos na yung exam
+        If (Examinee.lblLevelID.Text = "3" And Examinee.lblTestsDone.Text = "5") Or (Examinee.lblLevelID.Text <> 3 And Examinee.lblTestsDone.Text = "3") Then
+            ' Insertion of pass or Fail
+            Examinee.InsertPassOrFail()
+
+
+            ' Dito ilalagay na IF NULL EMAIL FIELD, PROMPT USER IF THEY WANT EMAIL
+
+            sql.AddParam("@examineeID", Examinee.lblExamineeID.Text)
+            sql.ExecuteQuery("SELECT emailAddress FROM tbl_examinee WHERE examineeID = @examineeID")
+
+            ' If examinee exists 
+            If sql.recordCount > 0 Then
+                Dim _examineeEmail As String
+
+                If IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress")) Or sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString() = "" Then
+                    ' emailAddress NULL or empty
+
+                    ' Prompt for email
+                    _examineeEmail = InputBox("Enter your Email Address: ", "", "")
+                Else
+                    _examineeEmail = sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress").ToString()
+                End If
+
+                ' sendMAIL NAO ~!
+                email.SendExamineeEmail(Examinee.lblExamineeID.Text, Examinee.lblSetDescription.Text, Examinee.lblLevelID.Text, Examinee.lblPositionDescription.Text, _examineeEmail)
+
+            End If
+
+            Me.txtExamineeDateID.Text = ""
+            Me.txtLastName.Text = ""
+
+            MessageBox.Show("Thank you for taking the Pre-qualification exam." & vbNewLine & "Please consult the administrator for further instructions")
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function HasAlreadyAnswered(examineeID As String, activeLevel As String, setDescription As String) As Boolean
+
+        ' See if Examinee has already answered in such a level
+        sql.AddParam("@examineeID", examineeID)
+        sql.AddParam("@activeLevel", activeLevel)
+        sql.AddParam("@setDescription", setDescription)
+        sql.ExecuteQuery("SELECT tbl_question.kindID FROM tbl_kind
+                                                     JOIN tbl_question 
+                                                       ON tbl_question.kindID = tbl_kind.kindID
+                                                     JOIN tbl_response 
+                                                       ON tbl_response.questionID = tbl_question.questionID
+                                                    WHERE tbl_response.examineeID = @examineeID
+                                                      AND tbl_kind.levelID = @activeLevel
+                                                      AND tbl_question.setDescription = @setDescription
+                                                    GROUP BY tbl_question.kindID")
+        If sql.recordCount > 0 Then
+
+            ' Give to global list int variable the queried kindIDs
+            For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
+                doneKindsList.Add(Convert.ToInt32(r("kindID").ToString()))
+            Next
+
+            Return True
+        Else
+            Return False
+        End If
+
+    End Function
+
+    Public Sub ComputeScore(examineeID As String, kindID As String, setDescription As String)
+        sql.AddParam("@examineeID", examineeID)
+        sql.AddParam("@kindID", kindID)
+        sql.AddParam("@setDescription", setDescription)
+
+        ' Compare tbl_response answer with tbl_question correct answer
+        sql.ExecuteQuery("SELECT * FROM tbl_response INNER JOIN tbl_question ON tbl_response.questionID = tbl_question.questionID 
+                          WHERE tbl_question.kindID = @kindID AND tbl_question.setDescription = @setDescription AND tbl_response.examineeID = @examineeID")
+
+        For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
+            If r("examineeAnswer").ToString = r("correctAnswer").ToString Then
+                score = score + 1
+            End If
+        Next
+    End Sub
+
+    Public Sub InsertScore(examineeID As String, kindID As String, setDescription As String)
+        ' Checks if there is a record
+        sql.AddParam("@examineeID", examineeID)
+        sql.AddParam("@kindID", kindID)
+        sql.AddParam("@setDescription", setDescription)
+        sql.ExecuteQuery("SELECT * FROM tbl_examinee_score WHERE examineeID = @examineeID AND kindID = @kindID AND setDescription = @setDescription")
+
+        sql.AddParam("@examineeID", examineeID)
+        sql.AddParam("@kindID", kindID)
+        sql.AddParam("@setDescription", setDescription)
+        sql.AddParam("@examineeScore", score)
+        If sql.recordCount > 0 Then
+
+            ' UPDATE CURRENT Examinee_Score
+            sql.ExecuteQuery("UPDATE tbl_examinee_score
+                             SET examineeScore = @examineeScore
+                           WHERE examineeID = @examineeID
+                             AND kindID = @kindID
+                             AND setDescription = @setDescription")
+
+        Else
+            ' INSERT INTO Examinee_Score
+            sql.ExecuteQuery("INSERT INTO tbl_examinee_score (examineeID, kindID, examineeScore, setDescription) 
+                                            VALUES (@examineeID, @kindID, @examineeScore, @setDescription)")
+
+        End If
+
+
     End Sub
 
     Private Sub txtExamineeDateID_Click(sender As Object, e As EventArgs) Handles txtExamineeDateID.TextChanged

@@ -932,7 +932,7 @@ Public Class AdminTempDashboard
         _sect.PageSetup.Orientation = Orientation.Landscape
 
         ' Header Logo
-        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage("...\...\Resources\rsz_dost.png")
+        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
         _logo.LockAspectRatio = True
         _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
         _logo.WrapFormat.Style = Shapes.WrapStyle.Through
@@ -1048,10 +1048,15 @@ Public Class AdminTempDashboard
         _renderer.RenderDocument()
 
         ' Save document
-        Dim filename As String = "Examinee.pdf"
-        _renderer.PdfDocument.Save(filename)
-        ' Start view
-        Process.Start(filename)
+        Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\Examinee.pdf"
+        Try
+            'Process is not running then view
+            _renderer.PdfDocument.Save(filename)
+            'Start view
+            Process.Start(filename)
+        Catch ex As Exception
+            MessageBox.Show("An existing Examinee Summary might be open." & vbNewLine & "Please close the opened Examinee Summary first.")
+        End Try
     End Sub
 
 
@@ -1183,7 +1188,7 @@ Public Class AdminTempDashboard
 
         'Logo Code source: Image to left of text. Code by the wonderful Thomas Hoevel
         'Also view Invoice Example for Migradoc. Really useful
-        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\..\..\Resources\rsz_dost.png")
+        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
         _logo.LockAspectRatio = True
         _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
         _logo.WrapFormat.Style = Shapes.WrapStyle.None
@@ -1267,10 +1272,16 @@ Public Class AdminTempDashboard
         _renderer.RenderDocument()
 
         'Save document
-        Dim filename As String = "UserManual.pdf"
-        _renderer.PdfDocument.Save(filename)
-        'Start view
-        Process.Start(filename)
+        Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\UserManual.pdf"
+
+        Try
+            'Process is not running then view
+            _renderer.PdfDocument.Save(filename)
+            'Start view
+            Process.Start(filename)
+        Catch ex As Exception
+            MessageBox.Show("An existing User Manual might be open." & vbNewLine & "Please close the opened User Manual first.")
+        End Try
     End Sub
 
     Private Sub dgvExaminee_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvExaminee.MouseDown

@@ -4,7 +4,7 @@ Imports System.Text
 Public Class ExamineeTest
 
     Public sql As New SQLControl
-    Public mail As New Emailing
+    Public email As New Emailing
     Dim rs As New Resizer
 
     Dim questionCounter As Integer = 0
@@ -54,8 +54,11 @@ Public Class ExamineeTest
         ' Starts timer
         tmrTest.Start()
 
+
         ' Loads all unanswered questions
         LoadDgvUnansweredQuestion()
+
+
         ' Load All Question Number for the specific test with the Question ID
         LoadDgvQuestionNumber()
 
@@ -99,7 +102,8 @@ Public Class ExamineeTest
 
     End Sub
 
-    Private Sub LoadDgvUnansweredQuestion()
+    Private Function LoadDgvUnansweredQuestion() As Boolean
+
         sql.AddParam("@examineeID", lblExamineeID.Text)
         sql.AddParam("@kindID", lblKindID.Text)
         sql.AddParam("@setDescription", lblSetDescription.Text)
@@ -116,11 +120,11 @@ Public Class ExamineeTest
         ' Catches error if there is no record left
         If sql.recordCount > 0 Then
             lblQuestionID.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("questionID").ToString
+            Return True
         Else
-            Exit Sub
+            Return False
         End If
-
-    End Sub
+    End Function
 
     ' Insertion/Update of Answer
     Private Sub InsertResponse(examineeAnswer As String)
@@ -330,6 +334,7 @@ Public Class ExamineeTest
 
     End Sub
 
+    ' Datagridviews
     Private Sub dgvQuestionNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvQuestionNumber.MouseDown
         Dim _ht = dgvQuestionNumber.HitTest(e.Location.X, e.Location.Y)
 
@@ -357,6 +362,37 @@ Public Class ExamineeTest
         ReloadRecordedAnswer()
         dgvUnansweredQuestion.ClearSelection()
     End Sub
+
+    Private Sub dgvUnansweredQuestion_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvUnansweredQuestion.MouseDown
+        Dim _ht = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y)
+
+        If _ht.Type = DataGridViewHitTestType.None Or _ht.Type = DataGridViewHitTestType.ColumnHeader Then
+            Exit Sub
+        End If
+
+        UncheckRadioButton()
+
+        rowClicked = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y).RowIndex
+        dgvUnansweredQuestion.ClearSelection()
+        dgvUnansweredQuestion.Rows(rowClicked).Selected = True
+
+        lblQuestionID.Text = dgvUnansweredQuestion.SelectedRows(0).Cells("questionID").Value.ToString
+        sql.AddParam("@questionID", lblQuestionID.Text)
+        sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+        lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
+
+        ReloadRecordedAnswer()
+
+        ' Deselect anything from dgvQuestionNumber
+        dgvQuestionNumber.ClearSelection()
+    End Sub
+
 
     Private Sub UncheckRadioButton()
         rbChoice1.Checked = False
@@ -428,7 +464,6 @@ Public Class ExamineeTest
         ' update FLAGS if all tests = DONE
         Examinee.lblTestsDone.Text = Examinee.lblTestsDone.Text + 1
 
-        ' nilipat ni mem yung TestDoneChecker() sa Test.vb
         ' If tapos na yung exam
         If (Examinee.lblLevelID.Text = "3" And Examinee.lblTestsDone.Text = "5") Or (Examinee.lblLevelID.Text <> 3 And Examinee.lblTestsDone.Text = "3") Then
             ' Insertion of pass or Fail
@@ -454,7 +489,7 @@ Public Class ExamineeTest
                 End If
 
                 ' sendMAIL NAO ~!
-                mail.SendExamineeEmail(lblExamineeID.Text, lblSetDescription.Text, lblLevelID.Text, lblPositionDescription.Text, _examineeEmail)
+                email.SendExamineeEmail(lblExamineeID.Text, lblSetDescription.Text, lblLevelID.Text, lblPositionDescription.Text, _examineeEmail)
 
             End If
 
@@ -462,14 +497,13 @@ Public Class ExamineeTest
             Login.txtLastName.Text = ""
 
             MessageBox.Show("Thank you for taking the Pre-qualification exam." & vbNewLine & "Please consult the administrator for further instructions")
-            Examinee.Close()
-
+            Examinee.Close() ' Examinee.Hide() is used beforehand
             Login.Show()
+            Me.Close()
         Else
             Examinee.Show()
+            Me.Close()
         End If
-
-        Me.Close()
     End Sub
 
     Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
@@ -504,8 +538,67 @@ Public Class ExamineeTest
         LoadDgvUnansweredQuestion()
         LoadDgvQuestionNumber()
 
-        ' Clear selection from dgvUnansweredQuestion
-        dgvUnansweredQuestion.ClearSelection()
+        ' Clear Selection from 
+        dgvQuestionNumber.ClearSelection()
+
+        ' Load Next Question
+        LoadNextQuestion()
+
+
+    End Sub
+
+    Private Sub LoadNextQuestion()
+        If dgvUnansweredQuestion.RowCount <= 0 Then
+            Exit Sub
+        End If
+        Dim _maxRowIndex As Integer = dgvUnansweredQuestion.Rows.Count - 1
+
+        Dim _currentGridViewRow As DataGridViewRow = dgvUnansweredQuestion.CurrentRow
+        Dim _currentRowIndex As Integer = _currentGridViewRow.Index
+
+
+        If _currentRowIndex >= _maxRowIndex Then
+
+            Dim _nextRow As DataGridViewRow = dgvUnansweredQuestion.Rows(_currentRowIndex)
+
+            dgvUnansweredQuestion.CurrentCell = _nextRow.Cells(0)
+            _nextRow.Selected = True
+
+            ReloadRecordedAnswer()
+
+            lblQuestionID.Text = _nextRow.Cells(1).Value.ToString
+
+            sql.AddParam("@questionID", lblQuestionID.Text)
+            sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+
+            ReloadRecordedAnswer()
+        Else
+            Dim _nextRow As DataGridViewRow = dgvUnansweredQuestion.Rows(_currentRowIndex)
+
+            dgvUnansweredQuestion.CurrentCell = _nextRow.Cells(0)
+            _nextRow.Selected = True
+
+            ReloadRecordedAnswer()
+
+            lblQuestionID.Text = _nextRow.Cells(1).Value.ToString
+
+            sql.AddParam("@questionID", lblQuestionID.Text)
+            sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
+
+            rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
+            rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
+            rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
+            rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
+            rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
+
+            ReloadRecordedAnswer()
+        End If
 
     End Sub
 
@@ -515,33 +608,4 @@ Public Class ExamineeTest
         End If
     End Sub
 
-    Private Sub dgvUnansweredQuestion_MouseDown(sender As Object, e As MouseEventArgs) Handles dgvUnansweredQuestion.MouseDown
-        Dim _ht = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y)
-
-        If _ht.Type = DataGridViewHitTestType.None Or _ht.Type = DataGridViewHitTestType.ColumnHeader Then
-            Exit Sub
-        End If
-
-        UncheckRadioButton()
-
-        rowClicked = dgvUnansweredQuestion.HitTest(e.Location.X, e.Location.Y).RowIndex
-        dgvUnansweredQuestion.ClearSelection()
-        dgvUnansweredQuestion.Rows(rowClicked).Selected = True
-
-        lblQuestionID.Text = dgvUnansweredQuestion.SelectedRows(0).Cells("questionID").Value.ToString
-        sql.AddParam("@questionID", lblQuestionID.Text)
-        sql.ExecuteQuery("SELECT * FROM tbl_question WHERE questionID = @questionID")
-
-        rtfQuestion.Rtf = Encoding.ASCII.GetChars(sql.sqlDataSet.Tables(0).Rows(0).Item("question"))
-        rbChoice1.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice1").ToString
-        rbChoice2.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice2").ToString
-        rbChoice3.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice3").ToString
-        rbChoice4.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("choice4").ToString
-        lblAnswer.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("correctAnswer").ToString
-
-        ReloadRecordedAnswer()
-
-        ' Deselect anything from dgvQuestionNumber
-        dgvQuestionNumber.ClearSelection()
-    End Sub
 End Class

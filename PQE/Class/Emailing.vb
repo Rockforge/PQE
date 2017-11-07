@@ -656,6 +656,9 @@ Public Class Emailing
                 _examineePic.Top = Shapes.ShapePosition.Top
                 _examineePic.Left = Shapes.ShapePosition.Right
                 _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+
+                _examineePic.Height = Integer.Parse(Unit.FromInch(1))
+                _examineePic.Width = Integer.Parse(Unit.FromInch(1))
             End If
 
 
@@ -843,6 +846,9 @@ Public Class Emailing
                 _examineePic.Top = Shapes.ShapePosition.Top
                 _examineePic.Left = Shapes.ShapePosition.Right
                 _examineePic.WrapFormat.Style = Shapes.WrapStyle.Through
+
+                _examineePic.Height = Integer.Parse(Unit.FromInch(1))
+                _examineePic.Width = Integer.Parse(Unit.FromInch(1))
             End If
 
 

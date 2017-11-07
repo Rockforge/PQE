@@ -762,6 +762,8 @@ Public Class AdminDashboard
 
         ' Select who is REGISTERED
         MessageBox.Show("Examinee Registered")
+        btnExamineeClear_Click(Nothing, Nothing)
+
         dgvExaminee.Rows(0).Selected = True
 
         lblExamineeError.Visible = False
@@ -982,7 +984,7 @@ Public Class AdminDashboard
         _sect.PageSetup.Orientation = Orientation.Landscape
 
         ' Header Logo
-        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage("...\...\Resources\rsz_dost.png")
+        Dim _logo As Shapes.Image = _sect.Headers.Primary.AddImage(My.Application.Info.DirectoryPath & "\Resources\rsz_dost.png")
         _logo.LockAspectRatio = True
         _logo.RelativeHorizontal = Shapes.RelativeHorizontal.Margin
         _logo.WrapFormat.Style = Shapes.WrapStyle.Through
@@ -1099,9 +1101,15 @@ Public Class AdminDashboard
 
         ' Save document
         Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\Examinee.pdf"
-        _renderer.PdfDocument.Save(filename)
-        ' Start view
-        Process.Start(filename)
+
+        Try
+            'Process is not running then view
+            _renderer.PdfDocument.Save(filename)
+            'Start view
+            Process.Start(filename)
+        Catch ex As Exception
+            MessageBox.Show("An existing Examinee Summary document might be open." & vbNewLine & "Please close the opened Examinee Summary first.")
+        End Try
     End Sub
 
     Private Sub btnRefreshExamineeDgv_Click(sender As Object, e As EventArgs) Handles btnRefreshExamineeDgv.Click
@@ -2135,9 +2143,16 @@ Public Class AdminDashboard
 
             ' Save document
             Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
+
+            Try
+                'Process is not running then view
+                _renderer.PdfDocument.Save(filename)
+                'Start view
+                Process.Start(filename)
+            Catch ex As Exception
+                MessageBox.Show("An existing Result document might be open." & vbNewLine & "Please close the opened Result document first.")
+            End Try
+
 
         Else
             MessageBox.Show("Examinee has no results yet on the specified Set")
@@ -2335,9 +2350,15 @@ Public Class AdminDashboard
 
             ' Save document
             Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
+
+            Try
+                'Process is not running then view
+                _renderer.PdfDocument.Save(filename)
+                'Start view
+                Process.Start(filename)
+            Catch ex As Exception
+                MessageBox.Show("An existing Result document might be open." & vbNewLine & "Please close the opened Result document first.")
+            End Try
 
         Else
             MessageBox.Show("Examinee has no results yet on the specified Set")
@@ -2533,9 +2554,14 @@ Public Class AdminDashboard
 
             ' Save document
             Dim filename As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\ExamineeSummary.pdf"
-            _renderer.PdfDocument.Save(filename)
-            ' Start view
-            Process.Start(filename)
+            Try
+                'Process is not running then view
+                _renderer.PdfDocument.Save(filename)
+                'Start view
+                Process.Start(filename)
+            Catch ex As Exception
+                MessageBox.Show("An existing Result document might be open." & vbNewLine & "Please close the opened Result document first.")
+            End Try
 
         Else
             MessageBox.Show("Examinee has no results yet on the specified Set")

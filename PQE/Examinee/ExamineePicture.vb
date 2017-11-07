@@ -148,7 +148,7 @@ Public Class ExamineePicture
     Public Sub SaveExamineePic(ByVal capImage As System.Drawing.Bitmap, ByVal isRegisterClicked As String)
 
         ' If register ba pinindot or nah .. if register then go insert ze picture
-        If isRegisterClicked <> 1 Then
+        If isRegisterClicked <> "1" Then
             Exit Sub
         End If
 
