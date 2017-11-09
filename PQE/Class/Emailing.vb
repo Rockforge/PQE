@@ -382,6 +382,7 @@ Public Class Emailing
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -479,7 +480,9 @@ Public Class Emailing
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
@@ -574,6 +577,7 @@ Public Class Emailing
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -671,7 +675,9 @@ Public Class Emailing
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
@@ -764,6 +770,7 @@ Public Class Emailing
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -861,7 +868,9 @@ Public Class Emailing
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")

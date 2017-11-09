@@ -31,7 +31,10 @@ Public Class TextBoxEx
     End Function
 
     Function NameCheck(ByVal name As String)
-        Dim pattern As String = "^[a-zA-ZÑñ'-]+$"
+        ' Original Regex Pattern = ^[a-zA-ZÑñ'-]+$
+        ' New Regex Pattern = ^[a-zA-Z_]+( [a-zA-Z_]+)*$
+        ' New Regex Pattern is to catch single space between names
+        Dim pattern As String = "^[a-zA-Z_]+( [a-zA-Z_]+)*$"
         Dim nameMatch As Match = Regex.Match(name, pattern)
         If nameMatch.Success Then
             Me.BackColor = Color.LightGreen
@@ -41,5 +44,13 @@ Public Class TextBoxEx
             Return False
         End If
     End Function
+
+    Sub GoGreen()
+        Me.BackColor = Color.LightGreen
+    End Sub
+
+    Sub GoWhite()
+        Me.BackColor = Color.White
+    End Sub
 
 End Class

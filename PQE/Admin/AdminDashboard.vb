@@ -222,6 +222,7 @@ Public Class AdminDashboard
 
         sql.ExecuteQuery("SELECT tbl_examinee.examineeDateID       AS Examinee_ID, 
                                  tbl_examinee.firstName            AS First_Name, 
+                                 tbl_examinee.middleName           AS Middle_Name,
                                  tbl_examinee.lastName             AS Last_Name,
                                  tbl_examinee.dateTaken            AS Date_Taken
                             FROM tbl_examinee
@@ -236,25 +237,25 @@ Public Class AdminDashboard
         dgvExaminee.ClearSelection()
     End Sub
 
-    ' Overloading LoadExamineeDgv(). Mostly used after REGISTRATION
-    Private Sub LoadExamineeDgv(setDescription As String)
-        sql.AddParam("@setDescription", setDescription)
+    '' Overloading LoadExamineeDgv(). Mostly used after REGISTRATION
+    'Private Sub LoadExamineeDgv(setDescription As String)
+    '    sql.AddParam("@setDescription", setDescription)
 
-        sql.ExecuteQuery("SELECT tbl_examinee.examineeDateID       AS Examinee_ID, 
-                                 tbl_examinee.firstName            AS First_Name, 
-                                 tbl_examinee.lastName             AS Last_Name,
-                                 tbl_examinee.dateTaken            AS Date_Taken
-                            FROM tbl_examinee
+    '    sql.ExecuteQuery("SELECT tbl_examinee.examineeDateID       AS Examinee_ID, 
+    '                             tbl_examinee.firstName            AS First_Name, 
+    '                             tbl_examinee.lastName             AS Last_Name,
+    '                             tbl_examinee.dateTaken            AS Date_Taken
+    '                        FROM tbl_examinee
 
 
-                        ORDER BY CASE WHEN tbl_examinee.examineeID = LAST_INSERT_ID() THEN 1 Else 2 END, tbl_examinee.examineeID DESC")
+    '                    ORDER BY CASE WHEN tbl_examinee.examineeID = LAST_INSERT_ID() THEN 1 Else 2 END, tbl_examinee.examineeID DESC")
 
-        dgvExaminee.DataSource = sql.sqlDataSet.Tables(0)
+    '    dgvExaminee.DataSource = sql.sqlDataSet.Tables(0)
 
-        lblExamineeCount.Text = sql.recordCount
+    '    lblExamineeCount.Text = sql.recordCount
 
-        dgvExaminee.ClearSelection()
-    End Sub
+    '    dgvExaminee.ClearSelection()
+    'End Sub
 
     Private Sub LoadExamineePosition()
         ' Comboboxes clear
@@ -502,7 +503,15 @@ Public Class AdminDashboard
         ' ANG GAGAMITIN MONG KEY NILA AY examineeID
         lblExamineeDateID.Text = dgvExaminee.SelectedRows(0).Cells("Examinee_ID").Value.ToString()
         txtFirstName.Text = dgvExaminee.SelectedRows(0).Cells("First_Name").Value.ToString()
+        txtMiddleName.Text = dgvExaminee.SelectedRows(0).Cells("Middle_Name").Value.ToString()
         txtLastName.Text = dgvExaminee.SelectedRows(0).Cells("Last_Name").Value.ToString()
+        txtFirstName.GoGreen()
+        txtMiddleName.GoGreen()
+        txtLastName.GoGreen()
+        lblFirstNameError.Visible = False
+        lblMiddleNameError.Visible = False
+        lblLastNameError.Visible = False
+        lblEmailError.Visible = False
 
         ViewLevelStatus()
 
@@ -544,6 +553,7 @@ Public Class AdminDashboard
 
         If Not IsDBNull(sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress")) Then
             txtEmailAddress.Text = sql.sqlDataSet.Tables(0).Rows(0).Item("emailAddress")
+            txtEmailAddress.GoGreen()
         End If
 
 
@@ -647,14 +657,14 @@ Public Class AdminDashboard
     Private Sub btnExamineeRegister_Click(sender As Object, e As EventArgs) Handles btnExamineeRegister.Click
 
         ' Error catching
-        If txtFirstName.Text = "" Or txtLastName.Text = "" Then
+        If txtFirstName.Text = "" Or txtMiddleName.Text = "" Or txtLastName.Text = "" Then
             picExamineeError.Visible = True
             lblExamineeError.Text = "Incorrect Details"
             lblExamineeError.Visible = True
             Exit Sub
         End If
 
-        If lblEmailError.Visible = True Or lblFirstNameError.Visible = True Or lblLastNameError.Visible = True Then
+        If lblEmailError.Visible = True Or lblFirstNameError.Visible = True Or lblMiddleNameError.Visible = True Or lblLastNameError.Visible = True Then
             MessageBox.Show("Please validate the fields")
             Exit Sub
         End If
@@ -725,12 +735,14 @@ Public Class AdminDashboard
 
         ' INSERTION OF EXAMINEE
         sql.AddParam("@firstName", txtFirstName.Text)
+        sql.AddParam("@middleName", txtMiddleName.Text)
         sql.AddParam("@lastName", txtLastName.Text)
         sql.AddParam("@newID", newID)
         sql.AddParam("@activeLevel", _activeLevel)
         sql.AddParam("@emailAddress", txtEmailAddress.Text)
 
-        sql.ExecuteQuery("INSERT INTO tbl_examinee (firstName, lastName, dateTaken, activeLevel, emailAddress) VALUES (@firstName, @lastName, @newID, @activeLevel, @emailAddress)")
+        sql.ExecuteQuery("INSERT INTO tbl_examinee (firstName, middleName, lastName, dateTaken, activeLevel, emailAddress) 
+                                            VALUES (@firstName, @middleName, @lastName, @newID, @activeLevel, @emailAddress)")
 
 
         ' PUT newID/examineeDateID to LAST INSERTED ROW
@@ -803,7 +815,7 @@ Public Class AdminDashboard
     Private Sub btnExamineeEdit_Click(sender As Object, e As EventArgs) Handles btnExamineeEdit.Click
 
         ' Checks to see if there is no data inside text fields 
-        If lblExamineeDateID.Text = "" Or txtFirstName.Text = "" Or txtLastName.Text = "" Then
+        If lblExamineeDateID.Text = "" Or txtFirstName.Text = "" Or txtMiddleName.Text = "" Or txtLastName.Text = "" Then
             lblExamineeError.Text = "Please select a record first!"
             lblExamineeError.Visible = True
             picExamineeError.Visible = True
@@ -842,11 +854,13 @@ Public Class AdminDashboard
         ' Edit function for tbl_examinee
         sql.AddParam("@examineeDateID", lblExamineeDateID.Text)
         sql.AddParam("@newFirstName", txtFirstName.Text)
+        sql.AddParam("@newMiddleName", txtMiddleName.Text)
         sql.AddParam("@newLastName", txtLastName.Text)
         sql.AddParam("@activeLevel", _activeLevel)
         sql.AddParam("@emailAddress", txtEmailAddress.Text)
         sql.ExecuteQuery("UPDATE tbl_examinee
                              SET      firstName = @newFirstName,
+                                     middleName = @newMiddleName,
                                        lastName = @newLastname,
                                     activeLevel = @activeLevel,
                                    emailAddress = @emailAddress
@@ -921,8 +935,13 @@ Public Class AdminDashboard
     Private Sub btnExamineeClear_Click(sender As Object, e As EventArgs) Handles btnExamineeClear.Click
 
         txtFirstName.Text = ""
+        txtMiddleName.Text = ""
         txtLastName.Text = ""
         txtEmailAddress.Text = ""
+        txtFirstName.GoWhite()
+        txtMiddleName.GoWhite()
+        txtLastName.GoWhite()
+        txtEmailAddress.GoWhite()
         lblExamineeDateID.Text = ""
         lblExamineePicChanged.Text = 0
         cboSupervisoryPosition.SelectedIndex = -1
@@ -934,11 +953,15 @@ Public Class AdminDashboard
 
         picExaminee.Image = My.Resources.NoExamineePic
 
-        btnExamineeEdit.Visible = False
         btnExamineeRegister.Visible = True
+        btnExamineeEdit.Visible = False
 
         picExamineeError.Visible = False
         lblExamineeError.Visible = False
+        lblFirstNameError.Visible = False
+        lblMiddleNameError.Visible = False
+        lblLastNameError.Visible = False
+        lblEmailError.Visible = False
 
         cboSupervisoryPosition.Enabled = True
         cboNonSupervisoryPosition.Enabled = True
@@ -1037,13 +1060,14 @@ Public Class AdminDashboard
 
         ' First column
         Dim _column As Column = New Column()
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
+        _column = _table.AddColumn(Unit.FromCentimeter(3.5))
         _column.Format.Alignment = ParagraphAlignment.Center
         ' NOTE BEFORE YOU CAN ADD CELLS, YOU MUST ADD THE COLUMN
-        _column = _table.AddColumn(Unit.FromCentimeter(5))
-        _column = _table.AddColumn(Unit.FromCentimeter(5))
+        _column = _table.AddColumn(Unit.FromCentimeter(4.5))
+        _column = _table.AddColumn(Unit.FromCentimeter(4.5))
+        _column = _table.AddColumn(Unit.FromCentimeter(4.5))
         _column = _table.AddColumn(Unit.FromCentimeter(6.8))
-        _column = _table.AddColumn(Unit.FromCentimeter(4))
+        _column = _table.AddColumn(Unit.FromCentimeter(2.5))
         Dim _row As Row = New Row()
         ' For table header
         _row = _table.AddRow()
@@ -1051,43 +1075,53 @@ Public Class AdminDashboard
         _row.Shading.Color = Colors.PaleGoldenrod
         Dim _cell As Cell = New Cell()
         _cell = _row.Cells(0)
+        _cell.Format.Alignment = ParagraphAlignment.Center
         _cell.AddParagraph("Examinee ID")
         _cell = _row.Cells(1)
+        _cell.Format.Alignment = ParagraphAlignment.Center
         _cell.AddParagraph("First Name")
         _cell = _row.Cells(2)
-        _cell.AddParagraph("Last Name")
+        _cell.Format.Alignment = ParagraphAlignment.Center
+        _cell.AddParagraph("Middle Name")
         _cell = _row.Cells(3)
-        _cell.AddParagraph("Email Address")
+        _cell.Format.Alignment = ParagraphAlignment.Center
+        _cell.AddParagraph("Last Name")
         _cell = _row.Cells(4)
+        _cell.Format.Alignment = ParagraphAlignment.Center
+        _cell.AddParagraph("Email Address")
+        _cell = _row.Cells(5)
+        _cell.Format.Alignment = ParagraphAlignment.Center
         _cell.AddParagraph("Date Taken")
-
 
 
         ' Execute query to get data on the appropriate set
         'sql.AddParam("@setDescription", cboExamineeSet.Text)
-        sql.ExecuteQuery("SELECT examineeDateID, firstName, lastName, emailAddress, dateTaken FROM tbl_examinee ORDER BY examineeDateID DESC")
+        sql.ExecuteQuery("SELECT examineeDateID, firstName, middleName, lastName, emailAddress, dateTaken FROM tbl_examinee ORDER BY examineeDateID DESC")
 
         For Each r As DataRow In sql.sqlDataSet.Tables(0).Rows
             _row = _table.AddRow()
             _cell = _row.Cells(0)
-            _cell.AddParagraph(r("examineeDateID"))
+            _cell.AddParagraph(r("examineeDateID").ToString())
 
             _cell = _row.Cells(1)
-            _cell.AddParagraph(r("firstName"))
+            _cell.AddParagraph(r("firstName").ToString())
 
             _cell = _row.Cells(2)
-            _cell.AddParagraph(r("lastName"))
+            _cell.AddParagraph(r("middleName").ToString())
+
+            _cell = _row.Cells(3)
+            _cell.AddParagraph(r("lastName").ToString())
 
             If IsDBNull(r("emailAddress")) Or r("emailAddress").ToString() = "" Then
-                _cell = _row.Cells(3)
+                _cell = _row.Cells(4)
                 _cell.AddParagraph("N/A")
             Else
-                _cell = _row.Cells(3)
-                _cell.AddParagraph(r("emailAddress"))
+                _cell = _row.Cells(4)
+                _cell.AddParagraph(r("emailAddress").ToString())
             End If
 
-            _cell = _row.Cells(4)
-            _cell.AddParagraph(r("dateTaken"))
+            _cell = _row.Cells(5)
+            _cell.AddParagraph(r("dateTaken").ToString())
 
         Next
 
@@ -1763,10 +1797,11 @@ Public Class AdminDashboard
                 xlWorkSheet.Range("A1").ColumnWidth = 15
                 xlWorkSheet.Range("B1").ColumnWidth = 20
                 xlWorkSheet.Range("C1").ColumnWidth = 20
-                xlWorkSheet.Range("D1").ColumnWidth = 16
-                xlWorkSheet.Range("E1").ColumnWidth = 30
-                xlWorkSheet.Range("F1").ColumnWidth = 10
-                xlWorkSheet.Range("G1").ColumnWidth = 12
+                xlWorkSheet.Range("D1").ColumnWidth = 20
+                xlWorkSheet.Range("E1").ColumnWidth = 16
+                xlWorkSheet.Range("F1").ColumnWidth = 30
+                xlWorkSheet.Range("G1").ColumnWidth = 10
+                xlWorkSheet.Range("H1").ColumnWidth = 12
 
                 _excelFile = sfdExcel.FileName
 
@@ -1826,8 +1861,9 @@ Public Class AdminDashboard
         ' Main SELECT Query
         'sql.AddParam("@setDescription", cboExamineeSet.Text)
 
-        _stringBuilder.Append("SELECT DISTINCT tbl_examinee.examineeDateID  AS Examinee_ID, 
-                                 tbl_examinee.firstName            AS First_Name, 
+        _stringBuilder.Append("SELECT DISTINCT tbl_examinee.examineeDateID  AS Examinee_ID,
+                                 tbl_examinee.firstName            As First_Name, 
+                                 tbl_examinee.middleName           AS Middle_Name,
                                  tbl_examinee.lastName             AS Last_Name,
                                  tbl_examinee.dateTaken            AS Date_Taken
                             FROM tbl_examinee
@@ -1848,6 +1884,11 @@ Public Class AdminDashboard
         If txtFirstNameFilter.Text <> Nothing Then
             sql.AddParam("@firstNameFilter", txtFirstNameFilter.Text)
             _stringBuilder.Append("AND tbl_examinee.firstName LIKE CONCAT('%',@firstNameFilter,'%') ")
+        End If
+
+        If txtMiddleNameFilter.Text <> Nothing Then
+            sql.AddParam("@middleNameFilter", txtMiddleNameFilter.Text)
+            _stringBuilder.Append("AND tbl_examinee.middleName LIKE CONCAT('%',@middleNameFilter,'%') ")
         End If
 
         If txtLastNameFilter.Text <> Nothing Then
@@ -1909,6 +1950,7 @@ Public Class AdminDashboard
 
         txtExamineeDateIDFilter.Text = ""
         txtFirstNameFilter.Text = ""
+        txtMiddleNameFilter.Text = ""
         txtLastNameFilter.Text = ""
         txtEmailFilter.Text = ""
         cboPositionFilter.SelectedIndex = -1
@@ -2005,6 +2047,7 @@ Public Class AdminDashboard
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -2087,7 +2130,9 @@ Public Class AdminDashboard
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
@@ -2212,6 +2257,7 @@ Public Class AdminDashboard
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -2294,7 +2340,9 @@ Public Class AdminDashboard
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
@@ -2416,6 +2464,7 @@ Public Class AdminDashboard
             Dim _examineeDateID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeDateID").ToString
             Dim _examineeID As String = sql.sqlDataSet.Tables(0).Rows(0).Item("examineeID").ToString
             Dim _firstName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("firstName").ToString
+            Dim _middleName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("middleName").ToString
             Dim _lastName As String = sql.sqlDataSet.Tables(0).Rows(0).Item("lastName").ToString
             Dim _levelDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("levelDescription").ToString
             Dim _positionDescription As String = sql.sqlDataSet.Tables(0).Rows(0).Item("positionDescription").ToString
@@ -2498,7 +2547,9 @@ Public Class AdminDashboard
             _fontstyle.Font.Size = 12
 
             Dim _examineeDetails As Paragraph = New Paragraph()
-            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _lastName & vbNewLine, "Paragraph")
+
+            Dim _middleInitial = _middleName(0).ToString()
+            _examineeDetails.AddFormattedText("Name: " & _firstName & " " & _middleInitial & ". " & _lastName & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Level: " & _levelDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Position: " & _positionDescription & vbNewLine, "Paragraph")
             _examineeDetails.AddFormattedText("Examinee ID: " & _examineeDateID & vbNewLine, "Paragraph")
@@ -3738,15 +3789,12 @@ Public Class AdminDashboard
         LoadPendingEmailCount()
     End Sub
 
-    Private Sub txtEmailAddress_Leave(sender As Object, e As EventArgs) Handles txtEmailAddress.Leave
-
+    Private Sub txtMiddleName_Leave(sender As Object, e As EventArgs) Handles txtMiddleName.Leave
+        If Not txtMiddleName.NameCheck(txtMiddleName.Text) Then
+            lblMiddleNameError.Visible = True
+        Else
+            lblMiddleNameError.Visible = False
+        End If
     End Sub
 
-    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
-
-    End Sub
-
-    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
-
-    End Sub
 End Class
