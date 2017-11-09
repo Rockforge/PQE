@@ -65,6 +65,7 @@ Public Class Examinee
         ExamineeTest.lblExamineeDateID.Text = lblExamineeDateID.Text
         ExamineeTest.lblExamineeID.Text = lblExamineeID.Text
         ExamineeTest.lblFirstName.Text = lblFirstName.Text
+        ExamineeTest.lblMiddleName.Text = lblMiddleName.Text
         ExamineeTest.lblLastName.Text = lblLastName.Text
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
@@ -97,6 +98,7 @@ Public Class Examinee
         ExamineeTest.lblExamineeDateID.Text = lblExamineeDateID.Text
         ExamineeTest.lblExamineeID.Text = lblExamineeID.Text
         ExamineeTest.lblFirstName.Text = lblFirstName.Text
+        ExamineeTest.lblMiddleName.Text = lblMiddleName.Text
         ExamineeTest.lblLastName.Text = lblLastName.Text
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
@@ -130,6 +132,7 @@ Public Class Examinee
         ExamineeTest.lblExamineeDateID.Text = lblExamineeDateID.Text
         ExamineeTest.lblExamineeID.Text = lblExamineeID.Text
         ExamineeTest.lblFirstName.Text = lblFirstName.Text
+        ExamineeTest.lblMiddleName.Text = lblMiddleName.Text
         ExamineeTest.lblLastName.Text = lblLastName.Text
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
@@ -163,6 +166,7 @@ Public Class Examinee
         ExamineeTest.lblExamineeDateID.Text = lblExamineeDateID.Text
         ExamineeTest.lblExamineeID.Text = lblExamineeID.Text
         ExamineeTest.lblFirstName.Text = lblFirstName.Text
+        ExamineeTest.lblMiddleName.Text = lblMiddleName.Text
         ExamineeTest.lblLastName.Text = lblLastName.Text
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text
@@ -196,6 +200,7 @@ Public Class Examinee
         ExamineeTest.lblExamineeDateID.Text = lblExamineeDateID.Text
         ExamineeTest.lblExamineeID.Text = lblExamineeID.Text
         ExamineeTest.lblFirstName.Text = lblFirstName.Text
+        ExamineeTest.lblMiddleName.Text = lblMiddleName.Text
         ExamineeTest.lblLastName.Text = lblLastName.Text
         ExamineeTest.lblLevelDescription.Text = lblLevelDescription.Text
         ExamineeTest.lblPositionDescription.Text = lblPositionDescription.Text

@@ -201,6 +201,7 @@ Public Class Login
             Examinee.lblExamineeID.Text = r("examineeID")
             Examinee.lblExamineeDateID.Text = r("examineeDateID")
             Examinee.lblFirstName.Text = r("firstName")
+            Examinee.lblMiddleName.Text = r("middleName")
             Examinee.lblLastName.Text = r("lastName")
             Examinee.lblLevelDescription.Text = r("levelDescription")
             Examinee.lblPositionDescription.Text = r("positionDescription")

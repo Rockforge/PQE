@@ -66,6 +66,8 @@ Partial Class Examinee
         Me.MaterialDivider4 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider5 = New MaterialSkin.Controls.MaterialDivider()
         Me.MaterialDivider6 = New MaterialSkin.Controls.MaterialDivider()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblMiddleName = New System.Windows.Forms.Label()
         CType(Me.picExaminee, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -73,7 +75,7 @@ Partial Class Examinee
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 79)
+        Me.Label1.Location = New System.Drawing.Point(12, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(104, 20)
         Me.Label1.TabIndex = 0
@@ -83,7 +85,7 @@ Partial Class Examinee
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(26, 108)
+        Me.Label2.Location = New System.Drawing.Point(41, 99)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 20)
         Me.Label2.TabIndex = 0
@@ -93,7 +95,7 @@ Partial Class Examinee
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(26, 139)
+        Me.Label3.Location = New System.Drawing.Point(41, 159)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(90, 20)
         Me.Label3.TabIndex = 0
@@ -103,7 +105,7 @@ Partial Class Examinee
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(305, 108)
+        Me.Label4.Location = New System.Drawing.Point(377, 128)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(50, 20)
         Me.Label4.TabIndex = 0
@@ -113,7 +115,7 @@ Partial Class Examinee
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(286, 139)
+        Me.Label5.Location = New System.Drawing.Point(358, 159)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(69, 20)
         Me.Label5.TabIndex = 0
@@ -132,7 +134,7 @@ Partial Class Examinee
         '
         Me.lblExamineeDateID.AutoSize = True
         Me.lblExamineeDateID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExamineeDateID.Location = New System.Drawing.Point(122, 79)
+        Me.lblExamineeDateID.Location = New System.Drawing.Point(122, 71)
         Me.lblExamineeDateID.Name = "lblExamineeDateID"
         Me.lblExamineeDateID.Size = New System.Drawing.Size(131, 20)
         Me.lblExamineeDateID.TabIndex = 0
@@ -142,7 +144,7 @@ Partial Class Examinee
         '
         Me.lblFirstName.AutoSize = True
         Me.lblFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFirstName.Location = New System.Drawing.Point(122, 108)
+        Me.lblFirstName.Location = New System.Drawing.Point(137, 99)
         Me.lblFirstName.Name = "lblFirstName"
         Me.lblFirstName.Size = New System.Drawing.Size(86, 20)
         Me.lblFirstName.TabIndex = 0
@@ -152,7 +154,7 @@ Partial Class Examinee
         '
         Me.lblLastName.AutoSize = True
         Me.lblLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLastName.Location = New System.Drawing.Point(122, 139)
+        Me.lblLastName.Location = New System.Drawing.Point(137, 159)
         Me.lblLastName.Name = "lblLastName"
         Me.lblLastName.Size = New System.Drawing.Size(86, 20)
         Me.lblLastName.TabIndex = 0
@@ -162,7 +164,7 @@ Partial Class Examinee
         '
         Me.lblLevelDescription.AutoSize = True
         Me.lblLevelDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLevelDescription.Location = New System.Drawing.Point(361, 108)
+        Me.lblLevelDescription.Location = New System.Drawing.Point(433, 128)
         Me.lblLevelDescription.Name = "lblLevelDescription"
         Me.lblLevelDescription.Size = New System.Drawing.Size(87, 20)
         Me.lblLevelDescription.TabIndex = 0
@@ -172,7 +174,7 @@ Partial Class Examinee
         '
         Me.lblPositionDescription.AutoSize = True
         Me.lblPositionDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPositionDescription.Location = New System.Drawing.Point(361, 139)
+        Me.lblPositionDescription.Location = New System.Drawing.Point(433, 159)
         Me.lblPositionDescription.Name = "lblPositionDescription"
         Me.lblPositionDescription.Size = New System.Drawing.Size(106, 20)
         Me.lblPositionDescription.TabIndex = 0
@@ -181,7 +183,7 @@ Partial Class Examinee
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(91, 193)
+        Me.Label6.Location = New System.Drawing.Point(91, 211)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(60, 13)
         Me.Label6.TabIndex = 2
@@ -190,7 +192,7 @@ Partial Class Examinee
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(446, 195)
+        Me.Label7.Location = New System.Drawing.Point(446, 213)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(75, 13)
         Me.Label7.TabIndex = 3
@@ -200,7 +202,7 @@ Partial Class Examinee
         '
         Me.lblTest1.AutoSize = True
         Me.lblTest1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTest1.Location = New System.Drawing.Point(27, 224)
+        Me.lblTest1.Location = New System.Drawing.Point(27, 242)
         Me.lblTest1.Name = "lblTest1"
         Me.lblTest1.Size = New System.Drawing.Size(45, 16)
         Me.lblTest1.TabIndex = 4
@@ -210,7 +212,7 @@ Partial Class Examinee
         '
         Me.lblTest2.AutoSize = True
         Me.lblTest2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTest2.Location = New System.Drawing.Point(27, 260)
+        Me.lblTest2.Location = New System.Drawing.Point(27, 278)
         Me.lblTest2.Name = "lblTest2"
         Me.lblTest2.Size = New System.Drawing.Size(45, 16)
         Me.lblTest2.TabIndex = 4
@@ -220,7 +222,7 @@ Partial Class Examinee
         '
         Me.lblTest3.AutoSize = True
         Me.lblTest3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTest3.Location = New System.Drawing.Point(27, 296)
+        Me.lblTest3.Location = New System.Drawing.Point(27, 314)
         Me.lblTest3.Name = "lblTest3"
         Me.lblTest3.Size = New System.Drawing.Size(45, 16)
         Me.lblTest3.TabIndex = 4
@@ -230,7 +232,7 @@ Partial Class Examinee
         '
         Me.lblTest5.AutoSize = True
         Me.lblTest5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTest5.Location = New System.Drawing.Point(27, 367)
+        Me.lblTest5.Location = New System.Drawing.Point(27, 385)
         Me.lblTest5.Name = "lblTest5"
         Me.lblTest5.Size = New System.Drawing.Size(45, 16)
         Me.lblTest5.TabIndex = 4
@@ -241,7 +243,7 @@ Partial Class Examinee
         '
         Me.lblTest4.AutoSize = True
         Me.lblTest4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTest4.Location = New System.Drawing.Point(27, 332)
+        Me.lblTest4.Location = New System.Drawing.Point(27, 350)
         Me.lblTest4.Name = "lblTest4"
         Me.lblTest4.Size = New System.Drawing.Size(45, 16)
         Me.lblTest4.TabIndex = 4
@@ -252,7 +254,7 @@ Partial Class Examinee
         '
         Me.lblTime1.AutoSize = True
         Me.lblTime1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime1.Location = New System.Drawing.Point(458, 224)
+        Me.lblTime1.Location = New System.Drawing.Point(458, 242)
         Me.lblTime1.Name = "lblTime1"
         Me.lblTime1.Size = New System.Drawing.Size(49, 16)
         Me.lblTime1.TabIndex = 4
@@ -262,7 +264,7 @@ Partial Class Examinee
         '
         Me.lblTime2.AutoSize = True
         Me.lblTime2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime2.Location = New System.Drawing.Point(458, 260)
+        Me.lblTime2.Location = New System.Drawing.Point(458, 278)
         Me.lblTime2.Name = "lblTime2"
         Me.lblTime2.Size = New System.Drawing.Size(49, 16)
         Me.lblTime2.TabIndex = 4
@@ -272,7 +274,7 @@ Partial Class Examinee
         '
         Me.lblTime3.AutoSize = True
         Me.lblTime3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime3.Location = New System.Drawing.Point(458, 296)
+        Me.lblTime3.Location = New System.Drawing.Point(458, 314)
         Me.lblTime3.Name = "lblTime3"
         Me.lblTime3.Size = New System.Drawing.Size(49, 16)
         Me.lblTime3.TabIndex = 4
@@ -282,7 +284,7 @@ Partial Class Examinee
         '
         Me.lblTime5.AutoSize = True
         Me.lblTime5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime5.Location = New System.Drawing.Point(458, 367)
+        Me.lblTime5.Location = New System.Drawing.Point(458, 385)
         Me.lblTime5.Name = "lblTime5"
         Me.lblTime5.Size = New System.Drawing.Size(49, 16)
         Me.lblTime5.TabIndex = 4
@@ -293,7 +295,7 @@ Partial Class Examinee
         '
         Me.lblTime4.AutoSize = True
         Me.lblTime4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime4.Location = New System.Drawing.Point(458, 332)
+        Me.lblTime4.Location = New System.Drawing.Point(458, 350)
         Me.lblTime4.Name = "lblTime4"
         Me.lblTime4.Size = New System.Drawing.Size(49, 16)
         Me.lblTime4.TabIndex = 4
@@ -303,7 +305,7 @@ Partial Class Examinee
         'btnTestStart1
         '
         Me.btnTestStart1.Depth = 0
-        Me.btnTestStart1.Location = New System.Drawing.Point(684, 221)
+        Me.btnTestStart1.Location = New System.Drawing.Point(684, 239)
         Me.btnTestStart1.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnTestStart1.Name = "btnTestStart1"
         Me.btnTestStart1.Primary = True
@@ -315,7 +317,7 @@ Partial Class Examinee
         'btnTestStart2
         '
         Me.btnTestStart2.Depth = 0
-        Me.btnTestStart2.Location = New System.Drawing.Point(684, 257)
+        Me.btnTestStart2.Location = New System.Drawing.Point(684, 275)
         Me.btnTestStart2.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnTestStart2.Name = "btnTestStart2"
         Me.btnTestStart2.Primary = True
@@ -327,7 +329,7 @@ Partial Class Examinee
         'btnTestStart3
         '
         Me.btnTestStart3.Depth = 0
-        Me.btnTestStart3.Location = New System.Drawing.Point(684, 293)
+        Me.btnTestStart3.Location = New System.Drawing.Point(684, 311)
         Me.btnTestStart3.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnTestStart3.Name = "btnTestStart3"
         Me.btnTestStart3.Primary = True
@@ -339,7 +341,7 @@ Partial Class Examinee
         'btnTestStart5
         '
         Me.btnTestStart5.Depth = 0
-        Me.btnTestStart5.Location = New System.Drawing.Point(684, 364)
+        Me.btnTestStart5.Location = New System.Drawing.Point(684, 382)
         Me.btnTestStart5.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnTestStart5.Name = "btnTestStart5"
         Me.btnTestStart5.Primary = True
@@ -352,7 +354,7 @@ Partial Class Examinee
         'btnTestStart4
         '
         Me.btnTestStart4.Depth = 0
-        Me.btnTestStart4.Location = New System.Drawing.Point(684, 329)
+        Me.btnTestStart4.Location = New System.Drawing.Point(684, 347)
         Me.btnTestStart4.MouseState = MaterialSkin.MouseState.HOVER
         Me.btnTestStart4.Name = "btnTestStart4"
         Me.btnTestStart4.Primary = True
@@ -446,7 +448,7 @@ Partial Class Examinee
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(316, 79)
+        Me.Label8.Location = New System.Drawing.Point(388, 99)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(38, 20)
         Me.Label8.TabIndex = 11
@@ -455,7 +457,7 @@ Partial Class Examinee
         'lblSetDescription
         '
         Me.lblSetDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSetDescription.Location = New System.Drawing.Point(361, 79)
+        Me.lblSetDescription.Location = New System.Drawing.Point(433, 99)
         Me.lblSetDescription.Name = "lblSetDescription"
         Me.lblSetDescription.Size = New System.Drawing.Size(43, 20)
         Me.lblSetDescription.TabIndex = 11
@@ -465,7 +467,7 @@ Partial Class Examinee
         '
         Me.MaterialDivider1.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider1.Depth = 0
-        Me.MaterialDivider1.Location = New System.Drawing.Point(0, 211)
+        Me.MaterialDivider1.Location = New System.Drawing.Point(0, 229)
         Me.MaterialDivider1.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider1.Name = "MaterialDivider1"
         Me.MaterialDivider1.Size = New System.Drawing.Size(820, 2)
@@ -476,7 +478,7 @@ Partial Class Examinee
         '
         Me.MaterialDivider2.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider2.Depth = 0
-        Me.MaterialDivider2.Location = New System.Drawing.Point(1, 186)
+        Me.MaterialDivider2.Location = New System.Drawing.Point(1, 204)
         Me.MaterialDivider2.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider2.Name = "MaterialDivider2"
         Me.MaterialDivider2.Size = New System.Drawing.Size(820, 3)
@@ -487,7 +489,7 @@ Partial Class Examinee
         '
         Me.MaterialDivider3.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider3.Depth = 0
-        Me.MaterialDivider3.Location = New System.Drawing.Point(26, 357)
+        Me.MaterialDivider3.Location = New System.Drawing.Point(26, 375)
         Me.MaterialDivider3.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider3.Name = "MaterialDivider3"
         Me.MaterialDivider3.Size = New System.Drawing.Size(760, 1)
@@ -498,7 +500,7 @@ Partial Class Examinee
         '
         Me.MaterialDivider4.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider4.Depth = 0
-        Me.MaterialDivider4.Location = New System.Drawing.Point(26, 250)
+        Me.MaterialDivider4.Location = New System.Drawing.Point(26, 268)
         Me.MaterialDivider4.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider4.Name = "MaterialDivider4"
         Me.MaterialDivider4.Size = New System.Drawing.Size(760, 1)
@@ -509,7 +511,7 @@ Partial Class Examinee
         '
         Me.MaterialDivider5.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider5.Depth = 0
-        Me.MaterialDivider5.Location = New System.Drawing.Point(26, 286)
+        Me.MaterialDivider5.Location = New System.Drawing.Point(26, 304)
         Me.MaterialDivider5.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider5.Name = "MaterialDivider5"
         Me.MaterialDivider5.Size = New System.Drawing.Size(760, 1)
@@ -520,18 +522,38 @@ Partial Class Examinee
         '
         Me.MaterialDivider6.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MaterialDivider6.Depth = 0
-        Me.MaterialDivider6.Location = New System.Drawing.Point(26, 322)
+        Me.MaterialDivider6.Location = New System.Drawing.Point(26, 340)
         Me.MaterialDivider6.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider6.Name = "MaterialDivider6"
         Me.MaterialDivider6.Size = New System.Drawing.Size(760, 1)
         Me.MaterialDivider6.TabIndex = 17
         Me.MaterialDivider6.Text = "MaterialDivider6"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(26, 128)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(105, 20)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "Middle Name:"
+        '
+        'lblMiddleName
+        '
+        Me.lblMiddleName.AutoSize = True
+        Me.lblMiddleName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMiddleName.Location = New System.Drawing.Point(137, 128)
+        Me.lblMiddleName.Name = "lblMiddleName"
+        Me.lblMiddleName.Size = New System.Drawing.Size(101, 20)
+        Me.lblMiddleName.TabIndex = 0
+        Me.lblMiddleName.Text = "Middle Name"
+        '
         'Examinee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(812, 400)
+        Me.ClientSize = New System.Drawing.Size(812, 416)
         Me.ControlBox = False
         Me.Controls.Add(Me.MaterialDivider6)
         Me.Controls.Add(Me.MaterialDivider5)
@@ -575,6 +597,8 @@ Partial Class Examinee
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblFirstName)
         Me.Controls.Add(Me.lblExamineeDateID)
+        Me.Controls.Add(Me.lblMiddleName)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.MaximizeBox = False
@@ -632,4 +656,6 @@ Partial Class Examinee
     Friend WithEvents MaterialDivider4 As MaterialSkin.Controls.MaterialDivider
     Friend WithEvents MaterialDivider5 As MaterialSkin.Controls.MaterialDivider
     Friend WithEvents MaterialDivider6 As MaterialSkin.Controls.MaterialDivider
+    Friend WithEvents Label9 As Label
+    Friend WithEvents lblMiddleName As Label
 End Class
