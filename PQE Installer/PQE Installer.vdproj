@@ -1116,7 +1116,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Pre-Qualification Examination"
         "ProductCode" = "8:{53902684-0CE0-4042-90C9-744131C77E5B}"
-        "PackageCode" = "8:{D9547802-9C1F-4D83-8BC2-2B0D51761D4F}"
+        "PackageCode" = "8:{A94AE057-1CF6-4249-A65F-FE84F1EF0932}"
         "UpgradeCode" = "8:{F74EB72C-90F6-4E7D-B77D-1FAEB6EB1D1F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

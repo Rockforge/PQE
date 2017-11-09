@@ -2916,24 +2916,6 @@ Public Class AdminDashboard
 
     End Sub
 
-    Private Sub rbChoice1_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice1.CheckedChanged
-        correctAnswer = txtChoice1.Text
-    End Sub
-
-    Private Sub rbChoice2_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice2.CheckedChanged
-
-        correctAnswer = txtChoice2.Text
-    End Sub
-
-    Private Sub rbChoice3_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice3.CheckedChanged
-
-        correctAnswer = txtChoice3.Text
-    End Sub
-
-    Private Sub rbChoice4_CheckedChanged(sender As Object, e As EventArgs) Handles rbChoice4.CheckedChanged
-
-        correctAnswer = txtChoice4.Text
-    End Sub
 
     Private Sub btnQuestionSave_Click(sender As Object, e As EventArgs) Handles btnQuestionSave.Click
 
@@ -2986,16 +2968,7 @@ Public Class AdminDashboard
             lblExamError.Visible = True
             Exit Sub
         End If
-
-        If correctAnswer = Nothing Then
-            picExamError.Visible = True
-            lblExamError.Text = "No answer was chosen!"
-            lblExamError.Visible = True
-
-            Exit Sub
-        End If
         ' END OF ERROR CATCHING
-
 
 
         ' GET CORRECT ANSWER
@@ -3007,6 +2980,15 @@ Public Class AdminDashboard
             correctAnswer = txtChoice3.Text
         ElseIf rbChoice4.Checked Then
             correctAnswer = txtChoice4.Text
+        End If
+
+
+        ' WAG mo itataas tong pang catch na to jurilla, dito talaga to pagtapos ng correct answer
+        If correctAnswer = Nothing Or correctAnswer = "" Then
+            picExamError.Visible = True
+            lblExamError.Text = "No answer was chosen!"
+            lblExamError.Visible = True
+            Exit Sub
         End If
 
         ' Holds the content of our question
